@@ -52,7 +52,6 @@ def normalize_title(t):
     return ' '.join(toks)
 
 def diverse_pick(items, total_limit, per_source_cap=3):
-    """Round-robin by source with per-source cap for diversity."""
     buckets = defaultdict(deque)
     count_by_src = defaultdict(int)
     for it in items:
@@ -69,63 +68,84 @@ def diverse_pick(items, total_limit, per_source_cap=3):
             else:
                 sources.popleft()
         else:
-            sources.pop()
+            sources.popleft()
     return chosen
 
 # ---- config ----
-with open(CONF, 'r', encoding='utf-8') as f:
-    cfg = yaml.safe_load(f) or {}
+try:
+    with open(CONF, 'r', encoding='utf-8') as f:
+        cfg = yaml.safe_load(f) or {}
+except Exception as e:
+    print("ERROR: cannot read config/sources.yaml:", e, file=sys.stderr)
+    cfg = {}
 
 limits = cfg.get('limits', {})
 PER_BUCKET = int(limits.get('per_category', 18))
 
-# ---- ingest all sources ----
+# ---- ingest with per-feed timeouts ----
+headers = {
+    "User-Agent": "BlairReportBot/1.0 (+https://example.com)"
+}
 raw = []
 seen_links = set()
-for src in cfg.get('sources', []):
+
+sources = cfg.get('sources', [])
+print(f"Starting ingest: {len(sources)} sources")
+
+for i, src in enumerate(sources, start=1):
     name = src.get('name','source')
     url = src.get('url','')
-    if not url: continue
+    if not url:
+        continue
+    print(f"[{i}/{len(sources)}] Fetching: {name} -> {url}")
     try:
-        d = feedparser.parse(url)
-        for e in d.entries[:100]:
-            title = (e.get('title') or '').strip()
-            link = (e.get('link') or '').strip()
-            if not title or not link: continue
-
-            h = hashlib.sha1(link.encode('utf-8')).hexdigest()
-            if h in seen_links: 
-                continue
-            seen_links.add(h)
-
-            # date
-            published_dt = None
-            for k in ('published_parsed','updated_parsed','created_parsed'):
-                val = getattr(e, k, None)
-                if val:
-                    try:
-                        published_dt = datetime.fromtimestamp(time.mktime(val), tz=timezone.utc)
-                        break
-                    except Exception:
-                        pass
-            if not published_dt:
-                published_dt = datetime.now(timezone.utc)
-
-            summary = (getattr(e, 'summary', '') or '')
-            sc = score_text(title, summary)
-            src_domain = canonical_source(link, name)
-            raw.append({
-                'title': title,
-                'link': link,
-                'published_at': published_dt.isoformat(),
-                'source': src_domain,
-                'score': sc,
-                'ntitle': normalize_title(title)
-            })
+        # fetch bytes with timeout, then parse
+        resp = requests.get(url, headers=headers, timeout=10)
+        resp.raise_for_status()
+        d = feedparser.parse(resp.content)
     except Exception as ex:
-        print(f"[WARN] feed error {name}: {ex}", file=sys.stderr)
+        print(f"[WARN] fetch/parse error {name}: {ex}", file=sys.stderr)
+        continue
 
-# ---- dedupe (normalized title + domain) ----
+    for e in d.entries[:100]:
+        title = (e.get('title') or '').strip()
+        link = (e.get('link') or '').strip()
+        if not title or not link:
+            continue
+
+        h = hashlib.sha1(link.encode('utf-8')).hexdigest()
+        if h in seen_links:
+            continue
+        seen_links.add(h)
+
+        # date extraction
+        published_dt = None
+        for k in ('published_parsed','updated_parsed','created_parsed'):
+            val = getattr(e, k, None)
+            if val:
+                try:
+                    published_dt = datetime.fromtimestamp(time.mktime(val), tz=timezone.utc)
+                    break
+                except Exception:
+                    pass
+        if not published_dt:
+            published_dt = datetime.now(timezone.utc)
+
+        summary = (getattr(e, 'summary', '') or '')
+        sc = score_text(title, summary)
+        src_domain = canonical_source(link, name)
+        raw.append({
+            'title': title,
+            'link': link,
+            'published_at': published_dt.isoformat(),
+            'source': src_domain,
+            'score': sc,
+            'ntitle': normalize_title(title)
+        })
+
+print(f"Ingest complete. Items: {len(raw)}")
+
+# ---- dedupe ----
 seen = set()
 deduped = []
 for it in sorted(raw, key=lambda x:(x['score'], x['published_at']), reverse=True):
@@ -163,12 +183,10 @@ for it in deduped:
     elif mins <= 31*24*60:
         buckets['month'].append(it)
 
-# rank within each bucket (score + recency), then diversify
 for k in list(buckets.keys()):
     arr = buckets[k]
     arr.sort(key=lambda x:(x['score'], x['published_at']), reverse=True)
     buckets[k] = diverse_pick(arr, PER_BUCKET, per_source_cap=2 if k=='breaking' else 3)
-    # strip helpers
     for it in buckets[k]:
         it.pop('score', None)
         it.pop('ntitle', None)
@@ -176,19 +194,18 @@ for k in list(buckets.keys()):
 buckets['generated_at'] = now.isoformat()
 
 # ---- write headlines ----
-os.makedirs(DATA_DIR, exist_ok=True)
 with open(os.path.join(DATA_DIR, 'headlines.json'), 'w', encoding='utf-8') as f:
     json.dump(buckets, f, ensure_ascii=False, indent=2)
 
 print("WROTE headlines.json with counts:", {k: len(v) for k,v in buckets.items() if isinstance(v, list)})
 
-# ---- prices: Top 50 with change% for ticker/table if you add one later ----
+# ---- prices with timeout ----
 prices = []
 try:
     r = requests.get(
         'https://api.coingecko.com/api/v3/coins/markets',
         params={'vs_currency':'usd','order':'market_cap_desc','per_page':50,'page':1,'price_change_percentage':'24h'},
-        timeout=25
+        timeout=20
     )
     r.raise_for_status()
     for coin in r.json():
