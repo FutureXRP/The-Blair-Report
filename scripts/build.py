@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-# The Blair Report — build.py (5-minute cycle, breaking = strict recency)
+# The Blair Report — build.py v1.5 (failsafe)
+# Always writes:
+#   data/headlines.json  {breaking, day, week, month, generated_at}
+#   data/prices.json     [ {rank,symbol,price,change24h}, ... ]
 
 import os, json, time, hashlib, sys, re
 from datetime import datetime, timezone
@@ -15,32 +18,52 @@ DATA_DIR = os.path.join(ROOT, "data")
 CONF = os.path.join(ROOT, "config", "sources.yaml")
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# ---------------- Config ----------------
+# =============== helpers ===============
+def log(msg): print(msg, file=sys.stderr)
+
+def now_utc(): return datetime.now(timezone.utc)
+
+def safe_write_json(path, obj):
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, path)
+
+# =============== config ===============
 def load_cfg():
     try:
         with open(CONF, "r", encoding="utf-8") as f:
-            return yaml.safe_load(f) or {}
+            cfg = yaml.safe_load(f) or {}
+            if not isinstance(cfg, dict): raise ValueError("YAML not a mapping")
+            return cfg
     except Exception as e:
-        print("WARN: cannot read config/sources.yaml; using defaults:", e, file=sys.stderr)
+        log(f"WARN: sources.yaml not loaded, using safe defaults: {e}")
         return {
             "limits": {"per_category": 15},
             "sources": [
-                {"name":"CoinDesk", "url":"https://www.coindesk.com/arc/outboundfeeds/rss/"},
+                {"name":"CoinDesk",      "url":"https://www.coindesk.com/arc/outboundfeeds/rss/"},
                 {"name":"CoinTelegraph", "url":"https://cointelegraph.com/rss"},
-                {"name":"Decrypt", "url":"https://decrypt.co/feed"},
-                {"name":"XRPL Blog", "url":"https://xrpl.org/blog/index.xml"},
-                {"name":"Ripple", "url":"https://www.ripple.com/insights/feed/"},
+                {"name":"Decrypt",       "url":"https://decrypt.co/feed"},
+                {"name":"XRPL Blog",     "url":"https://xrpl.org/blog/index.xml"},
+                {"name":"Ripple",        "url":"https://www.ripple.com/insights/feed/"},
             ]
         }
 
 cfg = load_cfg()
 PER_BUCKET = int(cfg.get("limits", {}).get("per_category", 15))
-SOURCES = cfg.get("sources", [])
+SOURCES    = cfg.get("sources", []) or []
+if not SOURCES:
+    log("WARN: no sources configured – using built-ins.")
+    SOURCES = [
+        {"name":"CoinDesk", "url":"https://www.coindesk.com/arc/outboundfeeds/rss/"},
+        {"name":"CoinTelegraph", "url":"https://cointelegraph.com/rss"},
+        {"name":"Decrypt", "url":"https://decrypt.co/feed"},
+    ]
 
-UA = "BlairReportBot/1.4 (+https://theblairreport.com)"
+UA      = "BlairReportBot/1.5 (+https://theblairreport.com)"
 HEADERS = {"User-Agent": UA}
 
-def get_json(url, params=None, timeout=20, retries=2):
+def get_json(url, params=None, timeout=20, retries=2, name="json"):
     last = None
     for i in range(retries + 1):
         try:
@@ -49,69 +72,120 @@ def get_json(url, params=None, timeout=20, retries=2):
             return r.json()
         except Exception as ex:
             last = ex
-            if i < retries: time.sleep(1.2*(i+1))
+            log(f"WARN: {name} fetch attempt {i+1} failed: {ex}")
+            if i < retries: time.sleep(1.2 * (i + 1))
     raise last
 
-# ---------------- Token universe ----------------
-def fetch_top_tokens(max_coins=250, vs="usd"):
+# =============== token universe (wide net) ===============
+def fetch_top_tokens(max_coins=250):
     try:
         coins = get_json(
             "https://api.coingecko.com/api/v3/coins/markets",
-            params={"vs_currency": vs,"order":"market_cap_desc","per_page":max_coins,"page":1},
-            timeout=20, retries=2
+            params={"vs_currency":"usd","order":"market_cap_desc","per_page":max_coins,"page":1},
+            timeout=20, retries=2, name="coingecko"
         ) or []
         tickers, names = set(), set()
         for c in coins:
-            sym = (c.get("symbol") or "").lower()
-            nm  = (c.get("name") or "").lower()
+            sym = (c.get("symbol") or "").strip().lower()
+            nm  = (c.get("name") or "").strip().lower()
             if sym: tickers.add(sym)
-            if nm: names.add(nm)
+            if nm:
+                names.add(nm)
+                for w in re.split(r"[\s\-/]+", nm):
+                    if len(w) >= 3: names.add(w)
         majors = {"btc","bitcoin","eth","ethereum","xrp","ripple"}
-        return tickers|majors, names|majors
+        tickers |= majors; names |= majors
+        if not tickers or not names: raise RuntimeError("empty token sets")
+        return tickers, names
     except Exception as ex:
-        print("[WARN] CoinGecko fetch failed, fallback tokens:", ex, file=sys.stderr)
-        return {"xrp","xdc","xlm","zbcn","hbar","btc","eth"}, {"ripple","xinfin","stellar","hedera","bitcoin","ethereum"}
+        log(f"WARN: CoinGecko token list failed, using fallback: {ex}")
+        tickers = {"xrp","xdc","xlm","zbcn","hbar","link","flr","sgb","btc","eth","sol","ada","bnb","ton","doge","trx","ltc"}
+        names   = {"ripple","xinfin","stellar","zebec","hedera","chainlink","flare","songbird","bitcoin","ethereum","solana","cardano","binance","toncoin","dogecoin","tron","litecoin"}
+        return tickers, names
 
 DYN_TICKERS, DYN_NAMES = fetch_top_tokens()
 FOCUS_TICKERS = {"xrp","xdc","xlm","zbcn","hbar","link","flr","sgb"}
-FOCUS_TERMS   = {"tokenization","rwa","iso 20022","swift","dtcc","euroclear","clearstream","cbdc"}
-
-WHITELIST_DOMAINS = {
-    "xrpl.org","ripple.com","xinfin.org","xdc.org","zebec.io","hedera.com",
-    "chain.link","rwa.xyz","swift.com","dtcc.com","euroclear.com","clearstream.com",
-    "coindesk.com","cointelegraph.com","decrypt.co","theblock.co","r3.com"
+FOCUS_TERMS   = {
+    "xrp","xrpl","ripple","xdc","xinfin","xlm","stellar","zbcn","zebec","hbar","hedera",
+    "link","chainlink","flr","flare","sgb","songbird","r3","corda","cordapp","xdc network",
+    "swift","iso 20022","dtcc","euroclear","clearstream","t+1","nostro","vostro",
+    "securities depository","instant payments","rtgs","sepa","fednow","cbdc",
+    "tokenization","tokenised","tokenized","rwa","real world asset","real-world asset",
+    "crypto","cryptocurrency","blockchain","onchain","web3","defi","l2","layer 2",
+    "stablecoin","usdc","usdt","etf","spot etf","smart contract","wallet","custody",
+    "staking","dex","cex","tokenomics","airdrop","interoperability"
 }
 
-def host_of(u:str) -> str:
+WHITELIST_DOMAINS = {
+    "xrpl.org","ripple.com","xinfin.org","xdc.org","zebec.io","hedera.com","chain.link","rwa.xyz",
+    "swift.com","dtcc.com","euroclear.com","clearstream.com",
+    "coindesk.com","cointelegraph.com","decrypt.co","theblock.co","r3.com","bis.org",
+    "imf.org","worldbank.org","ecb.europa.eu","federalreserve.gov","sec.gov"
+}
+
+def host_of(u: str) -> str:
     try: return (urlparse(u).hostname or "").lower().replace("www.","")
     except: return ""
 
 def is_crypto_relevant(title, summary, link):
-    text = " ".join([(title or "").lower(), (summary or "").lower(), (link or "").lower()])
-    if re.search(r"\$([a-z0-9]{2,10})\b", title): return True
-    words = set(re.findall(r"[a-z0-9]+", text))
-    if words & (DYN_TICKERS | FOCUS_TICKERS): return True
-    if any(n in text for n in DYN_NAMES|FOCUS_TERMS): return True
-    if host_of(link) in WHITELIST_DOMAINS: return True
+    t = (title or "").lower()
+    s = (summary or "").lower()
+    l = (link or "").lower()
+    blob = " ".join([t, s, l])
+
+    # $TICKER signal
+    if re.search(r"\$([a-z0-9]{2,10})\b", t) or re.search(r"\$([a-z0-9]{2,10})\b", s):
+        return True
+
+    # bare tickers
+    words = set(re.findall(r"[a-z0-9]+", blob))
+    if words & (DYN_TICKERS | FOCUS_TICKERS):
+        return True
+
+    # names / terms
+    for n in DYN_NAMES:
+        if n in blob: return True
+    for term in FOCUS_TERMS:
+        if term in blob: return True
+
+    # trusted sources
+    if host_of(link) in WHITELIST_DOMAINS:
+        return True
+
     return False
 
-GOOD_WORDS = ['xrp','xdc','xlm','zbcn','hbar','link','flr','sgb','tokenization','rwa','iso 20022','swift','dtcc']
-BAD_WORDS  = ['to the moon','lambo','giveaway','rug','pump and dump','100x','rocket']
+GOOD_WORDS = [
+    'xrp','xrpl','ripple','xdc','xinfin','xlm','stellar','zbcn','zebec','hbar','hedera','link','chainlink','flr','flare','sgb','songbird',
+    'swift','iso 20022','dtcc','euroclear','clearstream','nostro','vostro','rtgs','securities depository',
+    'tokenization','tokenized','tokenised','rwa','real-world asset','pilot','production','integration',
+    'partnership','institution','bank','approval','listing','launch','upgrade','framework','compliance','settlement','custody','treasury',
+    'testnet','mainnet','etf','spot etf','onchain','defi','interoperability','regulation','ruling'
+]
+BAD_WORDS  = ['to the moon','lambo','giveaway','airdrop scam','rug','pump and dump','100x','1000x','thousandx','rocket','buy now','guaranteed profits']
 SCORE_DROP_THRESHOLD = -1
 
 def score_text(title, summary):
-    t, s = title.lower(), summary.lower()
+    t = (title or '').lower()
+    s = (summary or '').lower()
     score = 0
     for w in GOOD_WORDS:
         if w in t or w in s: score += 2
     for w in BAD_WORDS:
         if w in t or w in s: score -= 3
-    if set(re.findall(r"[a-z0-9]+", t)) & FOCUS_TICKERS: score += 3
+    # boosts
+    if (set(re.findall(r"[a-z0-9]+", t)) & FOCUS_TICKERS) or (set(re.findall(r"[a-z0-9]+", s)) & FOCUS_TICKERS):
+        score += 3
+    if any(k in t for k in ("tokenization","tokenized","rwa","iso 20022","swift","dtcc","euroclear","clearstream")):
+        score += 2
+    score += min(len(t)//40, 3)
     return score
 
 def canonical_source(link, fallback):
-    try: return (urlparse(link).hostname or '').lower().replace('www.','') or (fallback or '').lower()
-    except: return (fallback or '').lower()
+    try:
+        host = urlparse(link).hostname or ''
+        return host.lower().replace('www.','') or (fallback or '').lower()
+    except:
+        return (fallback or '').lower()
 
 def normalize_title(t):
     t = re.sub(r'[^a-z0-9\s]', ' ', (t or '').lower())
@@ -120,110 +194,28 @@ def normalize_title(t):
     return ' '.join([w for w in t.split() if w not in STOP])
 
 def diverse_pick(items, total_limit, per_source_cap=2):
-    buckets, count_by_src = defaultdict(deque), defaultdict(int)
-    for it in items: buckets[it['source']].append(it)
+    buckets = defaultdict(deque)
+    count_by_src = defaultdict(int)
+    for it in items:
+        buckets[it['source']].append(it)
     sources = deque(sorted(buckets.keys()))
     chosen = []
     while sources and len(chosen) < total_limit:
         s = sources[0]
         if buckets[s]:
             if count_by_src[s] < per_source_cap:
-                chosen.append(buckets[s].popleft()); count_by_src[s]+=1; sources.rotate(-1)
-            else: sources.popleft()
-        else: sources.popleft()
+                chosen.append(buckets[s].popleft())
+                count_by_src[s] += 1
+                sources.rotate(-1)
+            else:
+                sources.popleft()
+        else:
+            sources.popleft()
     return chosen
 
-# ---------------- Ingest ----------------
-raw, seen_links = [], set()
-print(f"Starting ingest: {len(SOURCES)} sources")
+# =============== ingest ===============
+raw = []
+seen_links = set()
+log(f"INFO: ingesting {len(SOURCES)} sources")
+
 for i, src in enumerate(SOURCES, start=1):
-    name, url = src.get("name","source"), src.get("url","")
-    if not url: continue
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=15); resp.raise_for_status()
-        d = feedparser.parse(resp.content)
-    except Exception as ex:
-        print(f"[WARN] fetch/parse error {name}: {ex}", file=sys.stderr); continue
-    for e in d.entries[:150]:
-        title, link = (e.get("title") or "").strip(), (e.get("link") or "").strip()
-        if not title or not link: continue
-        summary = (getattr(e,"summary","") or "")
-        if not is_crypto_relevant(title, summary, link): continue
-        sc = score_text(title, summary)
-        if sc < SCORE_DROP_THRESHOLD: continue
-        h = hashlib.sha1(link.encode("utf-8")).hexdigest()
-        if h in seen_links: continue
-        seen_links.add(h)
-        published_dt = datetime.now(timezone.utc)
-        for k in ("published_parsed","updated_parsed","created_parsed"):
-            val = getattr(e, k, None)
-            if val:
-                try: published_dt = datetime.fromtimestamp(time.mktime(val), tz=timezone.utc); break
-                except: pass
-        raw.append({
-            "title": title, "link": link, "published_at": published_dt.isoformat(),
-            "source": canonical_source(link, name),
-            "score": sc, "ntitle": normalize_title(title)
-        })
-
-print(f"Ingest complete. Items (pre-dedupe): {len(raw)}")
-
-# ---------------- Dedupe ----------------
-seen, deduped = set(), []
-for it in sorted(raw, key=lambda x:(x["score"], x["published_at"]), reverse=True):
-    key = (it["ntitle"], it["source"])
-    if key in seen: continue
-    seen.add(key); deduped.append(it)
-
-# ---------------- Buckets ----------------
-now = datetime.now(timezone.utc)
-def age_minutes(iso):
-    try: return (now - datetime.fromisoformat(iso)).total_seconds()/60.0
-    except: return 1e9
-buckets = {"breaking": [],"day": [],"week": [],"month": []}
-for it in deduped:
-    mins = age_minutes(it["published_at"])
-    if mins <= 12*60: buckets["breaking"].append(it)
-    elif mins <= 24*60: buckets["day"].append(it)
-    elif mins <= 7*24*60: buckets["week"].append(it)
-    elif mins <= 21*24*60: buckets["month"].append(it)
-
-# Breaking = strict newest first
-arr = sorted(buckets["breaking"], key=lambda x: x["published_at"], reverse=True)[:PER_BUCKET]
-for it in arr: it.pop("score", None); it.pop("ntitle", None)
-buckets["breaking"] = arr
-
-# Others = score-first w/ diversity
-for k in ["day","week","month"]:
-    arr = buckets[k]; arr.sort(key=lambda x:(x["score"], x["published_at"]), reverse=True)
-    arr = diverse_pick(arr, PER_BUCKET, per_source_cap=2)
-    for it in arr: it.pop("score", None); it.pop("ntitle", None)
-    buckets[k] = arr
-
-buckets["generated_at"] = now.isoformat()
-
-with open(os.path.join(DATA_DIR, "headlines.json"), "w", encoding="utf-8") as f:
-    json.dump(buckets, f, ensure_ascii=False, indent=2)
-print("WROTE headlines.json counts:", {k: len(v) for k,v in buckets.items() if isinstance(v,list)})
-
-# ---------------- Prices ----------------
-prices = []
-try:
-    coins = get_json(
-        "https://api.coingecko.com/api/v3/coins/markets",
-        params={"vs_currency":"usd","order":"market_cap_desc","per_page":50,"page":1,"price_change_percentage":"24h"},
-        timeout=20, retries=2
-    )
-    for coin in coins:
-        prices.append({
-            "rank": coin.get("market_cap_rank"),
-            "symbol": (coin.get("symbol") or "").upper(),
-            "price": coin.get("current_price"),
-            "change24h": coin.get("price_change_percentage_24h")
-        })
-except Exception as ex:
-    print("[WARN] prices fetch failed:", ex, file=sys.stderr)
-
-with open(os.path.join(DATA_DIR, "prices.json"), "w", encoding="utf-8") as f:
-    json.dump(prices, f, ensure_ascii=False, indent=2)
-print("WROTE prices.json count:", len(prices))
