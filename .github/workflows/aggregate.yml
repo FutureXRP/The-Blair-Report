@@ -2,7 +2,7 @@ name: Aggregate Feeds
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # every 15 minutes
+    - cron: '*/15 * * * *'
   workflow_dispatch: {}
 
 permissions:
@@ -11,9 +11,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10  # <- hard cap for stuck runs
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -25,21 +28,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install feedparser requests pyyaml
 
-      - name: Build JSON
+      - name: Build JSON (with timeouts & progress)
         run: |
           python scripts/build.py
 
-      - name: Show data folder (debug)
+      - name: Show tree (debug)
         run: |
-          ls -la
-          echo "----- data dir -----"
+          echo "::group::Repo tree"
+          find . -maxdepth 2 -type d -print
+          echo "----- data -----"
           ls -la data || true
+          echo "::endgroup::"
 
       - name: Commit & push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
-          # safer than a glob on empty dir:
           git add -A data
           if git diff --cached --quiet; then
             echo "No changes to commit"
