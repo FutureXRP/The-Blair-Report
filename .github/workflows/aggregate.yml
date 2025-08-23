@@ -2,7 +2,7 @@ name: Aggregate news
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # every 30 minutes; adjust as you like
+    - cron: '*/30 * * * *'  # every 30 minutes
   workflow_dispatch:
 
 permissions:
@@ -12,11 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
