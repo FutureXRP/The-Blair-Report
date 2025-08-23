@@ -16,7 +16,7 @@ sources:
   - name: Decrypt
     url: https://decrypt.co/feed
     category: top
-  - name: The Block (Latest)
+  - name: The Block
     url: https://www.theblock.co/rss/latest
     category: top
   - name: Bitcoin Magazine
@@ -61,6 +61,18 @@ sources:
   - name: Yahoo Finance Crypto
     url: https://finance.yahoo.com/topic/crypto/rssindex
     category: top
+  - name: Bloomberg Crypto
+    url: https://www.bloomberg.com/feed/topics/crypto.xml
+    category: top
+  - name: Fortune Crypto
+    url: https://fortune.com/crypto/feed
+    category: top
+  - name: Forbes Crypto
+    url: https://www.forbes.com/crypto-blockchain/feed/
+    category: top
+  - name: CNBC Finance
+    url: https://www.cnbc.com/id/100003114/device/rss/rss.html
+    category: top
 
   # ——— REGULATION & POLICY ———
   - name: SEC Press
@@ -72,44 +84,35 @@ sources:
   - name: US Treasury
     url: https://home.treasury.gov/news/press-releases/feed
     category: regulation
-  - name: OCC (US Comptroller)
-    url: https://occ.gov/rss/occ-news.xml
-    category: regulation
-  - name: FDIC
-    url: https://www.fdic.gov/news/press-releases/rss.xml
-    category: regulation
   - name: Federal Reserve
     url: https://www.federalreserve.gov/feeds/press_all.xml
-    category: regulation
-  - name: EU Parliament
-    url: https://www.europarl.europa.eu/news/en/press-room/rss
-    category: regulation
-  - name: BIS Press
-    url: https://www.bis.org/list/press_releases.rss
     category: regulation
   - name: IMF Blog
     url: https://blogs.imf.org/feed/
     category: regulation
+  - name: BIS Press
+    url: https://www.bis.org/list/press_releases.rss
+    category: regulation
   - name: World Bank Blogs
     url: https://blogs.worldbank.org/feed
     category: regulation
-  - name: FCA (UK)
-    url: https://www.fca.org.uk/news/rss.xml
+  - name: Reuters Financial Regulation
+    url: https://feeds.reuters.com/reuters/financialRegulatory
     category: regulation
-  - name: Bank of England
-    url: https://www.bankofengland.co.uk/news/news-feed/rss
+  - name: Politico Finance
+    url: https://www.politico.com/rss/politics08.xml
     category: regulation
-  - name: MAS (Singapore)
-    url: https://www.mas.gov.sg/news.rss
+  - name: FT Alphaville
+    url: https://ftalphaville.ft.com/feed/
     category: regulation
-  - name: HKMA
-    url: https://www.hkma.gov.hk/eng/rss/press_releases.xml
+  - name: CoinDesk Regulation
+    url: https://www.coindesk.com/policy/rss/
     category: regulation
-  - name: IOSCO
-    url: https://www.iosco.org/rss/news.xml
+  - name: The Block Regulation
+    url: https://www.theblock.co/rss/regulation
     category: regulation
-  - name: FATF
-    url: https://www.fatf-gafi.org/rss/rss.xml
+  - name: Decrypt Regulation
+    url: https://decrypt.co/feed
     category: regulation
 
   # ——— TOKENIZATION / RWAs ———
