@@ -1,6 +1,252 @@
-{
-  "xrp": 3.02,
-  "zbcn": 0.00481967,
-  "btc": 114941.0,
-  "eth": 4729.39
-}
+[
+  {
+    "rank": 1,
+    "symbol": "BTC",
+    "price": 115006
+  },
+  {
+    "rank": 2,
+    "symbol": "ETH",
+    "price": 4736.19
+  },
+  {
+    "rank": 3,
+    "symbol": "XRP",
+    "price": 3.02
+  },
+  {
+    "rank": 4,
+    "symbol": "USDT",
+    "price": 0.999641
+  },
+  {
+    "rank": 5,
+    "symbol": "BNB",
+    "price": 879.23
+  },
+  {
+    "rank": 6,
+    "symbol": "SOL",
+    "price": 202.77
+  },
+  {
+    "rank": 7,
+    "symbol": "USDC",
+    "price": 0.999809
+  },
+  {
+    "rank": 8,
+    "symbol": "STETH",
+    "price": 4724.66
+  },
+  {
+    "rank": 9,
+    "symbol": "DOGE",
+    "price": 0.236566
+  },
+  {
+    "rank": 10,
+    "symbol": "TRX",
+    "price": 0.362628
+  },
+  {
+    "rank": 11,
+    "symbol": "ADA",
+    "price": 0.909952
+  },
+  {
+    "rank": 12,
+    "symbol": "WSTETH",
+    "price": 5718.3
+  },
+  {
+    "rank": 13,
+    "symbol": "LINK",
+    "price": 26.02
+  },
+  {
+    "rank": 14,
+    "symbol": "WBETH",
+    "price": 5100.48
+  },
+  {
+    "rank": 15,
+    "symbol": "HYPE",
+    "price": 44.19
+  },
+  {
+    "rank": 16,
+    "symbol": "WBTC",
+    "price": 114942
+  },
+  {
+    "rank": 17,
+    "symbol": "SUI",
+    "price": 3.68
+  },
+  {
+    "rank": 18,
+    "symbol": "WEETH",
+    "price": 5072.98
+  },
+  {
+    "rank": 19,
+    "symbol": "XLM",
+    "price": 0.411915
+  },
+  {
+    "rank": 20,
+    "symbol": "USDE",
+    "price": 1.0
+  },
+  {
+    "rank": 21,
+    "symbol": "BCH",
+    "price": 587.7
+  },
+  {
+    "rank": 22,
+    "symbol": "AVAX",
+    "price": 25.55
+  },
+  {
+    "rank": 23,
+    "symbol": "HBAR",
+    "price": 0.24888
+  },
+  {
+    "rank": 24,
+    "symbol": "WETH",
+    "price": 4732.36
+  },
+  {
+    "rank": 25,
+    "symbol": "LTC",
+    "price": 121.08
+  },
+  {
+    "rank": 26,
+    "symbol": "LEO",
+    "price": 9.6
+  },
+  {
+    "rank": 27,
+    "symbol": "TON",
+    "price": 3.37
+  },
+  {
+    "rank": 28,
+    "symbol": "USDS",
+    "price": 0.999877
+  },
+  {
+    "rank": 29,
+    "symbol": "SHIB",
+    "price": 1.314e-05
+  },
+  {
+    "rank": 30,
+    "symbol": "BSC-USD",
+    "price": 1.0
+  },
+  {
+    "rank": 31,
+    "symbol": "UNI",
+    "price": 11.24
+  },
+  {
+    "rank": 32,
+    "symbol": "WBT",
+    "price": 44.03
+  },
+  {
+    "rank": 33,
+    "symbol": "DOT",
+    "price": 4.15
+  },
+  {
+    "rank": 34,
+    "symbol": "CBBTC",
+    "price": 114968
+  },
+  {
+    "rank": 35,
+    "symbol": "SUSDE",
+    "price": 1.19
+  },
+  {
+    "rank": 36,
+    "symbol": "AAVE",
+    "price": 352.88
+  },
+  {
+    "rank": 37,
+    "symbol": "BGB",
+    "price": 4.7
+  },
+  {
+    "rank": 38,
+    "symbol": "CRO",
+    "price": 0.15523
+  },
+  {
+    "rank": 39,
+    "symbol": "ENA",
+    "price": 0.740674
+  },
+  {
+    "rank": 40,
+    "symbol": "XMR",
+    "price": 263.43
+  },
+  {
+    "rank": 41,
+    "symbol": "PEPE",
+    "price": 1.123e-05
+  },
+  {
+    "rank": 42,
+    "symbol": "DAI",
+    "price": 1.0
+  },
+  {
+    "rank": 43,
+    "symbol": "OKB",
+    "price": 203.55
+  },
+  {
+    "rank": 44,
+    "symbol": "MNT",
+    "price": 1.24
+  },
+  {
+    "rank": 45,
+    "symbol": "ETC",
+    "price": 23.95
+  },
+  {
+    "rank": 46,
+    "symbol": "TAO",
+    "price": 360.98
+  },
+  {
+    "rank": 47,
+    "symbol": "NEAR",
+    "price": 2.67
+  },
+  {
+    "rank": 48,
+    "symbol": "APT",
+    "price": 4.73
+  },
+  {
+    "rank": 49,
+    "symbol": "ONDO",
+    "price": 0.995429
+  },
+  {
+    "rank": 50,
+    "symbol": "ARB",
+    "price": 0.590295
+  }
+]

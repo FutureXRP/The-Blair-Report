@@ -1,562 +1,16 @@
 {
   "top": [
     {
-      "title": "FCA seeks improvement to digital loan processes",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-seeks-improvement-digital-loan-processes",
-      "published_at": "2025-08-23T17:29:40.617381+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
-      "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
-      "published_at": "2025-08-23T17:29:40.617347+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA fines Sigma Broking Limited for transaction reporting failures",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-fines-sigma-broking-limited-transaction-reporting-failures",
-      "published_at": "2025-08-23T17:29:40.617328+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA opens retail access to crypto ETNs",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
-      "published_at": "2025-08-23T17:29:40.617308+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA reaction to Supreme Court motor finance judgment",
-      "link": "https://www.fca.org.uk/news/statements/fca-reaction-supreme-court-motor-finance-judgment",
-      "published_at": "2025-08-23T17:29:40.617289+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA to consult on a compensation scheme for motor finance customers",
-      "link": "https://www.fca.org.uk/news/statements/fca-consult-compensation-scheme-motor-finance-customers",
-      "published_at": "2025-08-23T17:29:40.617270+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA to consult on motor finance compensation scheme",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-consult-motor-finance-compensation-scheme",
-      "published_at": "2025-08-23T17:29:40.617251+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA issues fines of nearly £46m for failures managing the Woodford Equity Income Fund",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-fines-over-woodford-equity-income-fund",
-      "published_at": "2025-08-23T17:29:40.617233+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA update on ‘all or nothing’ investment fraud case",
-      "link": "https://www.fca.org.uk/news/statements/fca-update-all-or-nothing-investment-fraud-case",
-      "published_at": "2025-08-23T17:29:40.617214+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA sets out changes to payment safeguarding rules",
-      "link": "https://www.fca.org.uk/news/press-releases/payment-safeguarding-rules-changes",
-      "published_at": "2025-08-23T17:29:40.617196+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA secures convictions against individual for £1.3m Ponzi scheme",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-secures-convictions-individual-ponzi-scheme",
-      "published_at": "2025-08-23T17:29:40.617178+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA shares feedback on the new standard setting body for open banking",
-      "link": "https://www.fca.org.uk/news/news-stories/fca-shares-feedback-new-standard-setting-body-open-banking",
-      "published_at": "2025-08-23T17:29:40.617159+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Leveraging the non-bank sector – in good times and bad",
-      "link": "https://www.fca.org.uk/news/blogs/leveraging-non-bank-sector-good-times-and-bad",
-      "published_at": "2025-08-23T17:29:40.617141+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Beware car finance scam calls, FCA warns",
-      "link": "https://www.fca.org.uk/news/news-stories/beware-car-finance-scam-calls-fca-warns",
-      "published_at": "2025-08-23T17:29:40.617121+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Are firms ready for T+1 in the UK and Europe?",
-      "link": "https://www.fca.org.uk/news/news-stories/firms-ready-t-1-uk-europe",
-      "published_at": "2025-08-23T17:29:40.617102+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Trust Financial Planning Ltd enters liquidation",
-      "link": "https://www.fca.org.uk/news/news-stories/trust-financial-planning-ltd-enters-liquidation",
-      "published_at": "2025-08-23T17:29:40.617082+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "The evolution of consumer credit: What the next decade holds",
-      "link": "https://www.fca.org.uk/news/blogs/evolution-consumer-credit-what-next-decade-holds",
-      "published_at": "2025-08-23T17:29:40.617061+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Sustainability-linked loans market: 2 years on",
-      "link": "https://www.fca.org.uk/news/news-stories/sustainability-linked-loans-market-2-years",
-      "published_at": "2025-08-23T17:29:40.617038+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Forest Savers enters administration",
-      "link": "https://www.fca.org.uk/news/news-stories/forest-savers-enters-administration",
-      "published_at": "2025-08-23T17:29:40.617012+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Fernwood Financial Limited enters liquidation",
-      "link": "https://www.fca.org.uk/news/news-stories/fernwood-financial-limited-enters-liquidation",
-      "published_at": "2025-08-23T17:29:40.616971+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Anonymous Hacktivist Group Founder Spearheads Meme Coin While Facing 5 Years in Prison",
-      "link": "https://decrypt.co/336409/anonymous-hacktivist-group-founder-spearheads-meme-coin-facing-prison",
-      "published_at": "2025-08-23T17:01:03+00:00",
-      "source": "decrypt.co"
-    },
-    {
-      "title": "XRP Surges 9% Before Pullback Caps Rally Near $3",
-      "link": "https://www.coindesk.com/markets/2025/08/23/xrp-surges-9-before-pullback-caps-rally-near-usd3",
-      "published_at": "2025-08-23T15:41:43+00:00",
-      "source": "coindesk.com"
-    },
-    {
-      "title": "Digital Asset Treasury Companies Drive New Wave of Corporate Crypto Holdings",
-      "link": "https://thedefiant.io/news/tradfi-and-fintech/digital-asset-treasury-companies-drive-new-wave-of-corporate-crypto-holdings",
-      "published_at": "2025-08-23T15:14:11+00:00",
-      "source": "thedefiant.io"
-    },
-    {
-      "title": "The Creators of an Ethereum Gaming Network Just Sued Elon Musk's xAI",
-      "link": "https://decrypt.co/336509/creators-ethereum-gaming-network-sued-elon-musk-xai",
-      "published_at": "2025-08-23T14:52:45+00:00",
-      "source": "decrypt.co"
-    }
-  ],
-  "regulation": [
-    {
-      "title": "FCA seeks improvement to digital loan processes",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-seeks-improvement-digital-loan-processes",
-      "published_at": "2025-08-23T17:29:40.617381+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
-      "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
-      "published_at": "2025-08-23T17:29:40.617347+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA fines Sigma Broking Limited for transaction reporting failures",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-fines-sigma-broking-limited-transaction-reporting-failures",
-      "published_at": "2025-08-23T17:29:40.617328+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA opens retail access to crypto ETNs",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
-      "published_at": "2025-08-23T17:29:40.617308+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA reaction to Supreme Court motor finance judgment",
-      "link": "https://www.fca.org.uk/news/statements/fca-reaction-supreme-court-motor-finance-judgment",
-      "published_at": "2025-08-23T17:29:40.617289+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA to consult on a compensation scheme for motor finance customers",
-      "link": "https://www.fca.org.uk/news/statements/fca-consult-compensation-scheme-motor-finance-customers",
-      "published_at": "2025-08-23T17:29:40.617270+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA to consult on motor finance compensation scheme",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-consult-motor-finance-compensation-scheme",
-      "published_at": "2025-08-23T17:29:40.617251+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA issues fines of nearly £46m for failures managing the Woodford Equity Income Fund",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-fines-over-woodford-equity-income-fund",
-      "published_at": "2025-08-23T17:29:40.617233+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA update on ‘all or nothing’ investment fraud case",
-      "link": "https://www.fca.org.uk/news/statements/fca-update-all-or-nothing-investment-fraud-case",
-      "published_at": "2025-08-23T17:29:40.617214+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA sets out changes to payment safeguarding rules",
-      "link": "https://www.fca.org.uk/news/press-releases/payment-safeguarding-rules-changes",
-      "published_at": "2025-08-23T17:29:40.617196+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA secures convictions against individual for £1.3m Ponzi scheme",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-secures-convictions-individual-ponzi-scheme",
-      "published_at": "2025-08-23T17:29:40.617178+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "FCA shares feedback on the new standard setting body for open banking",
-      "link": "https://www.fca.org.uk/news/news-stories/fca-shares-feedback-new-standard-setting-body-open-banking",
-      "published_at": "2025-08-23T17:29:40.617159+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Leveraging the non-bank sector – in good times and bad",
-      "link": "https://www.fca.org.uk/news/blogs/leveraging-non-bank-sector-good-times-and-bad",
-      "published_at": "2025-08-23T17:29:40.617141+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Beware car finance scam calls, FCA warns",
-      "link": "https://www.fca.org.uk/news/news-stories/beware-car-finance-scam-calls-fca-warns",
-      "published_at": "2025-08-23T17:29:40.617121+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Are firms ready for T+1 in the UK and Europe?",
-      "link": "https://www.fca.org.uk/news/news-stories/firms-ready-t-1-uk-europe",
-      "published_at": "2025-08-23T17:29:40.617102+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Trust Financial Planning Ltd enters liquidation",
-      "link": "https://www.fca.org.uk/news/news-stories/trust-financial-planning-ltd-enters-liquidation",
-      "published_at": "2025-08-23T17:29:40.617082+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "The evolution of consumer credit: What the next decade holds",
-      "link": "https://www.fca.org.uk/news/blogs/evolution-consumer-credit-what-next-decade-holds",
-      "published_at": "2025-08-23T17:29:40.617061+00:00",
-      "source": "fca.org.uk"
-    },
-    {
-      "title": "Sustainability-linked loans market: 2 years on",
-      "link": "https://www.fca.org.uk/news/news-stories/sustainability-linked-loans-market-2-years",
-      "published_at": "2025-08-23T17:29:40.617038+00:00",
-      "source": "fca.org.uk"
-    }
-  ],
-  "tokenization": [
-    {
-      "title": "From One Week to Three Hours: The Chainlink Runtime Environment Impact",
-      "link": "https://blog.chain.link/cre-impact-on-dapp-development/",
-      "published_at": "2025-08-22T11:50:49+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Chainlink Becomes First Data and Interoperability Oracle Platform To Achieve ISO 27001 and SOC 2 Compliance",
-      "link": "https://blog.chain.link/chainlink-achieves-iso-soc-2-certifications/",
-      "published_at": "2025-08-21T12:04:34+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "The Chainlink Endgame: Integrating the World Into the Tokenized Asset Economy",
-      "link": "https://blog.chain.link/chainlink-oracle-platform/",
-      "published_at": "2025-08-21T11:45:03+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Chainlink Quarterly Review: Q2 2025",
-      "link": "https://blog.chain.link/quarterly-review-q2-2025/",
-      "published_at": "2025-08-08T11:50:06+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Introducing the Chainlink Reserve: Creating a Strategic LINK Token Reserve",
-      "link": "https://blog.chain.link/chainlink-reserve-strategic-link-reserve/",
-      "published_at": "2025-08-07T12:50:58+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "체인링크 리저브: LINK 토큰으로 전략적 준비금을 구축하다",
-      "link": "https://blog.chain.link/chainlink-reserve-strategic-link-reserve-kr/",
-      "published_at": "2025-08-07T05:33:03+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Chainlink发布Chainlink Reserve，建立战略LINK通证储备",
-      "link": "https://blog.chain.link/chainlink-reserve-strategic-link-reserve-cn/",
-      "published_at": "2025-08-07T04:11:18+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Chainlink Launches Data Streams for U.S. Equities and ETFs To Power Secure Tokenized RWA Markets Onchain",
-      "link": "https://blog.chain.link/chainlink-data-streams-us-equities-etfs/",
-      "published_at": "2025-08-04T11:50:17+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Ondo Monthly Spotlight: July 2025",
-      "link": "https://blog.ondo.finance/ondo-monthly-spotlight-july-2025/",
-      "published_at": "2025-08-01T16:53:29+00:00",
-      "source": "blog.ondo.finance"
-    },
-    {
-      "title": "Introducing Chainlink State Pricing for DEX-Traded Assets",
-      "link": "https://blog.chain.link/state-pricing/",
-      "published_at": "2025-08-01T11:43:57+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Chainlink Digital Asset Insights: Q2 2025 | Enhancing Trade Settlement Through Chainlink",
-      "link": "https://blog.chain.link/chainlink-digital-asset-insights-q2-2025/",
-      "published_at": "2025-07-29T10:39:07+00:00",
-      "source": "blog.chain.link"
-    },
-    {
-      "title": "Alchemy Pay Adds Global Support for Fiat On-Ramp to USDY",
-      "link": "https://blog.ondo.finance/alchemy-pay-adds-support-for-usdy/",
-      "published_at": "2025-07-22T20:59:30+00:00",
-      "source": "blog.ondo.finance"
-    },
-    {
-      "title": "USDY is Coming to the Sei Network",
-      "link": "https://blog.ondo.finance/usdy-is-coming-to-the-sei-network/",
-      "published_at": "2025-07-17T12:54:42+00:00",
-      "source": "blog.ondo.finance"
-    },
-    {
-      "title": "BNB Chain Joins Ondo Global Markets Alliance With Plans to Expand Access to Tokenized Equities",
-      "link": "https://blog.ondo.finance/bnb-chain-joins-ondo-global-markets/",
-      "published_at": "2025-07-15T13:03:55+00:00",
-      "source": "blog.ondo.finance"
-    },
-    {
-      "title": "Ondo Finance Acquires Strangelove to Accelerate Full-Stack RWA Platform Development",
-      "link": "https://blog.ondo.finance/ondo-finance-acquires-strangelove/",
-      "published_at": "2025-07-14T13:29:40+00:00",
-      "source": "blog.ondo.finance"
-    },
-    {
-      "title": "Ondo Finance to Acquire Oasis Pro, an SEC-Registered Broker-Dealer, Alternative Trading System, and Transfer Agent",
-      "link": "https://blog.ondo.finance/ondo-finance-to-acquire-oasis-pro/",
-      "published_at": "2025-07-04T13:04:20+00:00",
-      "source": "blog.ondo.finance"
-    },
-    {
-      "title": "Introducing Ondo Catalyst: Scaling Onchain Capital Markets",
-      "link": "https://blog.ondo.finance/introducing-ondo-catalyst/",
-      "published_at": "2025-07-03T20:01:51+00:00",
-      "source": "blog.ondo.finance"
-    },
-    {
-      "title": "Why Liquidity Matters for Tokenized Stocks",
-      "link": "https://blog.ondo.finance/why-liquidity-matters-for-tokenized-stocks/",
-      "published_at": "2025-07-02T21:17:59+00:00",
-      "source": "blog.ondo.finance"
-    }
-  ],
-  "xrp": [],
-  "xdc": [
-    {
-      "title": "XDC Pulse: A Powerful Start to 2025 (Jan–July Highlights)",
-      "link": "https://medium.com/xdcnetwork/xdc-pulse-a-powerful-start-to-2025-jan-july-highlights-4342d9ed159b?source=rss----cd0780ed662f---4",
-      "published_at": "2025-08-08T13:13:01+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "XDC Network Celebrates 6 Years on Mainnet, 8 Years in Existence!",
-      "link": "https://medium.com/xdcnetwork/xdc-network-celebrates-6-years-on-mainnet-8-years-in-existence-877cb1cb2a5e?source=rss----cd0780ed662f---4",
-      "published_at": "2025-06-02T11:03:47+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "XDC Network Boosts Web3 Expansion with Deutsche\nTelekom MMS joining Node Infrastructure.",
-      "link": "https://medium.com/xdcnetwork/xdc-network-boosts-web3-expansion-with-deutsche-telekom-mms-joining-node-infrastructure-038f1d6c0ec1?source=rss----cd0780ed662f---4",
-      "published_at": "2024-07-25T09:03:16+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "XDC Network Celebrates 5 Years: Unwavering Mainnet Stability and Layer 1 Blockchain Innovation.",
-      "link": "https://medium.com/xdcnetwork/xdc-network-celebrates-5-years-unwavering-mainnet-stability-and-layer-1-blockchain-innovation-e27884105146?source=rss----cd0780ed662f---4",
-      "published_at": "2024-05-31T20:35:33+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "EVM Compatible XDC Network’s Upgraded Security and Memory features on Apothem Platform.",
-      "link": "https://medium.com/xdcnetwork/evm-compatible-xdc-networks-upgraded-security-and-memory-features-on-apothem-platform-ccca15e23a03?source=rss----cd0780ed662f---4",
-      "published_at": "2022-12-21T08:37:40+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "Community Letter",
-      "link": "https://medium.com/xdcnetwork/community-letter-1d7350ebb1fa?source=rss----cd0780ed662f---4",
-      "published_at": "2022-10-02T08:45:53+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "How To Use Your Ledger Nano S Plus Device With The XDC Web Wallet",
-      "link": "https://medium.com/xdcnetwork/how-to-use-your-ledger-nano-s-plus-device-with-the-xdc-web-wallet-597b3f96f30f?source=rss----cd0780ed662f---4",
-      "published_at": "2022-08-18T15:02:37+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "Introduction to the XDC Network Masternode App with Improved Features.",
-      "link": "https://medium.com/xdcnetwork/introduction-to-the-xdc-network-masternode-app-with-improved-features-a0d110bf0993?source=rss----cd0780ed662f---4",
-      "published_at": "2022-02-25T11:41:53+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "How to Set Up a Private Blockchain Network with XDC Network Codebase.",
-      "link": "https://medium.com/xdcnetwork/how-to-set-up-a-private-blockchain-network-with-xdc-network-codebase-b2ee82368e83?source=rss----cd0780ed662f---4",
-      "published_at": "2022-02-14T16:04:41+00:00",
-      "source": "medium.com"
-    },
-    {
-      "title": "XinFin Delegated Proof of Stake (XDPoS): Major Upgrades at Block number 38383838.",
-      "link": "https://medium.com/xdcnetwork/xinfin-delegated-proof-of-stake-xdpos-major-upgrades-at-block-number-38383838-3a29334d37ed?source=rss----cd0780ed662f---4",
-      "published_at": "2021-11-20T09:16:03+00:00",
-      "source": "medium.com"
-    }
-  ],
-  "zbcn": [],
-  "bluechips": [
-    {
-      "title": "Protocol Update 002 - Scale Blobs",
-      "link": "https://blog.ethereum.org/en/2025/08/22/protocol-update-002",
-      "published_at": "2025-08-22T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Trillion Dollar Security - Phase 2",
-      "link": "https://blog.ethereum.org/en/2025/08/20/trillion-dollar-sec-2",
-      "published_at": "2025-08-20T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Join Us: EF Protocol Reddit AMA - August 29th, 2025",
-      "link": "https://blog.ethereum.org/en/2025/08/15/protocol-ama",
-      "published_at": "2025-08-15T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Protocol Update 001 – Scale L1",
-      "link": "https://blog.ethereum.org/en/2025/08/05/protocol-update-001",
-      "published_at": "2025-08-05T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "lean Ethereum",
-      "link": "https://blog.ethereum.org/en/2025/07/31/lean-ethereum",
-      "published_at": "2025-07-31T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Celebrating 10 Years of Ethereum",
-      "link": "https://blog.ethereum.org/en/2025/07/30/ethereum-10-years",
-      "published_at": "2025-07-30T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Checkpoint #5: July 2025",
-      "link": "https://blog.ethereum.org/en/2025/07/29/checkpoint-5",
-      "published_at": "2025-07-29T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Allocation Update - Q2 2025",
-      "link": "https://blog.ethereum.org/en/2025/07/23/allocation-q2-25",
-      "published_at": "2025-07-23T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Shipping an L1 zkEVM #1: Realtime Proving",
-      "link": "https://blog.ethereum.org/en/2025/07/10/realtime-proving",
-      "published_at": "2025-07-10T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "The Future of Ecosystem Development at the EF",
-      "link": "https://blog.ethereum.org/en/2025/07/10/future-of-ecodev",
-      "published_at": "2025-07-10T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Partial history expiry announcement",
-      "link": "https://blog.ethereum.org/en/2025/07/08/partial-history-exp",
-      "published_at": "2025-07-08T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Checkpoint #4: Berlinterop",
-      "link": "https://blog.ethereum.org/en/2025/06/19/checkpoint-4",
-      "published_at": "2025-06-19T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "World Experience: Updates from the Next Billion Fellowship",
-      "link": "https://blog.ethereum.org/en/2025/06/16/world-experience",
-      "published_at": "2025-06-16T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Now accepting interns - Join the Ethereum Season of Internships",
-      "link": "https://blog.ethereum.org/en/2025/06/12/season-of-internships",
-      "published_at": "2025-06-12T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Tickets are live for the Ethereum World’s Fair! And we're launching the Supporter Program",
-      "link": "https://blog.ethereum.org/en/2025/06/10/devconnect-arg-ticket",
-      "published_at": "2025-06-10T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Ethereum Foundation Treasury Policy",
-      "link": "https://blog.ethereum.org/en/2025/06/04/ef-treasury-policy",
-      "published_at": "2025-06-04T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Announcing the Devconnect ARG Scholars Program",
-      "link": "https://blog.ethereum.org/en/2025/06/03/devconnect-arg-scholars",
-      "published_at": "2025-06-03T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    },
-    {
-      "title": "Checkpoint #3: June 2025",
-      "link": "https://blog.ethereum.org/en/2025/06/03/checkpoint-3",
-      "published_at": "2025-06-03T00:00:00+00:00",
-      "source": "blog.ethereum.org"
-    }
-  ],
-  "research": [
-    {
-      "title": "Crypto Venture Weekly: August 18-22, 2025",
-      "link": "https://messari.io/article/crypto-venture-weekly-august-18-22-2025",
-      "published_at": "2025-08-22T19:40:00+00:00",
+      "title": "State of Sui Q2 2025",
+      "link": "https://messari.io/article/state-of-sui-q2-2025",
+      "published_at": "2025-08-19T15:00:00+00:00",
       "source": "messari.io"
     },
     {
-      "title": "CMBI Multi-Asset Update: Focus CMBI 10",
-      "link": "https://coinmetrics.io/wp-content/uploads/2025/08/Consultation-CMBI-10-Annualized-Traded-Value-Ratio.pdf#new_tab",
-      "published_at": "2025-08-22T19:00:35+00:00",
-      "source": "coinmetrics.io"
-    },
-    {
-      "title": "CMBI Total Market Update: Focus CMBITM",
-      "link": "https://coinmetrics.io/wp-content/uploads/2025/08/Consultation-CMBITM-Annualized-Traded-Value-Ratio-.pdf#new_tab",
-      "published_at": "2025-08-22T18:57:24+00:00",
-      "source": "coinmetrics.io"
+      "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
+      "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
+      "published_at": "2025-08-23T17:37:03.047051+00:00",
+      "source": "fca.org.uk"
     },
     {
       "title": "CESS Progresses Toward Institutional Adoption",
@@ -571,39 +25,381 @@
       "source": "messari.io"
     },
     {
-      "title": "Reading the Crowd: How Cost Basis Distribution Reveals Market Tops and Bottoms",
-      "link": "https://insights.glassnode.com/how-cbd-reveals-market-tops-and-bottoms/",
-      "published_at": "2025-08-22T15:44:47+00:00",
-      "source": "insights.glassnode.com"
-    },
-    {
-      "title": "Following the Money with Chainalysis: 7 Questions for Simona Suskeviciene  from BVNK",
-      "link": "https://www.chainalysis.com/blog/following-the-money-with-chainalysis-simona-suskeviciene-bvnk/",
-      "published_at": "2025-08-22T14:47:53+00:00",
-      "source": "chainalysis.com"
-    },
-    {
-      "title": "USDC Ticker Update for Network Data Pro and Atlas",
-      "link": "https://coinmetrics.io/company-news/usdc-ticker-update-ndp-atlas/",
-      "published_at": "2025-08-22T14:20:16+00:00",
-      "source": "coinmetrics.io"
-    },
-    {
-      "title": "State of 1inch Q2 2025",
-      "link": "https://messari.io/article/state-of-1inch-q2-2025",
-      "published_at": "2025-08-22T13:30:00+00:00",
+      "title": "Sonic SVM: Fueling an Attention-Driven Economy",
+      "link": "https://messari.io/article/sonic-svm-fueling-an-attention-driven-economy",
+      "published_at": "2025-08-19T17:30:00+00:00",
       "source": "messari.io"
     },
     {
-      "title": "Chainalysis Integrates with Kaia",
-      "link": "https://www.chainalysis.com/blog/chainalysis-integrates-with-kaia/",
-      "published_at": "2025-08-22T13:16:32+00:00",
-      "source": "chainalysis.com"
+      "title": "FCA opens retail access to crypto ETNs",
+      "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
+      "published_at": "2025-08-23T17:37:03.046838+00:00",
+      "source": "fca.org.uk"
     },
     {
-      "title": "State of BNB Q2 2025",
-      "link": "https://messari.io/article/state-of-bnb-q2-2025",
-      "published_at": "2025-08-22T11:00:00+00:00",
+      "title": "State of Marinade Q2 2025",
+      "link": "https://messari.io/article/state-of-marinade-q2-2025",
+      "published_at": "2025-08-18T14:00:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Chainlink Launches Data Streams for U.S. Equities and ETFs To Power Secure Tokenized RWA Markets Onchain",
+      "link": "https://blog.chain.link/chainlink-data-streams-us-equities-etfs/",
+      "published_at": "2025-08-04T11:50:17+00:00",
+      "source": "blog.chain.link"
+    },
+    {
+      "title": "SEC Small Business Advisory Committee to Discuss Regulatory Framework for Finders and Continue Exploring Regulation A",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-97-sec-small-business-advisory-committee-discuss-regulatory-framework-finders-continue-exploring",
+      "published_at": "2025-07-07T13:57:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "FCA shares feedback on the new standard setting body for open banking",
+      "link": "https://www.fca.org.uk/news/news-stories/fca-shares-feedback-new-standard-setting-body-open-banking",
+      "published_at": "2025-08-23T17:37:03.045844+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "Leveraging the non-bank sector – in good times and bad",
+      "link": "https://www.fca.org.uk/news/blogs/leveraging-non-bank-sector-good-times-and-bad",
+      "published_at": "2025-08-23T17:37:03.045677+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "Ethena Labs Launches Eligible Asset Framework, Approves Binance Coin to Back USDe Perpetual Futures with Potential XRP and HYPE Onboarding",
+      "link": "https://thedefiant.io/news/defi/ethena-labs-launches-eligible-asset-framework-approves-binance-coin-to-back-usde-4d127c30",
+      "published_at": "2025-08-22T17:35:45+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "BIS Floats AML Scores for Non-Custodial Crypto Wallets",
+      "link": "https://thedefiant.io/news/regulation/bis-floats-aml-scores-for-non-custodial-crypto-wallets",
+      "published_at": "2025-08-19T20:21:06+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "Bio Protocol V2: High Velocity Markets for Autonomous Discovery",
+      "link": "https://messari.io/article/bio-protocol-v2-high-velocity-markets-for-autonomous-discovery",
+      "published_at": "2025-08-15T16:02:49+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Introducing Ondo Catalyst: Scaling Onchain Capital Markets",
+      "link": "https://blog.ondo.finance/introducing-ondo-catalyst/",
+      "published_at": "2025-07-03T20:01:51+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Finance Launches Global Markets Alliance with Industry-Leading Wallets, Exchanges, and Custodians to Bring Capital Markets Onchain",
+      "link": "https://blog.ondo.finance/ondo-finance-global-markets-alliance/",
+      "published_at": "2025-06-17T12:52:50+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "BlackRock's Bitcoin ETF Holds 781,000 BTC, Surpassing Exchanges; Strategy Leads Corporate Holders with 629,000 BTC",
+      "link": "https://thedefiant.io/news/markets/blackrock-s-bitcoin-etf-holds-781000-btc-surpassing-exchanges-strategy-leads-btc-09f0cea9",
+      "published_at": "2025-08-22T22:00:49+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "Japan’s SBI Teams Up with Soneium Co-Developer to Launch Platform for Tokenized Stocks, RWAs",
+      "link": "https://thedefiant.io/news/tradfi-and-fintech/japan-s-sbi-teams-up-with-soneium-co-developer-to-launch-platform-for-tokenized-stocks-rwas",
+      "published_at": "2025-08-22T12:02:02+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "State of Ronin Q2 2025",
+      "link": "https://messari.io/article/state-of-ronin-q2-2025",
+      "published_at": "2025-08-19T17:00:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "SEC Creates Task Force to Tap Artificial Intelligence for Enhanced Innovation and Efficiency Across the Agency",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-103-sec-creates-task-force-tap-artificial-intelligence-enhanced-innovation-efficiency-across-agency",
+      "published_at": "2025-08-01T18:11:27+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "Ondo Monthly Spotlight: July 2025",
+      "link": "https://blog.ondo.finance/ondo-monthly-spotlight-july-2025/",
+      "published_at": "2025-08-01T16:53:29+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Finance Acquires Strangelove to Accelerate Full-Stack RWA Platform Development",
+      "link": "https://blog.ondo.finance/ondo-finance-acquires-strangelove/",
+      "published_at": "2025-07-14T13:29:40+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "SEC Extends Compliance Date to Help Broker-Dealers Fully Test and Implement Daily Reserve Computation Requirement",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-95-sec-extends-compliance-date-help-broker-dealers-fully-test-implement-daily-reserve-computation",
+      "published_at": "2025-06-25T21:45:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "Ondo Monthly Spotlight: May 2025",
+      "link": "https://blog.ondo.finance/ondo-monthly-spotlight-may-2025/",
+      "published_at": "2025-06-01T16:44:27+00:00",
+      "source": "blog.ondo.finance"
+    }
+  ],
+  "regulation": [
+    {
+      "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
+      "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
+      "published_at": "2025-08-23T17:37:03.047051+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "FCA opens retail access to crypto ETNs",
+      "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
+      "published_at": "2025-08-23T17:37:03.046838+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "SEC Small Business Advisory Committee to Discuss Regulatory Framework for Finders and Continue Exploring Regulation A",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-97-sec-small-business-advisory-committee-discuss-regulatory-framework-finders-continue-exploring",
+      "published_at": "2025-07-07T13:57:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "FCA shares feedback on the new standard setting body for open banking",
+      "link": "https://www.fca.org.uk/news/news-stories/fca-shares-feedback-new-standard-setting-body-open-banking",
+      "published_at": "2025-08-23T17:37:03.045844+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "Leveraging the non-bank sector – in good times and bad",
+      "link": "https://www.fca.org.uk/news/blogs/leveraging-non-bank-sector-good-times-and-bad",
+      "published_at": "2025-08-23T17:37:03.045677+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "SEC Creates Task Force to Tap Artificial Intelligence for Enhanced Innovation and Efficiency Across the Agency",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-103-sec-creates-task-force-tap-artificial-intelligence-enhanced-innovation-efficiency-across-agency",
+      "published_at": "2025-08-01T18:11:27+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "SEC Extends Compliance Date to Help Broker-Dealers Fully Test and Implement Daily Reserve Computation Requirement",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-95-sec-extends-compliance-date-help-broker-dealers-fully-test-implement-daily-reserve-computation",
+      "published_at": "2025-06-25T21:45:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "FCA fines Sigma Broking Limited for transaction reporting failures",
+      "link": "https://www.fca.org.uk/news/press-releases/fca-fines-sigma-broking-limited-transaction-reporting-failures",
+      "published_at": "2025-08-23T17:37:03.046937+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "FCA to consult on a compensation scheme for motor finance customers",
+      "link": "https://www.fca.org.uk/news/statements/fca-consult-compensation-scheme-motor-finance-customers",
+      "published_at": "2025-08-23T17:37:03.046445+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "FCA to consult on motor finance compensation scheme",
+      "link": "https://www.fca.org.uk/news/press-releases/fca-consult-motor-finance-compensation-scheme",
+      "published_at": "2025-08-23T17:37:03.046321+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "Beware car finance scam calls, FCA warns",
+      "link": "https://www.fca.org.uk/news/news-stories/beware-car-finance-scam-calls-fca-warns",
+      "published_at": "2025-08-23T17:37:03.045623+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "The evolution of consumer credit: What the next decade holds",
+      "link": "https://www.fca.org.uk/news/blogs/evolution-consumer-credit-what-next-decade-holds",
+      "published_at": "2025-08-23T17:37:03.045318+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "SEC Launches New Statistics and Data Visualizations Webpage",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-106-sec-launches-new-statistics-data-visualizations-webpage",
+      "published_at": "2025-08-13T14:15:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "Staff Issues FAQs to Help Broker-Dealers Implement Financial Responsibility Requirements Related to U.S. Treasury Clearing",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-105-staff-issues-faqs-help-broker-dealers-implement-financial-responsibility-requirements-related-us",
+      "published_at": "2025-08-06T13:55:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "Securities and Exchange Commission Division of Corporation Finance Issues Staff Statement on Certain Liquid Staking Activities",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-104-securities-exchange-commission-division-corporation-finance-issues-staff-statement-certain-liquid",
+      "published_at": "2025-08-05T16:58:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "Regulators to Hold Outreach Event for Municipal Market Professionals",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-93-regulators-hold-outreach-event-municipal-market-professionals",
+      "published_at": "2025-06-25T17:00:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "Further Extension of Form PF Amendments Compliance Date",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-86-further-extension-form-pf-amendments-compliance-date",
+      "published_at": "2025-06-11T22:18:00+00:00",
+      "source": "sec.gov"
+    },
+    {
+      "title": "Founder and Owner of Washington-Based Water Machine Manufacturer and Two Companies Charged in $275 Million Fraud Scheme",
+      "link": "https://www.sec.gov/newsroom/press-releases/2025-107-founder-owner-washington-based-water-machine-manufacturer-two-companies-charged-275-million-fraud",
+      "published_at": "2025-08-14T15:19:31+00:00",
+      "source": "sec.gov"
+    }
+  ],
+  "tokenization": [
+    {
+      "title": "Introducing Ondo Catalyst: Scaling Onchain Capital Markets",
+      "link": "https://blog.ondo.finance/introducing-ondo-catalyst/",
+      "published_at": "2025-07-03T20:01:51+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Finance Launches Global Markets Alliance with Industry-Leading Wallets, Exchanges, and Custodians to Bring Capital Markets Onchain",
+      "link": "https://blog.ondo.finance/ondo-finance-global-markets-alliance/",
+      "published_at": "2025-06-17T12:52:50+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Monthly Spotlight: July 2025",
+      "link": "https://blog.ondo.finance/ondo-monthly-spotlight-july-2025/",
+      "published_at": "2025-08-01T16:53:29+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Finance Acquires Strangelove to Accelerate Full-Stack RWA Platform Development",
+      "link": "https://blog.ondo.finance/ondo-finance-acquires-strangelove/",
+      "published_at": "2025-07-14T13:29:40+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Monthly Spotlight: May 2025",
+      "link": "https://blog.ondo.finance/ondo-monthly-spotlight-may-2025/",
+      "published_at": "2025-06-01T16:44:27+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Not All Tokenization is Created Equal: What Makes Ondo’s Approach Better",
+      "link": "https://blog.ondo.finance/why-ondos-tokenization-approach-is-better/",
+      "published_at": "2025-06-27T19:16:12+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Zodia Custody Now Supports USDY, with OUSG Support Coming Soon, Enabling Institutions to Access Secure, Yield-Bearing Digital Assets",
+      "link": "https://blog.ondo.finance/zodia-custody-now-supports-usdy-with-ousg-support-coming-soon-enabling-institutions-to-access-secure-yield-bearing-digital-assets/",
+      "published_at": "2025-05-29T07:54:27+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "BNB Chain Joins Ondo Global Markets Alliance With Plans to Expand Access to Tokenized Equities",
+      "link": "https://blog.ondo.finance/bnb-chain-joins-ondo-global-markets/",
+      "published_at": "2025-07-15T13:03:55+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "USDY is Coming to the Sei Network",
+      "link": "https://blog.ondo.finance/usdy-is-coming-to-the-sei-network/",
+      "published_at": "2025-07-17T12:54:42+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Finance to Acquire Oasis Pro, an SEC-Registered Broker-Dealer, Alternative Trading System, and Transfer Agent",
+      "link": "https://blog.ondo.finance/ondo-finance-to-acquire-oasis-pro/",
+      "published_at": "2025-07-04T13:04:20+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Ondo Finance Brings Tokenized Treasuries to the XRP Ledger with Seamless Mint & Redeem via Ripple’s RLUSD Stablecoin",
+      "link": "https://blog.ondo.finance/ondo-finance-brings-tokenized-treasuries-to-the-xrp-ledger-with-seamless-mint-redeem-via-ripples-rlusd-stablecoin/",
+      "published_at": "2025-06-11T12:17:29+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Alchemy Pay Adds Global Support for Fiat On-Ramp to USDY",
+      "link": "https://blog.ondo.finance/alchemy-pay-adds-support-for-usdy/",
+      "published_at": "2025-07-22T20:59:30+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "How Capa is Unlocking Onchain Savings with USDY in Latin America",
+      "link": "https://blog.ondo.finance/how-capa-is-unlocking-onchain-savings-with-usdy-in-latin-america/",
+      "published_at": "2025-05-30T13:01:56+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "Why Liquidity Matters for Tokenized Stocks",
+      "link": "https://blog.ondo.finance/why-liquidity-matters-for-tokenized-stocks/",
+      "published_at": "2025-07-02T21:17:59+00:00",
+      "source": "blog.ondo.finance"
+    },
+    {
+      "title": "USDY Goes Live on ICRYPEX",
+      "link": "https://blog.ondo.finance/usdy-goes-live-on-icrypex/",
+      "published_at": "2025-06-23T09:20:05+00:00",
+      "source": "blog.ondo.finance"
+    }
+  ],
+  "research": [
+    {
+      "title": "State of Sui Q2 2025",
+      "link": "https://messari.io/article/state-of-sui-q2-2025",
+      "published_at": "2025-08-19T15:00:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "CESS Progresses Toward Institutional Adoption",
+      "link": "https://messari.io/article/cess-progresses-toward-institutional-adoption",
+      "published_at": "2025-08-22T18:00:44+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Beyond the Stablecoin Distribution Bottleneck: Branded Stablecoins, Loyalty Programs, the Attention Economy, Celebrity Stablecoins, and the Convergence of TradFi, Fintech, and Crypto.",
+      "link": "https://messari.io/article/beyond-the-stablecoin-distribution-bottleneck-branded-stablecoins-loyalty-programs-the-attention-economy-celebrity-stablecoins-and-the-convergence-of-tradfi-fintech-and-crypto",
+      "published_at": "2025-08-22T17:21:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Sonic SVM: Fueling an Attention-Driven Economy",
+      "link": "https://messari.io/article/sonic-svm-fueling-an-attention-driven-economy",
+      "published_at": "2025-08-19T17:30:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "State of Marinade Q2 2025",
+      "link": "https://messari.io/article/state-of-marinade-q2-2025",
+      "published_at": "2025-08-18T14:00:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Chainlink Launches Data Streams for U.S. Equities and ETFs To Power Secure Tokenized RWA Markets Onchain",
+      "link": "https://blog.chain.link/chainlink-data-streams-us-equities-etfs/",
+      "published_at": "2025-08-04T11:50:17+00:00",
+      "source": "blog.chain.link"
+    },
+    {
+      "title": "Bio Protocol V2: High Velocity Markets for Autonomous Discovery",
+      "link": "https://messari.io/article/bio-protocol-v2-high-velocity-markets-for-autonomous-discovery",
+      "published_at": "2025-08-15T16:02:49+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "State of Ronin Q2 2025",
+      "link": "https://messari.io/article/state-of-ronin-q2-2025",
+      "published_at": "2025-08-19T17:00:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Cycle Network: Building a “VisaNet” for Crypto",
+      "link": "https://messari.io/article/cycle-network-building-a-visanet-for-crypto",
+      "published_at": "2025-08-15T02:00:00+00:00",
       "source": "messari.io"
     },
     {
@@ -613,28 +409,10 @@
       "source": "messari.io"
     },
     {
-      "title": "SOTM August 14-20, 2025",
-      "link": "https://coinmetrics.io/state-of-the-market/sotm-august-14-20-2025/",
-      "published_at": "2025-08-21T16:33:23+00:00",
-      "source": "coinmetrics.io"
-    },
-    {
-      "title": "State of Flow Q2 2025",
-      "link": "https://messari.io/article/state-of-flow-q2-2025",
-      "published_at": "2025-08-21T14:00:00+00:00",
-      "source": "messari.io"
-    },
-    {
-      "title": "In Conversation: Nigerian SEC’s Vision for a Trusted Crypto Ecosystem",
-      "link": "https://www.chainalysis.com/blog/nigerian-sec-vision-trusted-crypto-ecosystem/",
-      "published_at": "2025-08-21T04:35:01+00:00",
-      "source": "chainalysis.com"
-    },
-    {
-      "title": "A Derivatives Led Market",
-      "link": "https://insights.glassnode.com/the-week-onchain-week-33-2025/",
-      "published_at": "2025-08-20T15:43:26+00:00",
-      "source": "insights.glassnode.com"
+      "title": "Chainlink Becomes First Data and Interoperability Oracle Platform To Achieve ISO 27001 and SOC 2 Compliance",
+      "link": "https://blog.chain.link/chainlink-achieves-iso-soc-2-certifications/",
+      "published_at": "2025-08-21T12:04:34+00:00",
+      "source": "blog.chain.link"
     },
     {
       "title": "State of Ethereum Q2 2025",
@@ -643,71 +421,53 @@
       "source": "messari.io"
     },
     {
-      "title": "State of Fuel Q2 2025",
-      "link": "https://messari.io/article/state-of-fuel-q2-2025",
-      "published_at": "2025-08-20T14:00:00+00:00",
+      "title": "Camp Network: The New IP Layer",
+      "link": "https://messari.io/article/camp-network-the-new-ip-layer",
+      "published_at": "2025-08-19T13:56:54+00:00",
       "source": "messari.io"
+    },
+    {
+      "title": "State of Core Q2 2025",
+      "link": "https://messari.io/article/state-of-core-q2-2025",
+      "published_at": "2025-08-11T14:39:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "State of The Graph Q2 2025",
+      "link": "https://messari.io/article/state-of-the-graph-q2-2025",
+      "published_at": "2025-08-11T11:00:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Chainlink Digital Asset Insights: Q2 2025 | Enhancing Trade Settlement Through Chainlink",
+      "link": "https://blog.chain.link/chainlink-digital-asset-insights-q2-2025/",
+      "published_at": "2025-07-29T10:39:07+00:00",
+      "source": "blog.chain.link"
+    },
+    {
+      "title": "Reading the Crowd: How Cost Basis Distribution Reveals Market Tops and Bottoms",
+      "link": "https://insights.glassnode.com/how-cbd-reveals-market-tops-and-bottoms/",
+      "published_at": "2025-08-22T15:44:47+00:00",
+      "source": "insights.glassnode.com"
+    },
+    {
+      "title": "The Chainlink Endgame: Integrating the World Into the Tokenized Asset Economy",
+      "link": "https://blog.chain.link/chainlink-oracle-platform/",
+      "published_at": "2025-08-21T11:45:03+00:00",
+      "source": "blog.chain.link"
     }
   ],
-  "memes": [
+  "culture": [
     {
-      "title": "Digital Asset Treasury Companies Drive New Wave of Corporate Crypto Holdings",
-      "link": "https://thedefiant.io/news/tradfi-and-fintech/digital-asset-treasury-companies-drive-new-wave-of-corporate-crypto-holdings",
-      "published_at": "2025-08-23T15:14:11+00:00",
+      "title": "Ethena Labs Launches Eligible Asset Framework, Approves Binance Coin to Back USDe Perpetual Futures with Potential XRP and HYPE Onboarding",
+      "link": "https://thedefiant.io/news/defi/ethena-labs-launches-eligible-asset-framework-approves-binance-coin-to-back-usde-4d127c30",
+      "published_at": "2025-08-22T17:35:45+00:00",
       "source": "thedefiant.io"
     },
     {
-      "title": "Ethereum Monetizes Open Source",
-      "link": "https://www.bankless.com/read/ethereum-monetizes-open-source",
-      "published_at": "2025-08-23T14:00:56+00:00",
-      "source": "bankless.com"
-    },
-    {
-      "title": "World Liberty Finance Sets Sept. 1 WLFI Token Debut After US$22.6 B Raise",
-      "link": "https://thedefiant.io/news/markets/world-liberty-finance-sets-sept-1-wlfi-token-debut-after-us-22-6-b-raise-6f1d3f1e",
-      "published_at": "2025-08-23T14:00:46+00:00",
-      "source": "thedefiant.io"
-    },
-    {
-      "title": "SharpLink Gaming Approves $1.5 Billion Share Buyback",
-      "link": "https://thedefiant.io/news/markets/sharplink-gaming-approves-1-5-billion-share-buyback-bb14d326",
-      "published_at": "2025-08-23T12:30:45+00:00",
-      "source": "thedefiant.io"
-    },
-    {
-      "title": "Trump’s World Liberty Financial Sets Sept. 1 Launch for WLFI Token Unlock",
-      "link": "https://thedefiant.io/news/blockchains/trumps-world-liberty-financial-sets-sept-1-launch-wlfi-token-unlock-60471ca6",
-      "published_at": "2025-08-23T04:00:45+00:00",
-      "source": "thedefiant.io"
-    },
-    {
-      "title": "Cryptocurrency Market Cap Tops $4 Trillion on $250 Billion Daily Surge",
-      "link": "https://thedefiant.io/news/markets/cryptocurrency-market-cap-tops-4-trillion-on-250-billion-daily-surge-001a1f41",
-      "published_at": "2025-08-23T04:00:45+00:00",
-      "source": "thedefiant.io"
-    },
-    {
-      "title": "Ethereum Hits Record, $350 Million in Shorts Liquidated",
-      "link": "https://thedefiant.io/news/markets/ethereum-hits-record-350-million-shorts-liquidated-133bc642",
-      "published_at": "2025-08-23T02:00:46+00:00",
-      "source": "thedefiant.io"
-    },
-    {
-      "title": "Ethereum Breaks 2021 Record, Edges Toward $5,000 Milestone",
-      "link": "https://thedefiant.io/news/markets/ethereum-breaks-2021-record-edges-toward-5000-milestone-5260d7f8",
-      "published_at": "2025-08-23T02:00:46+00:00",
-      "source": "thedefiant.io"
-    },
-    {
-      "title": "Ethereum Hits Fresh All-Time Highs",
-      "link": "https://www.bankless.com/read/ethereum-hits-fresh-all-time-highs",
-      "published_at": "2025-08-22T22:34:00+00:00",
-      "source": "bankless.com"
-    },
-    {
-      "title": "China Renaissance Puts US$100 Million Into Binance Coin",
-      "link": "https://thedefiant.io/news/markets/china-renaissance-puts-us-100-million-into-binance-coin-f538e515",
-      "published_at": "2025-08-22T22:00:49+00:00",
+      "title": "BIS Floats AML Scores for Non-Custodial Crypto Wallets",
+      "link": "https://thedefiant.io/news/regulation/bis-floats-aml-scores-for-non-custodial-crypto-wallets",
+      "published_at": "2025-08-19T20:21:06+00:00",
       "source": "thedefiant.io"
     },
     {
@@ -717,22 +477,16 @@
       "source": "thedefiant.io"
     },
     {
-      "title": "Ethereum Hits Record $4,880 After 15% Intraday Rally",
-      "link": "https://thedefiant.io/news/markets/ethereum-hits-record-4880-after-15-intraday-rally-2679fe0f",
-      "published_at": "2025-08-22T22:00:49+00:00",
+      "title": "Japan’s SBI Teams Up with Soneium Co-Developer to Launch Platform for Tokenized Stocks, RWAs",
+      "link": "https://thedefiant.io/news/tradfi-and-fintech/japan-s-sbi-teams-up-with-soneium-co-developer-to-launch-platform-for-tokenized-stocks-rwas",
+      "published_at": "2025-08-22T12:02:02+00:00",
       "source": "thedefiant.io"
     },
     {
-      "title": "Ethereum Jumps About 11% to Record $4,880",
-      "link": "https://thedefiant.io/news/markets/ethereum-jumps-11-to-record-4880-cfca414e",
-      "published_at": "2025-08-22T21:30:45+00:00",
+      "title": "World Liberty Finance Sets Sept. 1 WLFI Token Debut After US$22.6 B Raise",
+      "link": "https://thedefiant.io/news/markets/world-liberty-finance-sets-sept-1-wlfi-token-debut-after-us-22-6-b-raise-6f1d3f1e",
+      "published_at": "2025-08-23T14:00:46+00:00",
       "source": "thedefiant.io"
-    },
-    {
-      "title": "Keeping DeFi Yields Simple with Yearn Vaults",
-      "link": "https://www.bankless.com/read/yearn-defi-vaults",
-      "published_at": "2025-08-22T20:15:46+00:00",
-      "source": "bankless.com"
     },
     {
       "title": "Bitwise Executes First In-Kind Creation for a Spot Bitcoin ETF",
@@ -741,54 +495,171 @@
       "source": "thedefiant.io"
     },
     {
-      "title": "Morpho Token Surges as Lending Protocol Eclipses $10 Billion in Deposits",
-      "link": "https://thedefiant.io/news/defi/morpho-token-surges-as-lending-protocol-eclipses-usd10-billion-in-deposits",
-      "published_at": "2025-08-22T19:16:54+00:00",
+      "title": "VanEck Seeks SEC Approval for First Solana Staking Token ETF",
+      "link": "https://thedefiant.io/news/regulation/vaneck-seeks-sec-approval-first-solana-staking-token-etf-b74fff3d",
+      "published_at": "2025-08-22T17:05:45+00:00",
       "source": "thedefiant.io"
     },
     {
-      "title": "Eric Trump Says Mystery Nation Bought $22 Billion in Bitcoin, Predicts $1 Million Price",
-      "link": "https://thedefiant.io/news/markets/eric-trump-says-mystery-nation-bought-22-billion-bitcoin-predicts-1-million-6291889d",
-      "published_at": "2025-08-22T18:35:47+00:00",
+      "title": "UAE’s RAKBANK Opens Crypto Trading With Binance Coin",
+      "link": "https://thedefiant.io/news/tradfi-and-fintech/uaes-rakbank-opens-crypto-trading-binance-coin-1a13e155",
+      "published_at": "2025-08-22T12:30:52+00:00",
       "source": "thedefiant.io"
     },
     {
-      "title": "Aave Expands to Aptos in First Move Off Ethereum",
-      "link": "https://thedefiant.io/news/defi/aave-expands-to-aptos-first-move-off-ethereum-2ae1f9f6",
-      "published_at": "2025-08-22T18:35:47+00:00",
+      "title": "Coinbase Adds Trump-Linked USD1 Stablecoin to Listing Roadmap",
+      "link": "https://thedefiant.io/news/cefi/coinbase-adds-trump-linked-usd1-stablecoin-to-listing-roadmap-0015a71e",
+      "published_at": "2025-08-22T00:00:53+00:00",
       "source": "thedefiant.io"
+    },
+    {
+      "title": "Stripe and Coinbase Are Racing to Own Crypto Payments. Who Will Win?",
+      "link": "https://unchainedcrypto.com/stripe-and-coinbase-are-racing-to-own-crypto-payments-who-will-win/",
+      "published_at": "2025-08-21T18:45:32+00:00",
+      "source": "unchainedcrypto.com"
+    },
+    {
+      "title": "Coinbase Puts World Liberty’s USD1 Stablecoin on Listing Roadmap",
+      "link": "https://thedefiant.io/news/cefi/coinbase-puts-world-libertys-usd1-stablecoin-on-listing-roadmap-0b7cb93d",
+      "published_at": "2025-08-21T14:30:53+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "China Explores Yuan-Backed Stablecoins: Report",
+      "link": "https://unchainedcrypto.com/china-explores-yuan-backed-stablecoins-report/",
+      "published_at": "2025-08-21T13:57:41+00:00",
+      "source": "unchainedcrypto.com"
+    },
+    {
+      "title": "MetaMask to Launch Stripe-Issued mUSD Stablecoin on Ethereum and Linea",
+      "link": "https://thedefiant.io/news/defi/metamask-to-launch-stripe-issued-musd-stablecoin-on-ethereum-linea-cca11178",
+      "published_at": "2025-08-21T12:30:51+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "DBS Bank Tokenizes Structured Notes on Ethereum for Institutional Investors",
+      "link": "https://thedefiant.io/news/tradfi-and-fintech/dbs-bank-tokenizes-structured-notes-on-ethereum-institutional-investors-17eb7ce0",
+      "published_at": "2025-08-21T11:00:52+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "Binance Locks $250 Million in Plasma On-Chain USDT Yield Push",
+      "link": "https://thedefiant.io/news/cefi/binance-locks-250-million-plasma-on-chain-usdt-yield-push-90bfa0cc",
+      "published_at": "2025-08-20T19:05:26+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "TAC's TVL Surges above $200M One Month after Mainnet Launch",
+      "link": "https://thedefiant.io/news/blockchains/tac-total-value-locked-surges-to-usd200m-one-month-after-mainnet-launch",
+      "published_at": "2025-08-20T16:54:13+00:00",
+      "source": "thedefiant.io"
+    },
+    {
+      "title": "SoFi Launches Lightning Network Remittances",
+      "link": "https://unchainedcrypto.com/sofi-launches-lightning-network-remittances/",
+      "published_at": "2025-08-20T14:08:25+00:00",
+      "source": "unchainedcrypto.com"
+    },
+    {
+      "title": "CoreDAO and Hex Trust Launch Bitcoin-CORE Dual Staking for Institutions",
+      "link": "https://thedefiant.io/news/defi/coredao-hex-trust-launch-bitcoin-core-dual-staking-institutions-0a892cb4",
+      "published_at": "2025-08-20T09:00:28+00:00",
+      "source": "thedefiant.io"
+    }
+  ],
+  "markets": [
+    {
+      "title": "MEXC Rises to Top 2 Crypto Exchange, Capturing 8.6% Market Share in Spot Trading",
+      "link": "https://www.investing.com/news/cryptocurrency-news/mexc-rises-to-top-2-crypto-exchange-capturing-86-market-share-in-spot-trading-4206434",
+      "published_at": "2025-08-22T10:30:35+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "MEDIROM adopts cryptocurrency strategy through World partnership",
+      "link": "https://www.investing.com/news/cryptocurrency-news/medirom-adopts-cryptocurrency-strategy-through-world-partnership-432SI-4207652",
+      "published_at": "2025-08-22T20:46:07+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "MetaWin Announces “MetaWin Create” - Free AI Tools for All MetaWinners NFT Holders",
+      "link": "https://www.investing.com/news/cryptocurrency-news/metawin-announces-metawin-create--free-ai-tools-for-all-metawinners-nft-holders-4206883",
+      "published_at": "2025-08-22T13:00:44+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "World Liberty Financial's USD1 stablecoin lists on Coinbase",
+      "link": "https://www.investing.com/news/cryptocurrency-news/world-liberty-financials-usd1-stablecoin-lists-on-coinbase-432SI-4207291",
+      "published_at": "2025-08-22T16:48:10+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "Top Win International rebrands as AsiaStrategy, accepts Bitcoin payments",
+      "link": "https://www.investing.com/news/cryptocurrency-news/top-win-international-rebrands-as-asiastrategy-accepts-bitcoin-payments-432SI-4206524",
+      "published_at": "2025-08-22T11:01:14+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "Little Pepe Presale Stage 11 Officially Sold Out After Raising Over $22,325,000",
+      "link": "https://www.investing.com/news/cryptocurrency-news/little-pepe-presale-stage-11-officially-sold-out-after-raising-over-22325000-4206124",
+      "published_at": "2025-08-22T08:30:33+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "Austrac orders Binance Australia to appoint external auditor",
+      "link": "https://www.investing.com/news/cryptocurrency-news/austrac-orders-binance-australia-to-appoint-external-auditor-93CH-4205935",
+      "published_at": "2025-08-22T05:34:57+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "Cardano Climbs 10% In Rally",
+      "link": "https://www.investing.com/news/cryptocurrency-news/cardano-climbs-10-in-rally-4207337",
+      "published_at": "2025-08-22T17:31:56+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "Ethereum Climbs 10% In Bullish Trade",
+      "link": "https://www.investing.com/news/cryptocurrency-news/ethereum-climbs-10-in-bullish-trade-4207249",
+      "published_at": "2025-08-22T16:02:59+00:00",
+      "source": "investing.com"
+    },
+    {
+      "title": "Bitcoin price today: holds at $113.6k as rate cut uncertainty builds before Powell",
+      "link": "https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-slips-to-1129k-as-rate-cut-uncertainty-builds-before-powell-4205943",
+      "published_at": "2025-08-22T14:08:24+00:00",
+      "source": "investing.com"
     }
   ],
   "breaking": [
     {
-      "title": "FCA seeks improvement to digital loan processes",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-seeks-improvement-digital-loan-processes",
-      "published_at": "2025-08-23T17:29:40.617381+00:00",
+      "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
+      "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
+      "published_at": "2025-08-23T17:37:03.047051+00:00",
       "source": "fca.org.uk"
     },
     {
       "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
       "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
-      "published_at": "2025-08-23T17:29:40.617347+00:00",
+      "published_at": "2025-08-23T17:37:03.047051+00:00",
       "source": "fca.org.uk"
     },
     {
       "title": "FCA fines Sigma Broking Limited for transaction reporting failures",
       "link": "https://www.fca.org.uk/news/press-releases/fca-fines-sigma-broking-limited-transaction-reporting-failures",
-      "published_at": "2025-08-23T17:29:40.617328+00:00",
+      "published_at": "2025-08-23T17:37:03.046937+00:00",
       "source": "fca.org.uk"
     },
     {
       "title": "FCA opens retail access to crypto ETNs",
       "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
-      "published_at": "2025-08-23T17:29:40.617308+00:00",
+      "published_at": "2025-08-23T17:37:03.046838+00:00",
       "source": "fca.org.uk"
     },
     {
-      "title": "FCA reaction to Supreme Court motor finance judgment",
-      "link": "https://www.fca.org.uk/news/statements/fca-reaction-supreme-court-motor-finance-judgment",
-      "published_at": "2025-08-23T17:29:40.617289+00:00",
+      "title": "FCA opens retail access to crypto ETNs",
+      "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
+      "published_at": "2025-08-23T17:37:03.046838+00:00",
       "source": "fca.org.uk"
     }
-  ]
+  ],
+  "generated_at": "2025-08-23T17:37:18.139445+00:00"
 }
