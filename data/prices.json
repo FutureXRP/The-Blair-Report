@@ -2,12 +2,12 @@
   {
     "rank": 1,
     "symbol": "BTC",
-    "price": 115123
+    "price": 115104
   },
   {
     "rank": 2,
     "symbol": "ETH",
-    "price": 4750.11
+    "price": 4750.63
   },
   {
     "rank": 3,
@@ -17,67 +17,67 @@
   {
     "rank": 4,
     "symbol": "USDT",
-    "price": 0.999647
+    "price": 0.99966
   },
   {
     "rank": 5,
     "symbol": "BNB",
-    "price": 881.59
+    "price": 881.3
   },
   {
     "rank": 6,
     "symbol": "SOL",
-    "price": 204.0
+    "price": 203.85
   },
   {
     "rank": 7,
     "symbol": "USDC",
-    "price": 0.999803
+    "price": 0.999819
   },
   {
     "rank": 8,
     "symbol": "STETH",
-    "price": 4736.29
+    "price": 4739.37
   },
   {
     "rank": 9,
     "symbol": "DOGE",
-    "price": 0.236973
+    "price": 0.236771
   },
   {
     "rank": 10,
     "symbol": "TRX",
-    "price": 0.361435
+    "price": 0.361395
   },
   {
     "rank": 11,
     "symbol": "ADA",
-    "price": 0.912686
+    "price": 0.912173
   },
   {
     "rank": 12,
     "symbol": "WSTETH",
-    "price": 5736.96
+    "price": 5728.91
   },
   {
     "rank": 13,
     "symbol": "LINK",
-    "price": 26.1
+    "price": 26.13
   },
   {
     "rank": 14,
     "symbol": "WBETH",
-    "price": 5112.05
+    "price": 5114.22
   },
   {
     "rank": 15,
     "symbol": "HYPE",
-    "price": 44.42
+    "price": 44.46
   },
   {
     "rank": 16,
     "symbol": "WBTC",
-    "price": 114928
+    "price": 115008
   },
   {
     "rank": 17,
@@ -86,13 +86,13 @@
   },
   {
     "rank": 18,
-    "symbol": "WEETH",
-    "price": 5089.02
+    "symbol": "XLM",
+    "price": 0.41458
   },
   {
     "rank": 19,
-    "symbol": "XLM",
-    "price": 0.414065
+    "symbol": "WEETH",
+    "price": 5091.9
   },
   {
     "rank": 20,
@@ -102,27 +102,27 @@
   {
     "rank": 21,
     "symbol": "BCH",
-    "price": 587.03
+    "price": 586.85
   },
   {
     "rank": 22,
     "symbol": "AVAX",
-    "price": 25.72
+    "price": 25.76
   },
   {
     "rank": 23,
     "symbol": "HBAR",
-    "price": 0.250154
+    "price": 0.25018
   },
   {
     "rank": 24,
     "symbol": "WETH",
-    "price": 4747.31
+    "price": 4750.19
   },
   {
     "rank": 25,
     "symbol": "LTC",
-    "price": 120.74
+    "price": 120.71
   },
   {
     "rank": 26,
@@ -137,27 +137,27 @@
   {
     "rank": 28,
     "symbol": "USDS",
-    "price": 0.999858
+    "price": 0.999914
   },
   {
     "rank": 29,
     "symbol": "SHIB",
-    "price": 1.321e-05
+    "price": 1.322e-05
   },
   {
     "rank": 30,
-    "symbol": "BSC-USD",
-    "price": 0.999565
+    "symbol": "UNI",
+    "price": 11.3
   },
   {
     "rank": 31,
-    "symbol": "UNI",
-    "price": 11.29
+    "symbol": "BSC-USD",
+    "price": 0.999546
   },
   {
     "rank": 32,
     "symbol": "WBT",
-    "price": 44.12
+    "price": 44.11
   },
   {
     "rank": 33,
@@ -167,7 +167,7 @@
   {
     "rank": 34,
     "symbol": "CBBTC",
-    "price": 115143
+    "price": 115024
   },
   {
     "rank": 35,
@@ -177,7 +177,7 @@
   {
     "rank": 36,
     "symbol": "AAVE",
-    "price": 352.57
+    "price": 352.97
   },
   {
     "rank": 37,
@@ -187,17 +187,17 @@
   {
     "rank": 38,
     "symbol": "CRO",
-    "price": 0.156454
+    "price": 0.156603
   },
   {
     "rank": 39,
     "symbol": "ENA",
-    "price": 0.746045
+    "price": 0.747271
   },
   {
     "rank": 40,
     "symbol": "XMR",
-    "price": 264.72
+    "price": 264.63
   },
   {
     "rank": 41,
@@ -207,12 +207,12 @@
   {
     "rank": 42,
     "symbol": "DAI",
-    "price": 0.999974
+    "price": 0.999973
   },
   {
     "rank": 43,
     "symbol": "OKB",
-    "price": 203.02
+    "price": 203.13
   },
   {
     "rank": 44,
@@ -222,12 +222,12 @@
   {
     "rank": 45,
     "symbol": "ETC",
-    "price": 23.97
+    "price": 23.99
   },
   {
     "rank": 46,
     "symbol": "TAO",
-    "price": 362.21
+    "price": 362.5
   },
   {
     "rank": 47,
@@ -242,11 +242,11 @@
   {
     "rank": 49,
     "symbol": "ONDO",
-    "price": 1.001
+    "price": 1.002
   },
   {
     "rank": 50,
     "symbol": "ARB",
-    "price": 0.593103
+    "price": 0.592467
   }
 ]
