@@ -4,91 +4,238 @@ limits:
 
 sources:
   # ——— GENERAL / TOP ———
-  - { name: CoinDesk, url: https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml, category: top }
-  - { name: Cointelegraph, url: https://cointelegraph.com/rss, category: top }
-  - { name: CryptoSlate, url: https://cryptoslate.com/feed/, category: top }
-  - { name: Decrypt, url: https://decrypt.co/feed, category: top }
-  - { name: The Block, url: https://www.theblock.co/rss/latest, category: top }
-  - { name: Bitcoin Magazine, url: https://bitcoinmagazine.com/.rss/full/, category: top }
-  - { name: AMBCrypto, url: https://ambcrypto.com/feed/, category: top }
-  - { name: BeInCrypto, url: https://beincrypto.com/feed/, category: top }
-  - { name: Daily Hodl, url: https://dailyhodl.com/feed/, category: top }
-  - { name: U.Today, url: https://u.today/rss, category: top }
-  - { name: NewsBTC, url: https://www.newsbtc.com/feed/, category: top }
-  - { name: CryptoPotato, url: https://cryptopotato.com/feed/, category: top }
-  - { name: Blockworks, url: https://blockworks.co/feed, category: top }
-  - { name: Protos, url: https://protos.com/feed/, category: top }
-  - { name: CoinJournal, url: https://coinjournal.net/feed/, category: top }
-  - { name: Finextra (Digital Assets), url: https://www.finextra.com/rss/news.aspx, category: top }
-  - { name: Reuters Technology, url: https://feeds.reuters.com/reuters/technologyNews, category: top }
-  - { name: Reuters Markets, url: https://feeds.reuters.com/reuters/businessNews, category: top }
-  - { name: Yahoo Finance Crypto, url: https://finance.yahoo.com/topic/crypto/rssindex, category: top }
-  - { name: Bloomberg Crypto, url: https://www.bloomberg.com/feed/topics/crypto.xml, category: top }
+  - name: CoinDesk
+    url: https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml
+    category: top
+  - name: Cointelegraph
+    url: https://cointelegraph.com/rss
+    category: top
+  - name: CryptoSlate
+    url: https://cryptoslate.com/feed/
+    category: top
+  - name: Decrypt
+    url: https://decrypt.co/feed
+    category: top
+  - name: The Block (Latest)
+    url: https://www.theblock.co/rss/latest
+    category: top
+  - name: Bitcoin Magazine
+    url: https://bitcoinmagazine.com/.rss/full/
+    category: top
+  - name: AMBCrypto
+    url: https://ambcrypto.com/feed/
+    category: top
+  - name: BeInCrypto
+    url: https://beincrypto.com/feed/
+    category: top
+  - name: Daily Hodl
+    url: https://dailyhodl.com/feed/
+    category: top
+  - name: U.Today
+    url: https://u.today/rss
+    category: top
+  - name: NewsBTC
+    url: https://www.newsbtc.com/feed/
+    category: top
+  - name: CryptoPotato
+    url: https://cryptopotato.com/feed/
+    category: top
+  - name: Blockworks
+    url: https://blockworks.co/feed
+    category: top
+  - name: Protos
+    url: https://protos.com/feed/
+    category: top
+  - name: CoinJournal
+    url: https://coinjournal.net/feed/
+    category: top
+  - name: Finextra
+    url: https://www.finextra.com/rss/news.aspx
+    category: top
+  - name: Reuters Technology
+    url: https://feeds.reuters.com/reuters/technologyNews
+    category: top
+  - name: Reuters Markets
+    url: https://feeds.reuters.com/reuters/businessNews
+    category: top
+  - name: Yahoo Finance Crypto
+    url: https://finance.yahoo.com/topic/crypto/rssindex
+    category: top
 
   # ——— REGULATION & POLICY ———
-  - { name: SEC Press, url: https://www.sec.gov/news/pressreleases.rss, category: regulation }
-  - { name: CFTC Press, url: https://www.cftc.gov/PressRoom/PressReleases/rss, category: regulation }
-  - { name: US Treasury, url: https://home.treasury.gov/news/press-releases/feed, category: regulation }
-  - { name: OCC (US Comptroller), url: https://occ.gov/rss/occ-news.xml, category: regulation }
-  - { name: FDIC News, url: https://www.fdic.gov/news/press-releases/rss.xml, category: regulation }
-  - { name: Federal Reserve News, url: https://www.federalreserve.gov/feeds/press_all.xml, category: regulation }
-  - { name: EU Parliament, url: https://www.europarl.europa.eu/news/en/press-room/rss, category: regulation }
-  - { name: BIS Press, url: https://www.bis.org/list/press_releases.rss, category: regulation }
-  - { name: IMF Blog, url: https://blogs.imf.org/feed/, category: regulation }
-  - { name: World Bank Blogs, url: https://blogs.worldbank.org/feed, category: regulation }
-  - { name: FCA (UK), url: https://www.fca.org.uk/news/rss.xml, category: regulation }
-  - { name: Bank of England, url: https://www.bankofengland.co.uk/news/news-feed/rss, category: regulation }
-  - { name: MAS (Singapore), url: https://www.mas.gov.sg/news.rss, category: regulation }
-  - { name: HKMA, url: https://www.hkma.gov.hk/eng/rss/press_releases.xml, category: regulation }
-  - { name: IOSCO, url: https://www.iosco.org/rss/news.xml, category: regulation }
-  - { name: FATF News, url: https://www.fatf-gafi.org/rss/rss.xml, category: regulation }
+  - name: SEC Press
+    url: https://www.sec.gov/news/pressreleases.rss
+    category: regulation
+  - name: CFTC Press
+    url: https://www.cftc.gov/PressRoom/PressReleases/rss
+    category: regulation
+  - name: US Treasury
+    url: https://home.treasury.gov/news/press-releases/feed
+    category: regulation
+  - name: OCC (US Comptroller)
+    url: https://occ.gov/rss/occ-news.xml
+    category: regulation
+  - name: FDIC
+    url: https://www.fdic.gov/news/press-releases/rss.xml
+    category: regulation
+  - name: Federal Reserve
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    category: regulation
+  - name: EU Parliament
+    url: https://www.europarl.europa.eu/news/en/press-room/rss
+    category: regulation
+  - name: BIS Press
+    url: https://www.bis.org/list/press_releases.rss
+    category: regulation
+  - name: IMF Blog
+    url: https://blogs.imf.org/feed/
+    category: regulation
+  - name: World Bank Blogs
+    url: https://blogs.worldbank.org/feed
+    category: regulation
+  - name: FCA (UK)
+    url: https://www.fca.org.uk/news/rss.xml
+    category: regulation
+  - name: Bank of England
+    url: https://www.bankofengland.co.uk/news/news-feed/rss
+    category: regulation
+  - name: MAS (Singapore)
+    url: https://www.mas.gov.sg/news.rss
+    category: regulation
+  - name: HKMA
+    url: https://www.hkma.gov.hk/eng/rss/press_releases.xml
+    category: regulation
+  - name: IOSCO
+    url: https://www.iosco.org/rss/news.xml
+    category: regulation
+  - name: FATF
+    url: https://www.fatf-gafi.org/rss/rss.xml
+    category: regulation
 
   # ——— TOKENIZATION / RWAs ———
-  - { name: R3 Blog, url: https://www.r3.com/feed/, category: tokenization }
-  - { name: DTCC News, url: https://www.dtcc.com/news/atom, category: tokenization }
-  - { name: Securitize Blog, url: https://securitize.io/blog/rss.xml, category: tokenization }
-  - { name: Tokeny Blog, url: https://blog.tokeny.com/rss.xml, category: tokenization }
-  - { name: Ondo Finance, url: https://blog.ondo.finance/feed, category: tokenization }
-  - { name: Franklin Templeton Digital Assets, url: https://digitalassets.franklintempleton.com/feed/, category: tokenization }
-  - { name: Hamilton Lane Blog, url: https://www.hamiltonlane.com/en-US/rss, category: tokenization }
-  - { name: Deloitte FS Insights, url: https://www2.deloitte.com/global/en/insights/industry/financial-services.rss.html, category: tokenization }
-  - { name: PwC Global, url: https://www.pwc.com/gx/en/industries/financial-services/assets.rss, category: tokenization }
-  - { name: EY Global Finance, url: https://www.ey.com/en_gl/rss, category: tokenization }
-  - { name: BCG Insights, url: https://www.bcg.com/insights/rss, category: tokenization }
-  - { name: Accenture Blockchain, url: https://www.accenture.com/us-en/insights/blockchain/_jcr_content/root/responsivegrid/feed.xml, category: tokenization }
+  - name: R3 Blog
+    url: https://www.r3.com/feed/
+    category: tokenization
+  - name: DTCC News
+    url: https://www.dtcc.com/news/atom
+    category: tokenization
+  - name: Securitize
+    url: https://securitize.io/blog/rss.xml
+    category: tokenization
+  - name: Tokeny
+    url: https://blog.tokeny.com/rss.xml
+    category: tokenization
+  - name: Ondo Finance
+    url: https://blog.ondo.finance/feed
+    category: tokenization
+  - name: Franklin Templeton Digital Assets
+    url: https://digitalassets.franklintempleton.com/feed/
+    category: tokenization
+  - name: Hamilton Lane
+    url: https://www.hamiltonlane.com/en-US/rss
+    category: tokenization
+  - name: Deloitte FS
+    url: https://www2.deloitte.com/global/en/insights/industry/financial-services.rss.html
+    category: tokenization
+  - name: PwC
+    url: https://www.pwc.com/gx/en/industries/financial-services/assets.rss
+    category: tokenization
+  - name: EY Global Finance
+    url: https://www.ey.com/en_gl/rss
+    category: tokenization
+  - name: BCG Insights
+    url: https://www.bcg.com/insights/rss
+    category: tokenization
+  - name: Accenture Blockchain
+    url: https://www.accenture.com/us-en/insights/blockchain/_jcr_content/root/responsivegrid/feed.xml
+    category: tokenization
 
   # ——— RESEARCH / DATA ———
-  - { name: Messari Research, url: https://messari.io/rss, category: research }
-  - { name: Glassnode Insights, url: https://insights.glassnode.com/rss/, category: research }
-  - { name: Coin Metrics Blog, url: https://coinmetrics.io/feed/, category: research }
-  - { name: Nansen Blog, url: https://www.nansen.ai/blog/rss.xml, category: research }
-  - { name: Kaiko Research, url: https://www.kaiko.com/feed, category: research }
-  - { name: Chainalysis Blog, url: https://blog.chainalysis.com/feed/, category: research }
-  - { name: IntoTheBlock Blog, url: https://blog.intotheblock.com/feed, category: research }
-  - { name: TokenTerminal Blog, url: https://tokenterminal.com/feed, category: research }
-  - { name: Santiment Blog, url: https://insights.santiment.net/feed, category: research }
-  - { name: Delphi Digital, url: https://members.delphidigital.io/feed, category: research }
-  - { name: CryptoQuant Blog, url: https://cryptoquant.com/blog/feed, category: research }
-  - { name: Ark Invest (Crypto), url: https://ark-invest.com/feed/, category: research }
+  - name: Messari Research
+    url: https://messari.io/rss
+    category: research
+  - name: Glassnode Insights
+    url: https://insights.glassnode.com/rss/
+    category: research
+  - name: Coin Metrics
+    url: https://coinmetrics.io/feed/
+    category: research
+  - name: Nansen Blog
+    url: https://www.nansen.ai/blog/rss.xml
+    category: research
+  - name: Kaiko Research
+    url: https://www.kaiko.com/feed
+    category: research
+  - name: Chainalysis Blog
+    url: https://blog.chainalysis.com/feed/
+    category: research
+  - name: IntoTheBlock
+    url: https://blog.intotheblock.com/feed
+    category: research
+  - name: TokenTerminal
+    url: https://tokenterminal.com/feed
+    category: research
+  - name: Santiment Insights
+    url: https://insights.santiment.net/feed
+    category: research
+  - name: CryptoQuant Blog
+    url: https://cryptoquant.com/blog/feed
+    category: research
+  - name: Ark Invest
+    url: https://ark-invest.com/feed/
+    category: research
 
   # ——— CULTURE / COMMENTARY ———
-  - { name: Bankless, url: https://www.bankless.com/feed, category: culture }
-  - { name: The Defiant, url: https://thedefiant.io/feed, category: culture }
-  - { name: Unchained, url: https://unchainedcrypto.com/feed/, category: culture }
-  - { name: Blockworks (Culture), url: https://blockworks.co/feed, category: culture }
-  - { name: Protos (Commentary), url: https://protos.com/feed/, category: culture }
-  - { name: Coin Bureau Blog, url: https://www.coinbureau.com/feed/, category: culture }
-  - { name: Decrypt (Culture), url: https://decrypt.co/feed, category: culture }
-  - { name: Coindesk Opinions, url: https://www.coindesk.com/opinion/rss, category: culture }
-  - { name: Bitcoinist, url: https://bitcoinist.com/feed/, category: culture }
-  - { name: BTC Times, url: https://www.btctimes.com/rss, category: culture }
+  - name: Bankless
+    url: https://www.bankless.com/feed
+    category: culture
+  - name: The Defiant
+    url: https://thedefiant.io/feed
+    category: culture
+  - name: Unchained
+    url: https://unchainedcrypto.com/feed/
+    category: culture
+  - name: Blockworks
+    url: https://blockworks.co/feed
+    category: culture
+  - name: Protos
+    url: https://protos.com/feed/
+    category: culture
+  - name: Coin Bureau
+    url: https://www.coinbureau.com/feed/
+    category: culture
+  - name: CoinDesk Opinion
+    url: https://www.coindesk.com/opinion/rss
+    category: culture
+  - name: Bitcoinist
+    url: https://bitcoinist.com/feed/
+    category: culture
+  - name: BTC Times
+    url: https://www.btctimes.com/rss
+    category: culture
 
   # ——— MARKETS ———
-  - { name: CoinDesk Markets, url: https://www.coindesk.com/markets/rss/, category: markets }
-  - { name: Cointelegraph Markets, url: https://cointelegraph.com/tags/markets/rss, category: markets }
-  - { name: Investing.com Crypto, url: https://www.investing.com/rss/news_301.rss, category: markets }
-  - { name: FXStreet Crypto, url: https://www.fxstreet.com/rss/cryptocurrencies, category: markets }
-  - { name: MarketWatch Crypto, url: https://www.marketwatch.com/rss/crypto, category: markets }
-  - { name: Nasdaq Digital Assets, url: https://www.nasdaq.com/feed/rssoutbound, category: markets }
-  - { name: CoinMarketCap Blog, url: https://blog.coinmarketcap.com/feed/, category: markets }
-  - { name: CoinGecko Blog, url: https://blog.coingecko.com/rss/, category: markets }
+  - name: CoinDesk Markets
+    url: https://www.coindesk.com/markets/rss/
+    category: markets
+  - name: Cointelegraph Markets
+    url: https://cointelegraph.com/tags/markets/rss
+    category: markets
+  - name: Investing.com Crypto
+    url: https://www.investing.com/rss/news_301.rss
+    category: markets
+  - name: FXStreet Crypto
+    url: https://www.fxstreet.com/rss/cryptocurrencies
+    category: markets
+  - name: MarketWatch Crypto
+    url: https://www.marketwatch.com/rss/crypto
+    category: markets
+  - name: Nasdaq Digital Assets
+    url: https://www.nasdaq.com/feed/rssoutbound
+    category: markets
+  - name: CoinMarketCap Blog
+    url: https://blog.coinmarketcap.com/feed/
+    category: markets
+  - name: CoinGecko Blog
+    url: https://blog.coingecko.com/rss/
+    category: markets
