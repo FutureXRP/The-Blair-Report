@@ -165,12 +165,6 @@
       "source": "decrypt.co"
     },
     {
-      "title": "MEDIROM adopts cryptocurrency strategy through World partnership",
-      "link": "https://www.investing.com/news/cryptocurrency-news/medirom-adopts-cryptocurrency-strategy-through-world-partnership-432SI-4207652",
-      "published_at": "2025-08-22T20:46:07+00:00",
-      "source": "investing.com"
-    },
-    {
       "title": "Ethereum Chain Dominates With $516M Net Inflows In 7 Days",
       "link": "https://www.newsbtc.com/news/ethereum/ethereum-chain-dominates-with-516m-net-inflows-in-7-days/",
       "published_at": "2025-08-23T08:00:48+00:00",
@@ -217,6 +211,12 @@
       "link": "https://cryptoslate.com/vaneck-and-jito-file-the-first-liquid-staking-backed-solana-etf/",
       "published_at": "2025-08-22T21:00:19+00:00",
       "source": "cryptoslate.com"
+    },
+    {
+      "title": "Ethereum Hits All-Time High Price After Nearly 4 Years",
+      "link": "https://decrypt.co/334851/ethereum-hits-all-time-high-price-after-nearly-4-years",
+      "published_at": "2025-08-22T21:34:05+00:00",
+      "source": "decrypt.co"
     }
   ],
   "week": [
@@ -439,5 +439,5 @@
       "source": "messari.io"
     }
   ],
-  "generated_at": "2025-08-23T20:39:38.751367+00:00"
+  "generated_at": "2025-08-23T20:51:12.356887+00:00"
 }
