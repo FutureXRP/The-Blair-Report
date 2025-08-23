@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Blair Report</title>
-  <meta name="description" content="The Blair Report – a Drudge-style crypto front page for news, regulation, tokenization, research, markets, and culture." />
+  <meta name="description" content="The Blair Report – a crypto front page organized by freshness: breaking, last 24 hours, past week, past month." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -15,57 +15,32 @@
       <h1>THE BLAIR REPORT</h1>
     </div>
 
-    <!-- Scrolling prices (top 50 mcap) -->
-    <div class="ticker-wrap" aria-label="Top 50 crypto prices, scrolling">
+    <!-- Top-50 scrolling ticker -->
+    <div class="ticker-wrap" aria-label="Top crypto prices, scrolling">
       <div id="ticker" class="ticker"></div>
     </div>
   </header>
 
   <main class="frontpage">
-    <div class="col left">
-      <h2>Breaking Crypto News</h2>
+    <section class="bucket">
+      <h2>Breaking (≤ 30m)</h2>
       <ul id="breaking"></ul>
+    </section>
 
-      <h2>Regulation & Policy</h2>
-      <ul id="regulation"></ul>
-    </div>
+    <section class="bucket">
+      <h2>Last 24 Hours (31m–24h)</h2>
+      <ul id="day"></ul>
+    </section>
 
-    <div class="col center">
-      <h2>Top Stories</h2>
-      <ul id="top"></ul>
+    <section class="bucket">
+      <h2>Past Week (2–7d)</h2>
+      <ul id="week"></ul>
+    </section>
 
-      <h2>RWA Tokenization</h2>
-      <ul id="tokenization"></ul>
-
-      <h2>Research & Data</h2>
-      <ul id="research"></ul>
-
-      <h2>Culture & Commentary</h2>
-      <ul id="culture"></ul>
-    </div>
-
-    <div class="col right">
-      <h2>Market Snapshot</h2>
-      <table class="market-table">
-        <thead>
-          <tr>
-            <th>Crypto</th>
-            <th>Price</th>
-            <th>24h</th>
-          </tr>
-        </thead>
-        <tbody id="market-body"></tbody>
-      </table>
-
-      <h2>Crypto Buzz on X</h2>
-      <a class="twitter-timeline"
-         data-height="400"
-         data-theme="dark"
-         href="https://x.com/search?q=crypto%20OR%20bitcoin%20OR%20ethereum%20OR%20%23crypto%20OR%20%23bitcoin%20OR%20%23ethereum&src=typed_query&f=live">
-         Latest Crypto Posts on X
-      </a>
-      <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
-    </div>
+    <section class="bucket">
+      <h2>Past Month (8–31d)</h2>
+      <ul id="month"></ul>
+    </section>
   </main>
 
   <footer class="site-footer">
