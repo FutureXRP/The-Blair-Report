@@ -57,12 +57,6 @@
       "source": "bitcoinmagazine.com"
     },
     {
-      "title": "Friday charts: Bubbles then, and now",
-      "link": "https://blockworks.co/news/market-bubble-charts",
-      "published_at": "2025-08-22T21:00:00+00:00",
-      "source": "blockworks.co"
-    },
-    {
       "title": "This under-the-radar ETF trend may be flashing a warning signal for the market",
       "link": "https://www.cnbc.com/2025/08/23/retail-rush-into-speculative-etfs-may-be-flashing-market-warning.html",
       "published_at": "2025-08-23T15:00:01+00:00",
@@ -111,9 +105,9 @@
       "source": "investing.com"
     },
     {
-      "title": "XRP Open Interest On CME Futures Has Hit A New ATH, Why Price Could Surge",
-      "link": "https://www.newsbtc.com/xrp-news/xrp-open-interest-on-cme-futures/",
-      "published_at": "2025-08-23T16:00:11+00:00",
+      "title": "Ethereum Chain Dominates With $516M Net Inflows In 7 Days",
+      "link": "https://www.newsbtc.com/news/ethereum/ethereum-chain-dominates-with-516m-net-inflows-in-7-days/",
+      "published_at": "2025-08-23T08:00:48+00:00",
       "source": "newsbtc.com"
     },
     {
@@ -133,6 +127,12 @@
       "link": "https://ambcrypto.com/cme-xrp-futures-hit-9b-will-spot-etf-approval-flip-the-23-slide/",
       "published_at": "2025-08-23T08:00:48+00:00",
       "source": "ambcrypto.com"
+    },
+    {
+      "title": "Ethereum Monetizes Open Source",
+      "link": "https://www.bankless.com/read/ethereum-monetizes-open-source",
+      "published_at": "2025-08-23T14:00:56+00:00",
+      "source": "bankless.com"
     }
   ],
   "week": [
@@ -143,9 +143,9 @@
       "source": "ark-invest.com"
     },
     {
-      "title": "Aave Expands Beyond EVM With Aptos Launch",
-      "link": "https://www.bankless.com/read/aave-expands-beyond-evm-with-aptos-launch",
-      "published_at": "2025-08-21T15:36:00+00:00",
+      "title": "Kraken Expands Tokenized Stocks to Tron",
+      "link": "https://www.bankless.com/read/kraken-expands-tokenized-stocks-to-tron",
+      "published_at": "2025-08-20T19:14:09+00:00",
       "source": "bankless.com"
     },
     {
@@ -167,9 +167,9 @@
       "source": "blockworks.co"
     },
     {
-      "title": "KindlyMD Completes First Bitcoin Purchase After Merger With $679 Million Acquisition",
-      "link": "https://btctimes.com/kindlymd-completes-first-bitcoin-purchase-after-merger-with-679-million-acquisition/",
-      "published_at": "2025-08-20T13:14:39+00:00",
+      "title": "H100 Group Expands Bitcoin Treasury With 102 Bitcoin Purchase Bringing Total to 911 Bitcoin",
+      "link": "https://btctimes.com/h100-group-expands-bitcoin-treasury-with-102-bitcoin-purchase-bringing-total-to-911-bitcoin/",
+      "published_at": "2025-08-20T12:28:20+00:00",
       "source": "btctimes.com"
     },
     {
@@ -179,15 +179,9 @@
       "source": "chainalysis.com"
     },
     {
-      "title": "The new gold play as investors look to hedge against risk, volatility",
-      "link": "https://www.cnbc.com/2025/08/22/the-new-gold-play-as-investors-look-to-hedge-against-risk-volatility.html",
-      "published_at": "2025-08-22T17:06:17+00:00",
-      "source": "cnbc.com"
-    },
-    {
-      "title": "VanEck Aims to Take Solana's Liquid Staking to TradFi Investors Via JitoSOL ETF",
-      "link": "https://www.coindesk.com/markets/2025/08/22/vaneck-aims-to-take-solana-s-liquid-staking-to-tradfi-investors-via-jitosol-etf",
-      "published_at": "2025-08-22T18:17:56+00:00",
+      "title": "ETHZilla Shares Plunge Almost 30% as Dilution Fears Overshadow $349M Ether Treasury",
+      "link": "https://www.coindesk.com/markets/2025/08/22/ethzilla-shares-plunge-36-as-dilution-fears-overshadow-usd349m-ether-treasury",
+      "published_at": "2025-08-22T14:53:27+00:00",
       "source": "coindesk.com"
     },
     {
@@ -215,16 +209,10 @@
       "source": "cryptoslate.com"
     },
     {
-      "title": "OCC Cites 'Safety and Soundness' for Crypto Bank Anchorage in Pulling Consent Order",
-      "link": "https://decrypt.co/336273/occ-pulls-consent-order-crypto-bank-anchorage",
-      "published_at": "2025-08-21T22:40:43+00:00",
+      "title": "Luca Netz Talks Playbook for Pudgy Penguins, $Pengu in Bull Market, Abstract TGE, and more...",
+      "link": "https://decrypt.co/videos/interviews/iJMnoqye/luca-netz-talks-playbook-for-pudgy-penguins-pengu-in-bull-market-abstract-tge-and-more",
+      "published_at": "2025-08-22T17:14:39+00:00",
       "source": "decrypt.co"
-    },
-    {
-      "title": "Federal Open Market Committee announces approval of updates to its Statement on Longer-Run Goals and Monetary Policy Strategy",
-      "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250822a.htm",
-      "published_at": "2025-08-22T14:00:00+00:00",
-      "source": "federalreserve.gov"
     },
     {
       "title": "A super-precise forecast — about the future no less",
@@ -233,9 +221,9 @@
       "source": "ft.com"
     },
     {
-      "title": "Reading the Crowd: How Cost Basis Distribution Reveals Market Tops and Bottoms",
-      "link": "https://insights.glassnode.com/how-cbd-reveals-market-tops-and-bottoms/",
-      "published_at": "2025-08-22T15:44:47+00:00",
+      "title": "A Practical Guide to Glassnode’s MCP Server",
+      "link": "https://insights.glassnode.com/glassnode-mcp-server-guide/",
+      "published_at": "2025-08-19T10:14:11+00:00",
       "source": "insights.glassnode.com"
     },
     {
@@ -243,13 +231,25 @@
       "link": "https://www.investing.com/news/cryptocurrency-news/mexc-rises-to-top-2-crypto-exchange-capturing-86-market-share-in-spot-trading-4206434",
       "published_at": "2025-08-22T10:30:35+00:00",
       "source": "investing.com"
+    },
+    {
+      "title": "Beyond the Stablecoin Distribution Bottleneck: Branded Stablecoins, Loyalty Programs, the Attention Economy, Celebrity Stablecoins, and the Convergence of TradFi, Fintech, and Crypto.",
+      "link": "https://messari.io/article/beyond-the-stablecoin-distribution-bottleneck-branded-stablecoins-loyalty-programs-the-attention-economy-celebrity-stablecoins-and-the-convergence-of-tradfi-fintech-and-crypto",
+      "published_at": "2025-08-22T17:21:00+00:00",
+      "source": "messari.io"
+    },
+    {
+      "title": "Insiders and LIBRA snipers hijack Kanye’s $3B YZY coin",
+      "link": "https://protos.com/insiders-and-libra-snipers-hijack-kanyes-3b-yzy-coin/",
+      "published_at": "2025-08-21T16:03:29+00:00",
+      "source": "protos.com"
     }
   ],
   "month": [
     {
-      "title": "SEC Says Liquid Staking Falls Outside Securities Law",
-      "link": "https://www.bankless.com/read/sec-says-liquid-staking-falls-outside-securities-law",
-      "published_at": "2025-08-05T20:49:00+00:00",
+      "title": "Google Walks Back Potential Ban on Non-Custodial Wallets",
+      "link": "https://www.bankless.com/read/google-walks-back-potential-ban-on-non-custodial-wallets",
+      "published_at": "2025-08-14T13:39:02+00:00",
       "source": "bankless.com"
     },
     {
@@ -257,12 +257,6 @@
       "link": "https://blockworks.co/news/gemini-wallet-review",
       "published_at": "2025-08-15T17:30:00+00:00",
       "source": "blockworks.co"
-    },
-    {
-      "title": "Ondo Monthly Spotlight: July 2025",
-      "link": "https://blog.ondo.finance/ondo-monthly-spotlight-july-2025/",
-      "published_at": "2025-08-01T16:53:29+00:00",
-      "source": "blog.ondo.finance"
     },
     {
       "title": "First RGB Bridge Enables USDt Transfers From Ethereum to Bitcoin via Lightning",
@@ -277,28 +271,22 @@
       "source": "chainalysis.com"
     },
     {
-      "title": "Taking Stock of Crypto Exchanges Pursuing an IPO",
-      "link": "https://coinmetrics.io/state-of-the-network/taking-stock-of-crypto-exchanges-pursuing-an-ipo/",
-      "published_at": "2025-08-05T12:11:05+00:00",
+      "title": "Exploring the On-Chain Effects of Ethereum Treasuries",
+      "link": "https://coinmetrics.io/state-of-the-network/exploring-the-on-chain-effects-of-ethereum-treasuries/",
+      "published_at": "2025-08-12T12:18:56+00:00",
       "source": "coinmetrics.io"
     },
     {
-      "title": "RATE CUT ODDS SOAR, PROJECT CRYPTO, TRUMP TARIFFS",
-      "link": "https://decrypt.co/videos/interviews/Q6HuVGk9/rate-cut-odds-soar-project-crypto-trump-tariffs",
-      "published_at": "2025-08-05T18:22:07+00:00",
+      "title": "SEC DROPS XRP CASE, ETH NEARS $4K AGAIN, GOLD HITS ATH",
+      "link": "https://decrypt.co/videos/interviews/1JUcP9dr/sec-drops-xrp-case-eth-nears-4k-again-gold-hits-ath",
+      "published_at": "2025-08-08T15:21:06+00:00",
       "source": "decrypt.co"
     },
     {
-      "title": "Federal Reserve Board joins other federal financial institution regulatory agencies in providing banks the flexibility to use an alternative method for collecting certain customer identification information",
-      "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20250731a.htm",
-      "published_at": "2025-07-31T18:30:00+00:00",
+      "title": "Federal Reserve Board and FDIC release public sections of resolution plans for banking organizations",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20250805a.htm",
+      "published_at": "2025-08-05T18:00:00+00:00",
       "source": "federalreserve.gov"
-    },
-    {
-      "title": "The Treasury market’s sudden remarkable tranquility",
-      "link": "https://www.ft.com/content/982f0eed-3613-4c92-8d3b-58e13bf91bcf",
-      "published_at": "2025-08-15T13:17:56+00:00",
-      "source": "ft.com"
     },
     {
       "title": "BTC Market Pulse: Week 32",
@@ -319,9 +307,9 @@
       "source": "sec.gov"
     },
     {
-      "title": "SEC Keeps Pushing Solana ETF Decisions",
-      "link": "https://www.bankless.com/read/sec-keeps-pushing-solana-etf-decisions",
-      "published_at": "2025-08-15T13:59:00+00:00",
+      "title": "SEC Says Liquid Staking Falls Outside Securities Law",
+      "link": "https://www.bankless.com/read/sec-says-liquid-staking-falls-outside-securities-law",
+      "published_at": "2025-08-05T20:49:00+00:00",
       "source": "bankless.com"
     },
     {
@@ -343,17 +331,29 @@
       "source": "chainalysis.com"
     },
     {
-      "title": "SOTM July 31-August 6, 2025",
-      "link": "https://coinmetrics.io/state-of-the-market/sotm-july-31-august-6-2025/",
-      "published_at": "2025-08-07T18:18:07+00:00",
+      "title": "Taking Stock of Crypto Exchanges Pursuing an IPO",
+      "link": "https://coinmetrics.io/state-of-the-network/taking-stock-of-crypto-exchanges-pursuing-an-ipo/",
+      "published_at": "2025-08-05T12:11:05+00:00",
       "source": "coinmetrics.io"
     },
     {
-      "title": "SEC DROPS XRP CASE, ETH NEARS $4K AGAIN, GOLD HITS ATH",
-      "link": "https://decrypt.co/videos/interviews/1JUcP9dr/sec-drops-xrp-case-eth-nears-4k-again-gold-hits-ath",
-      "published_at": "2025-08-08T15:21:06+00:00",
+      "title": "RATE CUT ODDS SOAR, PROJECT CRYPTO, TRUMP TARIFFS",
+      "link": "https://decrypt.co/videos/interviews/Q6HuVGk9/rate-cut-odds-soar-project-crypto-trump-tariffs",
+      "published_at": "2025-08-05T18:22:07+00:00",
       "source": "decrypt.co"
+    },
+    {
+      "title": "A Rising Tide Lifts All Boats",
+      "link": "https://insights.glassnode.com/the-week-onchain-week-32-2025/",
+      "published_at": "2025-08-12T17:19:13+00:00",
+      "source": "insights.glassnode.com"
+    },
+    {
+      "title": "Cycle Network: Building a “VisaNet” for Crypto",
+      "link": "https://messari.io/article/cycle-network-building-a-visanet-for-crypto",
+      "published_at": "2025-08-15T02:00:00+00:00",
+      "source": "messari.io"
     }
   ],
-  "generated_at": "2025-08-23T20:18:42.984484+00:00"
+  "generated_at": "2025-08-23T20:23:24.477822+00:00"
 }
