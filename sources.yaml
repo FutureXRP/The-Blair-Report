@@ -1,0 +1,79 @@
+limits:
+  per_category: 15
+  top: 18
+
+sources:
+  # General crypto news
+  - name: CoinDesk
+    url: https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml
+    category: top
+  - name: The Block
+    url: https://www.theblock.co/rss/latest
+    category: top
+  - name: Cointelegraph
+    url: https://cointelegraph.com/rss
+    category: top
+
+  # Regulation
+  - name: SEC News
+    url: https://www.sec.gov/news/pressreleases.rss
+    category: regulation
+  - name: CFTC Press
+    url: https://www.cftc.gov/PressRoom/PressReleases/rss
+    category: regulation
+  - name: EU Parliament News
+    url: https://www.europarl.europa.eu/news/en/press-room/rss
+    category: regulation
+
+  # Tokenization / RWA
+  - name: R3 Blog
+    url: https://www.r3.com/feed/
+    category: tokenization
+  - name: Deloitte RWA
+    url: https://www2.deloitte.com/global/en/insights/industry/financial-services.rss.html
+    category: tokenization
+  - name: BCG Perspectives
+    url: https://www.bcg.com/insights/rss
+    category: tokenization
+
+  # XRP / XRPL
+  - name: Ripple Blog
+    url: https://ripple.com/insights/feed/
+    category: xrp
+  - name: XRPL Foundation
+    url: https://foundation.xrpl.org/feed/
+    category: xrp
+
+  # XDC
+  - name: XDC Foundation
+    url: https://www.xdc.org/feed
+    category: xdc
+  - name: TradeFinex
+    url: https://www.tradefinex.org/blog?format=rss
+    category: xdc
+
+  # ZBCN (Zebec)
+  - name: Zebec Blog
+    url: https://blog.zebec.io/rss/
+    category: zbcn
+
+  # BTC/ETH
+  - name: Bitcoin Magazine
+    url: https://bitcoinmagazine.com/.rss/full/
+    category: bluechips
+  - name: Ethereum Foundation
+    url: https://blog.ethereum.org/feed.xml
+    category: bluechips
+
+  # Research/Tech
+  - name: Chainlink Blog
+    url: https://blog.chain.link/rss/
+    category: research
+  - name: Messari Research
+    url: https://messari.io/rss
+    category: research
+
+  # Memes/culture (light)
+  - name: Decrypt
+    url: https://decrypt.co/feed
+    category: memes
