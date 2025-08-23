@@ -39,7 +39,7 @@ BAD_WORDS = [
     'meme coin will','shib to','doge to','$1','$10','100x','thousandx','lambo','rocket'
 ]
 
-SCORE_DROP_THRESHOLD = -1  # <- drop anything worse than this
+SCORE_DROP_THRESHOLD = -1  # drop anything worse than this
 
 def is_crypto_relevant(title, summary, link):
     text = f"{title or ''} {summary or ''} {link or ''}"
@@ -53,7 +53,7 @@ def score_text(title, summary):
         if w in t or w in s: score += 2
     for w in BAD_WORDS:
         if w in t or w in s: score -= 3
-    score += min(len(t)//40, 3)  # slightly prefer more specific titles
+    score += min(len(t)//40, 3)  # slight boost for more specific titles
     return score
 
 def canonical_source(link, fallback):
@@ -101,7 +101,7 @@ except Exception as e:
     cfg = {}
 
 limits = cfg.get('limits', {})
-PER_BUCKET = int(limits.get('per_category', 15))  # tighter curation (was 18)
+PER_BUCKET = int(limits.get('per_category', 15))  # tighter curation
 
 # ---------------- ingest with timeouts ----------------
 headers = {"User-Agent": "BlairReportBot/1.0 (+https://theblairreport.com)"}
@@ -178,11 +178,11 @@ for it in sorted(raw, key=lambda x:(x['score'], x['published_at']), reverse=True
     seen.add(key)
     deduped.append(it)
 
-# ---------------- age buckets (freshness windows) ----------------
-# Breaking:   <= 60 minutes
-# Day:        31 minutes – 24 hours
-# Week:       2 – 7 days
-# Month:      8 – 21 days (keeps page lively; was 31)
+# ---------------- age buckets (no overlap) ----------------
+# Breaking News: <= 12 hours
+# Last 24 Hours: >12h and <= 24h
+# Past Week:     >24h and <= 7 days
+# Past Month:    >7 days and <= 21 days
 now = datetime.now(timezone.utc)
 
 def age_minutes(iso):
@@ -192,16 +192,11 @@ def age_minutes(iso):
     except Exception:
         return 1e9
 
-buckets = {
-    'breaking': [],
-    'day': [],
-    'week': [],
-    'month': []
-}
+buckets = { 'breaking': [], 'day': [], 'week': [], 'month': [] }
 
 for it in deduped:
     mins = age_minutes(it['published_at'])
-    if mins <= 60:
+    if mins <= 12*60:
         buckets['breaking'].append(it)
     elif mins <= 24*60:
         buckets['day'].append(it)
@@ -213,15 +208,14 @@ for it in deduped:
 
 # ---------------- rank + diversify per bucket ----------------
 # Breaking: recency-first (then score)
-for k in ['breaking']:
-    arr = buckets[k]
-    arr.sort(key=lambda x: (x['published_at'], x['score']), reverse=True)
-    arr = diverse_pick(arr, PER_BUCKET, per_source_cap=2)
-    for it in arr:
-        it.pop('score', None); it.pop('ntitle', None)
-    buckets[k] = arr
+arr = buckets['breaking']
+arr.sort(key=lambda x: (x['published_at'], x['score']), reverse=True)
+arr = diverse_pick(arr, PER_BUCKET, per_source_cap=2)
+for it in arr:
+    it.pop('score', None); it.pop('ntitle', None)
+buckets['breaking'] = arr
 
-# Other buckets: score-first (then recency)
+# Others: score-first (then recency)
 for k in ['day','week','month']:
     arr = buckets[k]
     arr.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
