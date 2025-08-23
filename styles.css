@@ -21,21 +21,29 @@ h1 { letter-spacing: 6px; font-weight: 900; margin: 0; }
   border-bottom: 1px solid #222;
   margin-top: 12px;
 }
-.ticker {
-  display: inline-block;
-  padding: 10px 0;
-  animation: ticker-scroll 35s linear infinite;
-  font-size: 14px;
-  color: var(--muted);
+#ticker {
+  display: flex;
+  gap: 0;  /* tracks sit flush */
+  will-change: transform;
+  animation: ticker-scroll var(--ticker-duration, 35s) linear infinite;
 }
-.ticker span {
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+}
+.ticker-track span {
   display: inline-block;
-  padding: 0 16px;
+  padding: 10px 16px;
+  font-size: 14px;
   color: var(--fg);
+  border-right: 1px solid #222;
+}
+#ticker:hover {
+  animation-play-state: paused;
 }
 @keyframes ticker-scroll {
-  0% { transform: translate3d(100%, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
+  0% { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-50%,0,0); } /* we duplicate content to cover this distance */
 }
 
 .breaking { background: #7a0000; color: #fff; padding: 12px; font-weight: 700; text-align: center; border-bottom: 2px solid #fff; }
