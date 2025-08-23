@@ -38,6 +38,43 @@
     }
   }
 
+  function setupTicker(prices) {
+    const wrap = document.querySelector('.ticker-wrap');
+    const tick = document.getElementById('ticker');
+    if (!wrap || !tick) return;
+
+    // Clear any old content
+    tick.innerHTML = '';
+
+    if (!Array.isArray(prices) || !prices.length) return;
+
+    // Build a single run of items
+    const oneRun = document.createElement('div');
+    oneRun.className = 'ticker-track';
+    for (const p of prices) {
+      const span = document.createElement('span');
+      const sym = (p.symbol || '').toUpperCase();
+      const rank = p.rank ? `#${p.rank}` : '';
+      const price = (p.price !== undefined) ? `$${Number(p.price).toLocaleString()}` : '';
+      span.textContent = `${rank} ${sym} ${price}`;
+      oneRun.appendChild(span);
+    }
+
+    // Duplicate content until it's at least 2x container width for a smooth loop
+    const containerW = wrap.clientWidth || 800;
+    let totalW = 0;
+    while (totalW < containerW * 2) {
+      const clone = oneRun.cloneNode(true);
+      tick.appendChild(clone);
+      totalW += clone.scrollWidth || containerW;
+    }
+
+    // Set speed: e.g., 100 px/sec
+    const speed = 100; // px per second
+    const duration = Math.max(20, Math.round((totalW / speed)));
+    tick.style.setProperty('--ticker-duration', duration + 's');
+  }
+
   try {
     const [headlines, prices] = await Promise.all([
       loadJSON('data/headlines.json'),
@@ -52,19 +89,8 @@
       breakingEl.textContent = breaking.map(b => b.title).join('  •  ');
     }
 
-    // Ticker (top 50 by market cap)
-    const tick = document.getElementById('ticker');
-    tick.innerHTML = '';
-    if (Array.isArray(prices) && prices.length) {
-      // Duplicate line once to make seamless loop feel fuller
-      const line = prices.map(p => {
-        const sym = (p.symbol || '').toUpperCase();
-        const rank = p.rank ? `#${p.rank}` : '';
-        const price = (p.price !== undefined) ? `$${Number(p.price).toLocaleString()}` : '';
-        return `<span>${rank} ${sym} ${price}</span>`;
-      }).join('');
-      tick.innerHTML = line + line;
-    }
+    // Ticker
+    setupTicker(prices);
 
     // Sections
     const map = {
@@ -79,6 +105,10 @@
       const el = document.getElementById(id);
       renderList(el, headlines[key] || []);
     }
+
+    // Recalculate ticker on resize for smoother behavior
+    window.addEventListener('resize', () => setupTicker(prices));
+
   } catch (e) {
     console.error(e);
   }
