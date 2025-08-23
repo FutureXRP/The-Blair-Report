@@ -2,11 +2,11 @@
 import os, json, time, hashlib, sys, re
 from datetime import datetime, timezone
 from urllib.parse import urlparse
+from collections import defaultdict, deque
 
 import yaml
 import feedparser
 import requests
-from collections import defaultdict, deque
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR = os.path.join(ROOT, 'data')
@@ -14,8 +14,7 @@ CONF = os.path.join(ROOT, 'config', 'sources.yaml')
 
 os.makedirs(DATA_DIR, exist_ok=True)
 
-CATS = ['top','regulation','tokenization','research','culture','markets','breaking']
-
+# ---- filtering ----
 GOOD_WORDS = [
     'etf','tokenization','rwa','real-world asset','adoption','integration','partnership',
     'approval','listing','launch','upgrade','roadmap','institution','bank','exchange',
@@ -26,24 +25,7 @@ BAD_WORDS = [
     'meme coin will','shib to','doge to','$1','$10','100x','thousandx'
 ]
 
-def canonical_source(link, fallback):
-    try:
-        host = urlparse(link).hostname or ''
-        host = host.lower().replace('www.','')
-        return host or fallback
-    except Exception:
-        return (fallback or '').lower()
-
-def normalize_title(t):
-    t = (t or '').lower()
-    t = re.sub(r'[^a-z0-9\s]', ' ', t)
-    t = re.sub(r'\s+', ' ', t).strip()
-    # remove trivial words
-    STOP = {'the','a','an','to','of','for','on','in','and','with','by','from','is','are'}
-    toks = [w for w in t.split() if w not in STOP]
-    return ' '.join(toks)
-
-def text_score(title, summary):
+def score_text(title, summary):
     t = (title or '').lower()
     s = (summary or '').lower()
     score = 0
@@ -51,24 +33,58 @@ def text_score(title, summary):
         if w in t or w in s: score += 2
     for w in BAD_WORDS:
         if w in t or w in s: score -= 3
-    score += min(len(t)//40, 3)  # prefer more specific titles a bit
+    score += min(len(t)//40, 3)
     return score
 
-# Load config
+def canonical_source(link, fallback):
+    try:
+        host = urlparse(link).hostname or ''
+        return host.lower().replace('www.','') or (fallback or '').lower()
+    except Exception:
+        return (fallback or '').lower()
+
+def normalize_title(t):
+    t = (t or '').lower()
+    t = re.sub(r'[^a-z0-9\s]', ' ', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+    STOP = {'the','a','an','to','of','for','on','in','and','with','by','from','is','are'}
+    toks = [w for w in t.split() if w not in STOP]
+    return ' '.join(toks)
+
+def diverse_pick(items, total_limit, per_source_cap=3):
+    """Round-robin by source with per-source cap for diversity."""
+    buckets = defaultdict(deque)
+    count_by_src = defaultdict(int)
+    for it in items:
+        buckets[it['source']].append(it)
+    sources = deque(sorted(buckets.keys()))
+    chosen = []
+    while sources and len(chosen) < total_limit:
+        s = sources[0]
+        if buckets[s]:
+            if count_by_src[s] < per_source_cap:
+                chosen.append(buckets[s].popleft())
+                count_by_src[s] += 1
+                sources.rotate(-1)
+            else:
+                sources.popleft()
+        else:
+            sources.pop()
+    return chosen
+
+# ---- config ----
 with open(CONF, 'r', encoding='utf-8') as f:
     cfg = yaml.safe_load(f) or {}
 
 limits = cfg.get('limits', {})
-PER_CAT = int(limits.get('per_category', 18))
-TOP_LIMIT = int(limits.get('top', 24))
+PER_BUCKET = int(limits.get('per_category', 18))
 
-# ingest
-raw_by_cat = defaultdict(list)
-seen_link_hash = set()
+# ---- ingest all sources ----
+raw = []
+seen_links = set()
 for src in cfg.get('sources', []):
     name = src.get('name','source')
     url = src.get('url','')
-    cat = src.get('category','top')
     if not url: continue
     try:
         d = feedparser.parse(url)
@@ -78,9 +94,9 @@ for src in cfg.get('sources', []):
             if not title or not link: continue
 
             h = hashlib.sha1(link.encode('utf-8')).hexdigest()
-            if h in seen_link_hash: 
+            if h in seen_links: 
                 continue
-            seen_link_hash.add(h)
+            seen_links.add(h)
 
             # date
             published_dt = None
@@ -96,107 +112,77 @@ for src in cfg.get('sources', []):
                 published_dt = datetime.now(timezone.utc)
 
             summary = (getattr(e, 'summary', '') or '')
-            score = text_score(title, summary)
-            domain = canonical_source(link, name)
-            raw_by_cat[cat].append({
+            sc = score_text(title, summary)
+            src_domain = canonical_source(link, name)
+            raw.append({
                 'title': title,
                 'link': link,
                 'published_at': published_dt.isoformat(),
-                'source': domain,
-                'score': score,
+                'source': src_domain,
+                'score': sc,
                 'ntitle': normalize_title(title)
             })
     except Exception as ex:
         print(f"[WARN] feed error {name}: {ex}", file=sys.stderr)
 
-def dedupe(items):
-    # de-dupe by (normalized title, domain prefix)
-    seen = set()
-    out = []
-    for it in items:
-        key = (it['ntitle'], it['source'])
-        if key in seen: 
-            continue
-        seen.add(key)
-        out.append(it)
-    return out
-
-def diverse_pick(items, total_limit, per_source_cap=3):
-    """
-    Round-robin by source with a per-source cap to ensure diversity.
-    Items should already be sorted by (score, recency) desc.
-    """
-    buckets = defaultdict(deque)
-    count_by_source = defaultdict(int)
-    for it in items:
-        buckets[it['source']].append(it)
-
-    # interleave sources
-    sources = deque(sorted(buckets.keys()))
-    chosen = []
-    while sources and len(chosen) < total_limit:
-        src = sources[0]
-        if buckets[src]:
-            if count_by_source[src] < per_source_cap:
-                chosen.append(buckets[src].popleft())
-                count_by_source[src] += 1
-                # rotate to next source
-                sources.rotate(-1)
-            else:
-                # remove source if cap hit
-                sources.popleft()
-        else:
-            # empty bucket; drop source
-            sources.popleft()
-    return chosen
-
-items_by_cat = {k: [] for k in CATS}
-
-# rank, dedupe, diversify per category
-for cat, arr in raw_by_cat.items():
-    if cat not in items_by_cat:  # skip unknown cats
+# ---- dedupe (normalized title + domain) ----
+seen = set()
+deduped = []
+for it in sorted(raw, key=lambda x:(x['score'], x['published_at']), reverse=True):
+    key = (it['ntitle'], it['source'])
+    if key in seen: 
         continue
-    arr.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
-    arr = dedupe(arr)
-    items_by_cat[cat] = diverse_pick(arr, PER_CAT, per_source_cap=3)
+    seen.add(key)
+    deduped.append(it)
 
-# Build Top from all other cats (except breaking)
-all_items = []
-for k, arr in items_by_cat.items():
-    if k in ('top','breaking'): continue
-    all_items.extend(arr)
-all_items.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
-all_items = dedupe(all_items)
-items_by_cat['top'] = diverse_pick(all_items, TOP_LIMIT, per_source_cap=2)
-
-# Breaking (last 30 minutes across high-signal cats)
+# ---- bucket by age ----
 now = datetime.now(timezone.utc)
-breaking = []
-for k in ('regulation','tokenization','markets','top'):
-    for it in items_by_cat.get(k, []):
-        try:
-            t = datetime.fromisoformat(it['published_at'])
-            if (now - t).total_seconds() <= 30*60:
-                breaking.append(it)
-        except Exception:
-            pass
-items_by_cat['breaking'] = sorted(breaking, key=lambda x: x['published_at'], reverse=True)[:5]
 
-# clean up helper fields
-for k in list(items_by_cat.keys()):
-    for it in items_by_cat[k]:
+def age_minutes(iso):
+    try:
+        dt = datetime.fromisoformat(iso)
+        return (now - dt).total_seconds() / 60.0
+    except Exception:
+        return 1e9
+
+buckets = {
+    'breaking': [],  # <= 30m
+    'day': [],       # 31m–24h
+    'week': [],      # 2–7d
+    'month': []      # 8–31d
+}
+
+for it in deduped:
+    mins = age_minutes(it['published_at'])
+    if mins <= 30:
+        buckets['breaking'].append(it)
+    elif mins <= 24*60:
+        buckets['day'].append(it)
+    elif mins <= 7*24*60:
+        buckets['week'].append(it)
+    elif mins <= 31*24*60:
+        buckets['month'].append(it)
+
+# rank within each bucket (score + recency), then diversify
+for k in list(buckets.keys()):
+    arr = buckets[k]
+    arr.sort(key=lambda x:(x['score'], x['published_at']), reverse=True)
+    buckets[k] = diverse_pick(arr, PER_BUCKET, per_source_cap=2 if k=='breaking' else 3)
+    # strip helpers
+    for it in buckets[k]:
         it.pop('score', None)
         it.pop('ntitle', None)
 
-items_by_cat['generated_at'] = datetime.now(timezone.utc).isoformat()
+buckets['generated_at'] = now.isoformat()
 
-# write headlines
+# ---- write headlines ----
+os.makedirs(DATA_DIR, exist_ok=True)
 with open(os.path.join(DATA_DIR, 'headlines.json'), 'w', encoding='utf-8') as f:
-    json.dump(items_by_cat, f, ensure_ascii=False, indent=2)
-print("WROTE headlines.json with counts:",
-      {k: len(v) for k, v in items_by_cat.items() if isinstance(v, list)})
+    json.dump(buckets, f, ensure_ascii=False, indent=2)
 
-# Prices: Top 50 by market cap (CoinGecko)
+print("WROTE headlines.json with counts:", {k: len(v) for k,v in buckets.items() if isinstance(v, list)})
+
+# ---- prices: Top 50 with change% for ticker/table if you add one later ----
 prices = []
 try:
     r = requests.get(
@@ -205,12 +191,12 @@ try:
         timeout=25
     )
     r.raise_for_status()
-    data = r.json()
-    for coin in data:
+    for coin in r.json():
         prices.append({
             'rank': coin.get('market_cap_rank'),
             'symbol': (coin.get('symbol') or '').upper(),
-            'price': coin.get('current_price')
+            'price': coin.get('current_price'),
+            'change24h': coin.get('price_change_percentage_24h')
         })
 except Exception as ex:
     print('[WARN] prices fetch failed:', ex, file=sys.stderr)
