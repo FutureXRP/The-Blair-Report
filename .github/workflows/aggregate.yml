@@ -29,11 +29,18 @@ jobs:
         run: |
           python scripts/build.py
 
+      - name: Show data folder (debug)
+        run: |
+          ls -la
+          echo "----- data dir -----"
+          ls -la data || true
+
       - name: Commit & push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
-          git add data/*.json
+          # safer than a glob on empty dir:
+          git add -A data
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
