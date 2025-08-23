@@ -2,53 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Blair Report</title>
-  <meta name="description" content="The Blair Report – a crypto front page organized by freshness: breaking, last 24 hours, past week, past month." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="description" content="Curated crypto headlines: XRP • XDC • ZBCN • Tokenization • Real-world adoption" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" />
+  <!-- Auto-refresh the page every 2 minutes -->
+  <meta http-equiv="refresh" content="120" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <img src="assets/logo.svg" alt="The Blair Report" class="logo" />
-      <h1>THE BLAIR REPORT</h1>
-    </div>
-
-    <!-- Top-50 scrolling ticker -->
-    <div class="ticker-wrap" aria-label="Top crypto prices, scrolling">
-      <div id="ticker" class="ticker"></div>
-    </div>
+  <header class="wrap">
+    <h1>THE BLAIR REPORT</h1>
+    <p class="tag">Curated crypto headlines • Focus: XRP · XDC · ZBCN · Tokenization</p>
   </header>
 
-  <main class="frontpage">
-    <section class="bucket">
-      <h2>Breaking</h2>
-      <ul id="breaking"></ul>
+  <main class="wrap">
+    <section id="breaking" class="block">
+      <div class="block-head">
+        <h2>Breaking</h2>
+        <time id="breaking-updated" class="updated">—</time>
+      </div>
+      <ol id="breaking-list" class="list"></ol>
     </section>
 
-    <section class="bucket">
-      <h2>Last 24 Hours</h2>
-      <ul id="day"></ul>
+    <section id="last24" class="block">
+      <div class="block-head">
+        <h2>Last 24 Hours</h2>
+        <time id="last24-updated" class="updated">—</time>
+      </div>
+      <ol id="last24-list" class="list"></ol>
     </section>
 
-    <section class="bucket">
-      <h2>Past Week</h2>
-      <ul id="week"></ul>
+    <section id="pastWeek" class="block">
+      <div class="block-head">
+        <h2>Past Week</h2>
+        <time id="pastWeek-updated" class="updated">—</time>
+      </div>
+      <ol id="pastWeek-list" class="list"></ol>
     </section>
 
-    <section class="bucket">
-      <h2>Past Month</h2>
-      <ul id="month"></ul>
+    <section id="pastMonth" class="block">
+      <div class="block-head">
+        <h2>Past Month</h2>
+        <time id="pastMonth-updated" class="updated">—</time>
+      </div>
+      <ol id="pastMonth-list" class="list"></ol>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> The Blair Report • Curated crypto headlines.
-       <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-    </p>
+  <footer class="wrap foot">
+    <p>© <span id="year"></span> The Blair Report • Curated crypto headlines.</p>
+    <a class="gh" href="https://github.com/futurexrp/The-Blair-Report" target="_blank" rel="noopener">View on GitHub</a>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js" type="module"></script>
 </body>
 </html>
