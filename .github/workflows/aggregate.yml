@@ -2,7 +2,7 @@ name: Aggregate news
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # every 5 minutes UTC
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -13,24 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install --no-cache-dir feedparser requests pyyaml
-
-      - name: Show env
-        run: |
-          python -V
-          pip list
-
       - name: Aggregate feeds
         run: python scripts/build.py
-
+        continue-on-error: true
       - name: Commit JSON
         run: |
           git config user.name "blair-bot"
