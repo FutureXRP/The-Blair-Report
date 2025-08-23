@@ -3,6 +3,12 @@
   if (year) year.textContent = new Date().getFullYear();
 
   // --- helpers ---
+  async function loadJSON(path) {
+    const res = await fetch(path + '?v=' + Date.now());
+    if (!res.ok) throw new Error('Failed to load ' + path);
+    return res.json();
+  }
+
   function fmtTimeAgo(dateStr) {
     try {
       const d = new Date(dateStr);
@@ -16,16 +22,12 @@
       return days + 'd ago';
     } catch { return ''; }
   }
-  async function loadJSON(path) {
-    const res = await fetch(path + '?v=' + Date.now());
-    if (!res.ok) throw new Error('Failed to load ' + path);
-    return res.json();
-  }
+
   function renderList(id, items) {
     const el = document.getElementById(id);
     if (!el) return;
     el.innerHTML = '';
-    for (const it of items || []) {
+    for (const it of (items || [])) {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = it.link; a.target = '_blank'; a.rel = 'noopener';
@@ -39,12 +41,10 @@
     }
   }
 
-  // --- ticker ---
   function setupTicker(prices) {
     const wrap = document.querySelector('.ticker-wrap');
     const tick = document.getElementById('ticker');
     if (!wrap || !tick) return;
-
     tick.innerHTML = '';
     if (!Array.isArray(prices) || !prices.length) return;
 
@@ -72,25 +72,69 @@
     tick.style.setProperty('--ticker-duration', duration + 's');
   }
 
-  try {
-    const [headlines, prices] = await Promise.all([
-      loadJSON('data/headlines.json'),
-      loadJSON('data/prices.json')
-    ]);
-
-    // render buckets
-    renderList('breaking', headlines.breaking || []);
-    renderList('day', headlines.day || []);
-    renderList('week', headlines.week || []);
-    renderList('month', headlines.month || []);
-
-    // ticker
-    setupTicker(Array.isArray(prices) ? prices : []);
-
-    // reflow on resize
-    window.addEventListener('resize', () => setupTicker(Array.isArray(prices) ? prices : []));
-
-  } catch (e) {
-    console.error(e);
+  function renderMarkets(prices) {
+    const tbody = document.getElementById('market-body');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    for (const c of (prices || []).slice(0, 12)) {
+      const tr = document.createElement('tr');
+      const nameTd = document.createElement('td');
+      nameTd.textContent = `${(c.symbol || '').toUpperCase()}`;
+      const priceTd = document.createElement('td');
+      priceTd.textContent = (c.price !== undefined) ? `$${Number(c.price).toLocaleString()}` : '';
+      const changeTd = document.createElement('td');
+      const change = c.change24h;
+      if (typeof change === 'number') {
+        changeTd.textContent = `${change.toFixed(2)}%`;
+        changeTd.classList.add(change >= 0 ? 'positive' : 'negative');
+      } else {
+        changeTd.textContent = '—';
+      }
+      tr.append(nameTd, priceTd, changeTd);
+      tbody.appendChild(tr);
+    }
   }
+
+  function setLastUpdated(iso) {
+    const el = document.getElementById('lastUpdated');
+    if (el && iso) {
+      const d = new Date(iso);
+      el.textContent = `Last updated ${d.toLocaleString()}`;
+    }
+  }
+
+  async function refreshAll() {
+    try {
+      const [headlines, prices] = await Promise.all([
+        loadJSON('data/headlines.json'),
+        loadJSON('data/prices.json')
+      ]);
+
+      renderList('breaking', headlines.breaking || []);
+      renderList('day', headlines.day || []);
+      renderList('week', headlines.week || []);
+      renderList('month', headlines.month || []);
+
+      setupTicker(Array.isArray(prices) ? prices : []);
+      renderMarkets(Array.isArray(prices) ? prices : []);
+      setLastUpdated(headlines.generated_at);
+    } catch (e) {
+      console.error('Refresh failed:', e);
+    }
+  }
+
+  // Initial load
+  await refreshAll();
+
+  // Auto-refresh every 2 minutes
+  const REFRESH_MS = 120000;
+  setInterval(refreshAll, REFRESH_MS);
+
+  // Recompute ticker layout on resize
+  window.addEventListener('resize', async () => {
+    try {
+      const prices = await loadJSON('data/prices.json');
+      setupTicker(Array.isArray(prices) ? prices : []);
+    } catch {}
+  });
 })();
