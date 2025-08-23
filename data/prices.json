@@ -2,12 +2,12 @@
   {
     "rank": 1,
     "symbol": "BTC",
-    "price": 115042
+    "price": 115072
   },
   {
     "rank": 2,
     "symbol": "ETH",
-    "price": 4742.55
+    "price": 4750.15
   },
   {
     "rank": 3,
@@ -17,12 +17,12 @@
   {
     "rank": 4,
     "symbol": "USDT",
-    "price": 0.999635
+    "price": 0.99967
   },
   {
     "rank": 5,
     "symbol": "BNB",
-    "price": 880.02
+    "price": 880.65
   },
   {
     "rank": 6,
@@ -32,97 +32,97 @@
   {
     "rank": 7,
     "symbol": "USDC",
-    "price": 0.999806
+    "price": 0.999805
   },
   {
     "rank": 8,
     "symbol": "STETH",
-    "price": 4732.07
+    "price": 4739.65
   },
   {
     "rank": 9,
     "symbol": "DOGE",
-    "price": 0.236793
+    "price": 0.236637
   },
   {
     "rank": 10,
     "symbol": "TRX",
-    "price": 0.362008
+    "price": 0.361846
   },
   {
     "rank": 11,
     "symbol": "ADA",
-    "price": 0.910321
+    "price": 0.909683
   },
   {
     "rank": 12,
     "symbol": "WSTETH",
-    "price": 5728.03
+    "price": 5731.3
   },
   {
     "rank": 13,
     "symbol": "LINK",
-    "price": 26.07
+    "price": 26.08
   },
   {
     "rank": 14,
     "symbol": "WBETH",
-    "price": 5106.31
+    "price": 5106.4
   },
   {
     "rank": 15,
     "symbol": "HYPE",
-    "price": 44.38
+    "price": 44.32
   },
   {
     "rank": 16,
     "symbol": "WBTC",
-    "price": 114957
+    "price": 115064
   },
   {
     "rank": 17,
-    "symbol": "WEETH",
-    "price": 5085.99
+    "symbol": "SUI",
+    "price": 3.7
   },
   {
     "rank": 18,
-    "symbol": "SUI",
-    "price": 3.69
+    "symbol": "WEETH",
+    "price": 5092.81
   },
   {
     "rank": 19,
     "symbol": "XLM",
-    "price": 0.4126
+    "price": 0.412613
   },
   {
     "rank": 20,
     "symbol": "USDE",
-    "price": 1.0
+    "price": 1.001
   },
   {
     "rank": 21,
     "symbol": "BCH",
-    "price": 588.4
+    "price": 588.11
   },
   {
     "rank": 22,
     "symbol": "AVAX",
-    "price": 25.69
+    "price": 25.72
   },
   {
     "rank": 23,
     "symbol": "HBAR",
-    "price": 0.249535
+    "price": 0.249386
   },
   {
     "rank": 24,
     "symbol": "WETH",
-    "price": 4745.91
+    "price": 4749.87
   },
   {
     "rank": 25,
     "symbol": "LTC",
-    "price": 121.18
+    "price": 121.1
   },
   {
     "rank": 26,
@@ -132,12 +132,12 @@
   {
     "rank": 27,
     "symbol": "TON",
-    "price": 3.36
+    "price": 3.37
   },
   {
     "rank": 28,
     "symbol": "USDS",
-    "price": 0.999833
+    "price": 0.999898
   },
   {
     "rank": 29,
@@ -146,18 +146,18 @@
   },
   {
     "rank": 30,
-    "symbol": "BSC-USD",
-    "price": 0.999354
-  },
-  {
-    "rank": 31,
     "symbol": "UNI",
     "price": 11.29
   },
   {
+    "rank": 31,
+    "symbol": "BSC-USD",
+    "price": 0.999499
+  },
+  {
     "rank": 32,
     "symbol": "WBT",
-    "price": 44.09
+    "price": 44.1
   },
   {
     "rank": 33,
@@ -167,7 +167,7 @@
   {
     "rank": 34,
     "symbol": "CBBTC",
-    "price": 115082
+    "price": 115115
   },
   {
     "rank": 35,
@@ -177,27 +177,27 @@
   {
     "rank": 36,
     "symbol": "AAVE",
-    "price": 356.66
+    "price": 356.42
   },
   {
     "rank": 37,
     "symbol": "BGB",
-    "price": 4.7
+    "price": 4.68
   },
   {
     "rank": 38,
     "symbol": "CRO",
-    "price": 0.15573
+    "price": 0.156008
   },
   {
     "rank": 39,
     "symbol": "ENA",
-    "price": 0.74075
+    "price": 0.740181
   },
   {
     "rank": 40,
     "symbol": "XMR",
-    "price": 263.98
+    "price": 263.43
   },
   {
     "rank": 41,
@@ -207,12 +207,12 @@
   {
     "rank": 42,
     "symbol": "DAI",
-    "price": 0.999936
+    "price": 1.0
   },
   {
     "rank": 43,
     "symbol": "OKB",
-    "price": 202.56
+    "price": 202.98
   },
   {
     "rank": 44,
@@ -222,31 +222,31 @@
   {
     "rank": 45,
     "symbol": "ETC",
-    "price": 23.96
+    "price": 23.95
   },
   {
     "rank": 46,
     "symbol": "TAO",
-    "price": 361.54
+    "price": 361.69
   },
   {
     "rank": 47,
     "symbol": "NEAR",
-    "price": 2.67
+    "price": 2.68
   },
   {
     "rank": 48,
     "symbol": "APT",
-    "price": 4.72
+    "price": 4.71
   },
   {
     "rank": 49,
     "symbol": "ONDO",
-    "price": 0.998548
+    "price": 0.998763
   },
   {
     "rank": 50,
     "symbol": "ARB",
-    "price": 0.591987
+    "price": 0.592813
   }
 ]
