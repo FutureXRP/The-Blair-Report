@@ -1,15 +1,15 @@
 {
   "breaking": [
     {
-      "title": "Ethereum Foundation Rolls Out Next Phase of Trillion-Dollar Security Initiative",
-      "link": "https://cryptopotato.com/ethereum-foundation-rolls-out-next-phase-of-trillion-dollar-security-initiative/",
-      "published_at": "2025-08-23T19:14:52+00:00",
-      "source": "cryptopotato.com"
-    },
-    {
       "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
       "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
-      "published_at": "2025-08-23T19:36:47.938156+00:00",
+      "published_at": "2025-08-23T19:47:29.183589+00:00",
+      "source": "fca.org.uk"
+    },
+    {
+      "title": "FCA opens retail access to crypto ETNs",
+      "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
+      "published_at": "2025-08-23T19:47:29.183362+00:00",
       "source": "fca.org.uk"
     }
   ],
@@ -39,6 +39,12 @@
       "source": "bitcoinist.com"
     },
     {
+      "title": "Freedom of Mind and Freedom of Money: Inside Costa Rica’s Growing Bitcoin Circular Economy",
+      "link": "https://bitcoinmagazine.com/culture/bitcoin-circular-economy-awake-costa-rica",
+      "published_at": "2025-08-23T11:55:00+00:00",
+      "source": "bitcoinmagazine.com"
+    },
+    {
       "title": "Issuers keep filing ahead of expected crypto ETF launch frenzy",
       "link": "https://blockworks.co/news/issuers-filing-crypto-etf-frenzy",
       "published_at": "2025-08-22T20:01:20+00:00",
@@ -63,9 +69,9 @@
       "source": "cointelegraph.com"
     },
     {
-      "title": "Ripple’s XRP Is Now a Top 100 Global Asset — Here’s What It Means",
-      "link": "https://cryptopotato.com/ripples-xrp-is-now-a-top-100-global-asset-heres-what-it-means/",
-      "published_at": "2025-08-23T18:02:52+00:00",
+      "title": "Ethereum Foundation Rolls Out Next Phase of Trillion-Dollar Security Initiative",
+      "link": "https://cryptopotato.com/ethereum-foundation-rolls-out-next-phase-of-trillion-dollar-security-initiative/",
+      "published_at": "2025-08-23T19:14:52+00:00",
       "source": "cryptopotato.com"
     },
     {
@@ -115,12 +121,6 @@
       "link": "https://www.bankless.com/read/yearn-defi-vaults",
       "published_at": "2025-08-22T20:15:46+00:00",
       "source": "bankless.com"
-    },
-    {
-      "title": "World Liberty Financial Token Release Scheduled for September",
-      "link": "https://beincrypto.com/world-liberty-financial-wlfi-token-trading-update/",
-      "published_at": "2025-08-23T10:37:01+00:00",
-      "source": "beincrypto.com"
     }
   ],
   "week": [
@@ -137,10 +137,10 @@
       "source": "bankless.com"
     },
     {
-      "title": "Chinese Firm Invests $100 Million in BNB After All-Time High",
-      "link": "https://beincrypto.com/bnb-all-time-high-after-chinese-firm-investment/",
-      "published_at": "2025-08-22T19:07:23+00:00",
-      "source": "beincrypto.com"
+      "title": "The UK Needs to Hear from Bitcoin Supporters — This App Sends Your MP a Message in 1 Click",
+      "link": "https://bitcoinmagazine.com/politics/the-uk-needs-to-hear-from-bitcoin-supporters-this-app-sends-your-mp-a-message-in-1-click",
+      "published_at": "2025-08-21T15:32:48+00:00",
+      "source": "bitcoinmagazine.com"
     },
     {
       "title": "Kraken completes full DVT integration for Ethereum staking using SSV",
@@ -311,7 +311,37 @@
       "link": "https://blockworks.co/news/stripe-circle-l1-launches",
       "published_at": "2025-08-15T20:30:00+00:00",
       "source": "blockworks.co"
+    },
+    {
+      "title": "Petition Gains Momentum To Restore Satoshi Nakamoto Statue in Lugano",
+      "link": "https://btctimes.com/petition-gains-momentum-to-restore-satoshi-nakamoto-statue-in-lugano/",
+      "published_at": "2025-08-14T14:07:35+00:00",
+      "source": "btctimes.com"
+    },
+    {
+      "title": "Legislated Sanctions Evasion: How the Garantex Rebrand, Grinex, and the Ruble-Backed Token, A7A5 Have Shaped Russia’s Shadow Crypto Economy",
+      "link": "https://www.chainalysis.com/blog/a7a5-grinex-russian-crypto-economy-ofac-sanctions-august-2025/",
+      "published_at": "2025-08-14T16:41:44+00:00",
+      "source": "chainalysis.com"
+    },
+    {
+      "title": "SOTM July 31-August 6, 2025",
+      "link": "https://coinmetrics.io/state-of-the-market/sotm-july-31-august-6-2025/",
+      "published_at": "2025-08-07T18:18:07+00:00",
+      "source": "coinmetrics.io"
+    },
+    {
+      "title": "SEC DROPS XRP CASE, ETH NEARS $4K AGAIN, GOLD HITS ATH",
+      "link": "https://decrypt.co/videos/interviews/1JUcP9dr/sec-drops-xrp-case-eth-nears-4k-again-gold-hits-ath",
+      "published_at": "2025-08-08T15:21:06+00:00",
+      "source": "decrypt.co"
+    },
+    {
+      "title": "Federal Reserve Board announces it will sunset its novel activities supervision program and return to monitoring banks' novel activities through the normal supervisory process",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20250815a.htm",
+      "published_at": "2025-08-15T16:00:00+00:00",
+      "source": "federalreserve.gov"
     }
   ],
-  "generated_at": "2025-08-23T19:41:59.934863+00:00"
+  "generated_at": "2025-08-23T19:48:06.599960+00:00"
 }
