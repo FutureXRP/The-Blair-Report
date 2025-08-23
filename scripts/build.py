@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 import yaml
 import feedparser
 import requests
+from collections import defaultdict, deque
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR = os.path.join(ROOT, 'data')
@@ -25,37 +26,45 @@ BAD_WORDS = [
     'meme coin will','shib to','doge to','$1','$10','100x','thousandx'
 ]
 
+def canonical_source(link, fallback):
+    try:
+        host = urlparse(link).hostname or ''
+        host = host.lower().replace('www.','')
+        return host or fallback
+    except Exception:
+        return (fallback or '').lower()
+
+def normalize_title(t):
+    t = (t or '').lower()
+    t = re.sub(r'[^a-z0-9\s]', ' ', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+    # remove trivial words
+    STOP = {'the','a','an','to','of','for','on','in','and','with','by','from','is','are'}
+    toks = [w for w in t.split() if w not in STOP]
+    return ' '.join(toks)
+
 def text_score(title, summary):
     t = (title or '').lower()
     s = (summary or '').lower()
     score = 0
     for w in GOOD_WORDS:
-      if w in t or w in s: score += 2
+        if w in t or w in s: score += 2
     for w in BAD_WORDS:
-      if w in t or w in s: score -= 3
-    # prefer longer, specific titles a bit
-    score += min(len(t)//40, 3)
+        if w in t or w in s: score -= 3
+    score += min(len(t)//40, 3)  # prefer more specific titles a bit
     return score
-
-def canonical_source(link, fallback):
-    try:
-        host = urlparse(link).hostname or ''
-        return host.replace('www.', '')
-    except Exception:
-        return fallback
 
 # Load config
 with open(CONF, 'r', encoding='utf-8') as f:
     cfg = yaml.safe_load(f) or {}
 
 limits = cfg.get('limits', {})
-PER_CAT = limits.get('per_category', 18)
-TOP_LIMIT = limits.get('top', 24)
+PER_CAT = int(limits.get('per_category', 18))
+TOP_LIMIT = int(limits.get('top', 24))
 
-items_by_cat = {k: [] for k in CATS}
-seen_links = set()
-
-# Ingest feeds
+# ingest
+raw_by_cat = defaultdict(list)
+seen_link_hash = set()
 for src in cfg.get('sources', []):
     name = src.get('name','source')
     url = src.get('url','')
@@ -69,10 +78,11 @@ for src in cfg.get('sources', []):
             if not title or not link: continue
 
             h = hashlib.sha1(link.encode('utf-8')).hexdigest()
-            if h in seen_links: continue
-            seen_links.add(h)
+            if h in seen_link_hash: 
+                continue
+            seen_link_hash.add(h)
 
-            # pick a date
+            # date
             published_dt = None
             for k in ('published_parsed','updated_parsed','created_parsed'):
                 val = getattr(e, k, None)
@@ -87,33 +97,79 @@ for src in cfg.get('sources', []):
 
             summary = (getattr(e, 'summary', '') or '')
             score = text_score(title, summary)
-
-            items_by_cat.setdefault(cat, [])
-            items_by_cat[cat].append({
+            domain = canonical_source(link, name)
+            raw_by_cat[cat].append({
                 'title': title,
                 'link': link,
                 'published_at': published_dt.isoformat(),
-                'source': canonical_source(link, name),
-                'score': score
+                'source': domain,
+                'score': score,
+                'ntitle': normalize_title(title)
             })
     except Exception as ex:
         print(f"[WARN] feed error {name}: {ex}", file=sys.stderr)
 
-# Rank & trim per category
-for k, arr in items_by_cat.items():
-    if k == 'breaking': continue
-    arr.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
-    items_by_cat[k] = arr[:PER_CAT]
+def dedupe(items):
+    # de-dupe by (normalized title, domain prefix)
+    seen = set()
+    out = []
+    for it in items:
+        key = (it['ntitle'], it['source'])
+        if key in seen: 
+            continue
+        seen.add(key)
+        out.append(it)
+    return out
 
-# Build Top Stories from all other cats
+def diverse_pick(items, total_limit, per_source_cap=3):
+    """
+    Round-robin by source with a per-source cap to ensure diversity.
+    Items should already be sorted by (score, recency) desc.
+    """
+    buckets = defaultdict(deque)
+    count_by_source = defaultdict(int)
+    for it in items:
+        buckets[it['source']].append(it)
+
+    # interleave sources
+    sources = deque(sorted(buckets.keys()))
+    chosen = []
+    while sources and len(chosen) < total_limit:
+        src = sources[0]
+        if buckets[src]:
+            if count_by_source[src] < per_source_cap:
+                chosen.append(buckets[src].popleft())
+                count_by_source[src] += 1
+                # rotate to next source
+                sources.rotate(-1)
+            else:
+                # remove source if cap hit
+                sources.popleft()
+        else:
+            # empty bucket; drop source
+            sources.popleft()
+    return chosen
+
+items_by_cat = {k: [] for k in CATS}
+
+# rank, dedupe, diversify per category
+for cat, arr in raw_by_cat.items():
+    if cat not in items_by_cat:  # skip unknown cats
+        continue
+    arr.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
+    arr = dedupe(arr)
+    items_by_cat[cat] = diverse_pick(arr, PER_CAT, per_source_cap=3)
+
+# Build Top from all other cats (except breaking)
 all_items = []
 for k, arr in items_by_cat.items():
     if k in ('top','breaking'): continue
     all_items.extend(arr)
 all_items.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
-items_by_cat['top'] = all_items[:TOP_LIMIT]
+all_items = dedupe(all_items)
+items_by_cat['top'] = diverse_pick(all_items, TOP_LIMIT, per_source_cap=2)
 
-# Breaking (last 30 mins, any cat)
+# Breaking (last 30 minutes across high-signal cats)
 now = datetime.now(timezone.utc)
 breaking = []
 for k in ('regulation','tokenization','markets','top'):
@@ -126,18 +182,17 @@ for k in ('regulation','tokenization','markets','top'):
             pass
 items_by_cat['breaking'] = sorted(breaking, key=lambda x: x['published_at'], reverse=True)[:5]
 
-# Remove scores from final output
+# clean up helper fields
 for k in list(items_by_cat.keys()):
     for it in items_by_cat[k]:
         it.pop('score', None)
+        it.pop('ntitle', None)
 
-# Timestamp (helps ensure commits even if content repeats)
 items_by_cat['generated_at'] = datetime.now(timezone.utc).isoformat()
 
-# Write headlines.json
+# write headlines
 with open(os.path.join(DATA_DIR, 'headlines.json'), 'w', encoding='utf-8') as f:
     json.dump(items_by_cat, f, ensure_ascii=False, indent=2)
-
 print("WROTE headlines.json with counts:",
       {k: len(v) for k, v in items_by_cat.items() if isinstance(v, list)})
 
