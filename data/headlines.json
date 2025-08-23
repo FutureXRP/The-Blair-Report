@@ -1,16 +1,16 @@
 {
   "breaking": [
     {
-      "title": "AI Live Testing: The use of AI in UK financial markets - from promise to practice",
-      "link": "https://www.fca.org.uk/news/blogs/ai-live-testing-use-ai-uk-financial-markets-promise-practice",
-      "published_at": "2025-08-23T19:50:46.771880+00:00",
-      "source": "fca.org.uk"
+      "title": "$3B stablecoin inflows hit Binance – Is Asia leading crypto’s next reset?",
+      "link": "https://ambcrypto.com/3b-stablecoin-inflows-hit-binance-is-asia-leading-cryptos-next-reset/",
+      "published_at": "2025-08-23T20:00:03+00:00",
+      "source": "ambcrypto.com"
     },
     {
-      "title": "FCA opens retail access to crypto ETNs",
-      "link": "https://www.fca.org.uk/news/press-releases/fca-opens-retail-access-crypto-etns",
-      "published_at": "2025-08-23T19:50:46.771649+00:00",
-      "source": "fca.org.uk"
+      "title": "Epstein files released to Congress are mostly ‘recycled’ documents, Democrat says",
+      "link": "https://www.cnbc.com/2025/08/23/jeffrey-epstein-ghislaine-maxwell-trump-doj.html",
+      "published_at": "2025-08-23T19:34:28+00:00",
+      "source": "cnbc.com"
     }
   ],
   "day": [
@@ -45,10 +45,16 @@
       "source": "bitcoinmagazine.com"
     },
     {
-      "title": "Issuers keep filing ahead of expected crypto ETF launch frenzy",
-      "link": "https://blockworks.co/news/issuers-filing-crypto-etf-frenzy",
-      "published_at": "2025-08-22T20:01:20+00:00",
+      "title": "Friday charts: Bubbles then, and now",
+      "link": "https://blockworks.co/news/market-bubble-charts",
+      "published_at": "2025-08-22T21:00:00+00:00",
       "source": "blockworks.co"
+    },
+    {
+      "title": "Major League Baseball closes in on new media rights deals with ESPN, NBC, Netflix",
+      "link": "https://www.cnbc.com/2025/08/22/mlbrrights-espn-nbc-netflix.html",
+      "published_at": "2025-08-22T22:11:09+00:00",
+      "source": "cnbc.com"
     },
     {
       "title": "Bitcoin Liquid Staking Gains Momentum as Lombard Launches BARD Token and Foundation",
@@ -115,12 +121,6 @@
       "link": "https://ambcrypto.com/cme-xrp-futures-hit-9b-will-spot-etf-approval-flip-the-23-slide/",
       "published_at": "2025-08-23T08:00:48+00:00",
       "source": "ambcrypto.com"
-    },
-    {
-      "title": "Keeping DeFi Yields Simple with Yearn Vaults",
-      "link": "https://www.bankless.com/read/yearn-defi-vaults",
-      "published_at": "2025-08-22T20:15:46+00:00",
-      "source": "bankless.com"
     }
   ],
   "week": [
@@ -149,9 +149,9 @@
       "source": "bitcoinmagazine.com"
     },
     {
-      "title": "Kraken completes full DVT integration for Ethereum staking using SSV",
-      "link": "https://blockworks.co/news/kraken-full-dvt-integration-ethereum-staking",
-      "published_at": "2025-08-21T15:00:00+00:00",
+      "title": "Issuers keep filing ahead of expected crypto ETF launch frenzy",
+      "link": "https://blockworks.co/news/issuers-filing-crypto-etf-frenzy",
+      "published_at": "2025-08-22T20:01:20+00:00",
       "source": "blockworks.co"
     },
     {
@@ -165,6 +165,12 @@
       "link": "https://www.chainalysis.com/blog/nigerian-sec-vision-trusted-crypto-ecosystem/",
       "published_at": "2025-08-21T04:35:01+00:00",
       "source": "chainalysis.com"
+    },
+    {
+      "title": "The new gold play as investors look to hedge against risk, volatility",
+      "link": "https://www.cnbc.com/2025/08/22/the-new-gold-play-as-investors-look-to-hedge-against-risk-volatility.html",
+      "published_at": "2025-08-22T17:06:17+00:00",
+      "source": "cnbc.com"
     },
     {
       "title": "VanEck Aims to Take Solana's Liquid Staking to TradFi Investors Via JitoSOL ETF",
@@ -209,6 +215,12 @@
       "source": "federalreserve.gov"
     },
     {
+      "title": "Worldline: How to make a €1.6bn overdraft disappear",
+      "link": "https://www.ft.com/content/d2325830-ea96-49c1-b648-b96639374c19",
+      "published_at": "2025-08-22T06:00:05+00:00",
+      "source": "ft.com"
+    },
+    {
       "title": "Reading the Crowd: How Cost Basis Distribution Reveals Market Tops and Bottoms",
       "link": "https://insights.glassnode.com/how-cbd-reveals-market-tops-and-bottoms/",
       "published_at": "2025-08-22T15:44:47+00:00",
@@ -219,18 +231,6 @@
       "link": "https://www.investing.com/news/cryptocurrency-news/mexc-rises-to-top-2-crypto-exchange-capturing-86-market-share-in-spot-trading-4206434",
       "published_at": "2025-08-22T10:30:35+00:00",
       "source": "investing.com"
-    },
-    {
-      "title": "State of Sui Q2 2025",
-      "link": "https://messari.io/article/state-of-sui-q2-2025",
-      "published_at": "2025-08-19T15:00:00+00:00",
-      "source": "messari.io"
-    },
-    {
-      "title": "Insiders and LIBRA snipers hijack Kanye’s $3B YZY coin",
-      "link": "https://protos.com/insiders-and-libra-snipers-hijack-kanyes-3b-yzy-coin/",
-      "published_at": "2025-08-21T16:03:29+00:00",
-      "source": "protos.com"
     }
   ],
   "month": [
@@ -281,6 +281,12 @@
       "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20250731a.htm",
       "published_at": "2025-07-31T18:30:00+00:00",
       "source": "federalreserve.gov"
+    },
+    {
+      "title": "The Treasury market’s sudden remarkable tranquility",
+      "link": "https://www.ft.com/content/982f0eed-3613-4c92-8d3b-58e13bf91bcf",
+      "published_at": "2025-08-15T13:17:56+00:00",
+      "source": "ft.com"
     },
     {
       "title": "BTC Market Pulse: Week 32",
@@ -335,13 +341,7 @@
       "link": "https://decrypt.co/videos/interviews/1JUcP9dr/sec-drops-xrp-case-eth-nears-4k-again-gold-hits-ath",
       "published_at": "2025-08-08T15:21:06+00:00",
       "source": "decrypt.co"
-    },
-    {
-      "title": "Federal Reserve Board announces it will sunset its novel activities supervision program and return to monitoring banks' novel activities through the normal supervisory process",
-      "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20250815a.htm",
-      "published_at": "2025-08-15T16:00:00+00:00",
-      "source": "federalreserve.gov"
     }
   ],
-  "generated_at": "2025-08-23T19:51:18.894065+00:00"
+  "generated_at": "2025-08-23T20:01:35.667007+00:00"
 }
