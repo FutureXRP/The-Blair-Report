@@ -1,6 +1,12 @@
 {
   "breaking": [
     {
+      "title": "Here’s what happened in crypto today",
+      "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "published_at": "2025-08-23T22:34:31+00:00",
+      "source": "cointelegraph.com"
+    },
+    {
       "title": "Custodia Bank CEO warns of TradFi firms facing first crypto winter",
       "link": "https://cointelegraph.com/news/custodia-ceo-warns-tradfi-firms-first-crypto-winter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
       "published_at": "2025-08-23T22:14:34+00:00",
@@ -101,12 +107,6 @@
       "link": "https://www.investing.com/news/cryptocurrency-news/ethereum-breaks-4750-support-as-pepeto-crosses-6287248-in-presale-funding-4207890",
       "published_at": "2025-08-23T19:00:37+00:00",
       "source": "investing.com"
-    },
-    {
-      "title": "Assessing PENGU’s 15% breakout – 2 reasons why $0.10 is close",
-      "link": "https://ambcrypto.com/assessing-pengus-15-breakout-2-reasons-why-0-10-is-close/",
-      "published_at": "2025-08-23T19:00:24+00:00",
-      "source": "ambcrypto.com"
     }
   ],
   "day": [
@@ -115,12 +115,6 @@
       "link": "https://ambcrypto.com/7-companies-rush-to-launch-xrp-etfs-analyst-hails-good-sign/",
       "published_at": "2025-08-23T10:00:00+00:00",
       "source": "ambcrypto.com"
-    },
-    {
-      "title": "Ethereum Hits Fresh All-Time Highs",
-      "link": "https://www.bankless.com/read/ethereum-hits-fresh-all-time-highs",
-      "published_at": "2025-08-22T22:34:00+00:00",
-      "source": "bankless.com"
     },
     {
       "title": "Ripple-SEC Case Closure Followed by Rush of Updated XRP ETF Filings",
@@ -141,9 +135,9 @@
       "source": "coinjournal.net"
     },
     {
-      "title": "Crypto sentiment returns to Greed as Bitcoin and Ether spike on Fed speech",
-      "link": "https://cointelegraph.com/news/crypto-market-greed-bitcoin-ether-price-rally-federal-reserve-dovish?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "published_at": "2025-08-23T07:11:03+00:00",
+      "title": "Korean man arrested over $50M crypto-to-gold laundering scheme",
+      "link": "https://cointelegraph.com/news/thai-police-arrest-korean-man-50m-crypto-gold-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "published_at": "2025-08-23T10:39:41+00:00",
       "source": "cointelegraph.com"
     },
     {
@@ -183,9 +177,9 @@
       "source": "ambcrypto.com"
     },
     {
-      "title": "Philippines Lawmaker Proposes 10,000 BTC Strategic Reserve",
-      "link": "https://beincrypto.com/philippines-lawmaker-proposes-10000-btc-strategic-reserve/",
-      "published_at": "2025-08-23T07:00:00+00:00",
+      "title": "World Liberty Financial Token Release Scheduled for September",
+      "link": "https://beincrypto.com/world-liberty-financial-wlfi-token-trading-update/",
+      "published_at": "2025-08-23T10:37:01+00:00",
       "source": "beincrypto.com"
     },
     {
@@ -195,16 +189,10 @@
       "source": "coindesk.com"
     },
     {
-      "title": "IRS crypto boss Trish Turner resigns just 3 months into the role",
-      "link": "https://cointelegraph.com/news/irs-crypto-boss-trish-turner-resigns-after-3-months-in-the-role?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "published_at": "2025-08-23T04:44:37+00:00",
+      "title": "Crypto sentiment returns to Greed as Bitcoin and Ether spike on Fed speech",
+      "link": "https://cointelegraph.com/news/crypto-market-greed-bitcoin-ether-price-rally-federal-reserve-dovish?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "published_at": "2025-08-23T07:11:03+00:00",
       "source": "cointelegraph.com"
-    },
-    {
-      "title": "VanEck Files to Launch ETF With Jito's Liquid-Staked Solana Tokens",
-      "link": "https://decrypt.co/336514/vaneck-files-launch-solana-etf-jito-liquid-staked-tokens",
-      "published_at": "2025-08-22T22:37:09+00:00",
-      "source": "decrypt.co"
     },
     {
       "title": "Bitcoin Holds Strong In ‘Wall Of Worry’, Path To $183,000 Remains Open – Analyst",
@@ -217,6 +205,12 @@
       "link": "https://thedefiant.io/news/markets/cryptocurrency-market-cap-tops-4-trillion-on-250-billion-daily-surge-001a1f41",
       "published_at": "2025-08-23T04:00:45+00:00",
       "source": "thedefiant.io"
+    },
+    {
+      "title": "Ripple CTO Issues Expert Reaction Amid Fed-Driven Market Rally",
+      "link": "https://u.today/ripple-cto-issues-expert-reaction-amid-fed-driven-market-rally",
+      "published_at": "2025-08-23T10:28:00+00:00",
+      "source": "u.today"
     }
   ],
   "week": [
@@ -439,5 +433,5 @@
       "source": "insights.glassnode.com"
     }
   ],
-  "generated_at": "2025-08-23T22:33:42.827643+00:00"
+  "generated_at": "2025-08-23T22:45:02.542065+00:00"
 }
