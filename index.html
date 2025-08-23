@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Blair Report</title>
-  <meta name="description" content="The Blair Report – a Drudge-style crypto aggregator focused on XRP, XDC, ZBCN, tokenization, ETFs, regulation, and adoption." />
+  <meta name="description" content="The Blair Report – a Drudge-style crypto front page for news, regulation, tokenization, research, and culture." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -14,7 +14,11 @@
       <img src="assets/logo.svg" alt="The Blair Report" class="logo" />
       <h1>THE BLAIR REPORT</h1>
     </div>
-    <div id="ticker" class="ticker" aria-live="polite"></div>
+
+    <!-- Scrolling prices (top 50 mcap) -->
+    <div class="ticker-wrap" aria-label="Top 50 crypto prices, scrolling">
+      <div id="ticker" class="ticker"></div>
+    </div>
   </header>
 
   <main>
@@ -25,37 +29,30 @@
         <h2>Top Stories</h2>
         <ul id="top"></ul>
       </section>
+
       <section>
         <h2>Regulation & Policy</h2>
         <ul id="regulation"></ul>
       </section>
+
       <section>
         <h2>Tokenization / RWAs</h2>
         <ul id="tokenization"></ul>
       </section>
+
       <section>
-        <h2>XRP / XRPL</h2>
-        <ul id="xrp"></ul>
-      </section>
-      <section>
-        <h2>XDC</h2>
-        <ul id="xdc"></ul>
-      </section>
-      <section>
-        <h2>ZBCN</h2>
-        <ul id="zbcn"></ul>
-      </section>
-      <section>
-        <h2>Bitcoin & Ethereum</h2>
-        <ul id="bluechips"></ul>
-      </section>
-      <section>
-        <h2>Research & Tech</h2>
+        <h2>Research & Data</h2>
         <ul id="research"></ul>
       </section>
+
       <section>
-        <h2>Memes & Culture</h2>
-        <ul id="memes"></ul>
+        <h2>Culture & Commentary</h2>
+        <ul id="culture"></ul>
+      </section>
+
+      <section>
+        <h2>Markets</h2>
+        <ul id="markets"></ul>
       </section>
     </div>
   </main>
