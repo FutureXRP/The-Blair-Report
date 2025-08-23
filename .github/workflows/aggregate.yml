@@ -1,9 +1,9 @@
-name: Aggregate Feeds
+name: Aggregate news
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
-  workflow_dispatch: {}
+    - cron: '*/30 * * * *'   # every 30 minutes; adjust as you like
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -11,12 +11,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10  # <- hard cap for stuck runs
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -28,26 +25,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install feedparser requests pyyaml
 
-      - name: Build JSON (with timeouts & progress)
-        run: |
-          python scripts/build.py
+      - name: Aggregate feeds
+        run: python scripts/build.py
 
-      - name: Show tree (debug)
+      - name: Commit JSON
         run: |
-          echo "::group::Repo tree"
-          find . -maxdepth 2 -type d -print
-          echo "----- data -----"
-          ls -la data || true
-          echo "::endgroup::"
-
-      - name: Commit & push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@users.noreply.github.com"
-          git add -A data
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update headlines & prices [skip ci]"
-            git push
-          fi
+          git config user.name "blair-bot"
+          git config user.email "blairbot@example.com"
+          git add data/*.json || true
+          git commit -m "chore: aggregate $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes"
+          git push
