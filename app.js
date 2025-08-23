@@ -1,4 +1,4 @@
-(async function() {
+(async function () {
   const year = document.getElementById('year');
   year.textContent = new Date().getFullYear();
 
@@ -9,9 +9,9 @@
       const mins = Math.floor(delta / 60000);
       if (mins < 1) return 'just now';
       if (mins < 60) return mins + 'm ago';
-      const hrs = Math.floor(mins/60);
+      const hrs = Math.floor(mins / 60);
       if (hrs < 24) return hrs + 'h ago';
-      const days = Math.floor(hrs/24);
+      const days = Math.floor(hrs / 24);
       return days + 'd ago';
     } catch { return ''; }
   }
@@ -52,19 +52,28 @@
       breakingEl.textContent = breaking.map(b => b.title).join('  •  ');
     }
 
-    // Ticker
+    // Ticker (top 50 by market cap)
     const tick = document.getElementById('ticker');
-    const parts = [];
-    for (const k of ['xrp','xdc','zbcn','btc','eth']) {
-      if (prices[k] !== undefined) parts.push(`${k.toUpperCase()}: $${prices[k]}`);
+    tick.innerHTML = '';
+    if (Array.isArray(prices) && prices.length) {
+      // Duplicate line once to make seamless loop feel fuller
+      const line = prices.map(p => {
+        const sym = (p.symbol || '').toUpperCase();
+        const rank = p.rank ? `#${p.rank}` : '';
+        const price = (p.price !== undefined) ? `$${Number(p.price).toLocaleString()}` : '';
+        return `<span>${rank} ${sym} ${price}</span>`;
+      }).join('');
+      tick.innerHTML = line + line;
     }
-    tick.textContent = parts.join('  •  ');
 
     // Sections
     const map = {
-      top: 'top', regulation: 'regulation', tokenization: 'tokenization',
-      xrp: 'xrp', xdc: 'xdc', zbcn: 'zbcn', bluechips: 'bluechips',
-      research: 'research', memes: 'memes'
+      top: 'top',
+      regulation: 'regulation',
+      tokenization: 'tokenization',
+      research: 'research',
+      culture: 'culture',
+      markets: 'markets'
     };
     for (const [key, id] of Object.entries(map)) {
       const el = document.getElementById(id);
