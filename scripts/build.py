@@ -33,7 +33,8 @@ GOOD_WORDS = [
     'approval','listing','launch','upgrade','roadmap','institution','bank','exchange',
     'regulation','ruling','settlement','framework','compliance','pilot','testnet','mainnet',
     'custody','treasury','tokenized','price prediction', '10x', 'market cap', 'domino theory',
-    'reverse carry trade', 'sec', 'digital asset', 'xrp', 'xdc', 'xlm', 'hbar', 'link'
+    'reverse carry trade', 'sec', 'digital asset', 'xrp', 'xdc', 'xlm', 'hbar', 'link', 'price',
+    'appreciation', 'movement', 'bull', 'bear', 'bullish', 'bearish'
 ]
 BAD_WORDS = [
     'to the moon','burning','giveaway','airdrop scam',
