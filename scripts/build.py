@@ -32,10 +32,11 @@ GOOD_WORDS = [
     'etf','tokenization','rwa','real-world asset','adoption','integration','partnership',
     'approval','listing','launch','upgrade','roadmap','institution','bank','exchange',
     'regulation','ruling','settlement','framework','compliance','pilot','testnet','mainnet',
-    'custody','treasury','tokenized'
+    'custody','treasury','tokenized','price prediction', '10x', 'market cap', 'domino theory',
+    'reverse carry trade', 'sec', 'digital asset', 'xrp', 'xdc', 'xlm', 'hbar', 'link'
 ]
 BAD_WORDS = [
-    'price prediction','to the moon','burning','giveaway','airdrop scam',
+    'to the moon','burning','giveaway','airdrop scam',
     'meme coin will','shib to','doge to','$1','$10','100x','thousandx','lambo','rocket'
 ]
 
