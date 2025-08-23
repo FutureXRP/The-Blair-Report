@@ -14,7 +14,16 @@ CONF = os.path.join(ROOT, 'config', 'sources.yaml')
 
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# ---- filtering ----
+# ---------------- Crypto relevance gating ----------------
+# A story must match at least one of these terms in title/summary/link to be included.
+RELEVANT_PATTERNS = re.compile(
+    r"(crypto|cryptocurrency|bitcoin|btc|ethereum|eth|solana|sol|xrp|binance|coinbase|kraken|"
+    r"stablecoin|usdt|usdc|defi|web3|nft|layer\s*2|l2|blockchain|onchain|token(ization|ized|omics)?|"
+    r"rwa|real[-\s]?world\s*assets?|mi[cs]a\b|digital\s+asset|virtual\s+asset|etl?\b|etf\b|spot\s+etf|"
+    r"smart\s+contract|wallet|custody|staking|airdrops?|dex|cex)",
+    re.IGNORECASE
+)
+
 GOOD_WORDS = [
     'etf','tokenization','rwa','real-world asset','adoption','integration','partnership',
     'approval','listing','launch','upgrade','roadmap','institution','bank','exchange',
@@ -24,6 +33,10 @@ BAD_WORDS = [
     'price prediction','to the moon','burning','giveaway','airdrop scam',
     'meme coin will','shib to','doge to','$1','$10','100x','thousandx'
 ]
+
+def is_crypto_relevant(title, summary, link):
+    text = f"{title or ''} {summary or ''} {link or ''}"
+    return bool(RELEVANT_PATTERNS.search(text))
 
 def score_text(title, summary):
     t = (title or '').lower()
@@ -71,7 +84,7 @@ def diverse_pick(items, total_limit, per_source_cap=3):
             sources.popleft()
     return chosen
 
-# ---- config ----
+# ---------------- read config ----------------
 try:
     with open(CONF, 'r', encoding='utf-8') as f:
         cfg = yaml.safe_load(f) or {}
@@ -82,13 +95,10 @@ except Exception as e:
 limits = cfg.get('limits', {})
 PER_BUCKET = int(limits.get('per_category', 18))
 
-# ---- ingest with per-feed timeouts ----
-headers = {
-    "User-Agent": "BlairReportBot/1.0 (+https://example.com)"
-}
+# ---------------- ingest with timeouts ----------------
+headers = {"User-Agent": "BlairReportBot/1.0 (+https://example.com)"}
 raw = []
 seen_links = set()
-
 sources = cfg.get('sources', [])
 print(f"Starting ingest: {len(sources)} sources")
 
@@ -99,7 +109,6 @@ for i, src in enumerate(sources, start=1):
         continue
     print(f"[{i}/{len(sources)}] Fetching: {name} -> {url}")
     try:
-        # fetch bytes with timeout, then parse
         resp = requests.get(url, headers=headers, timeout=10)
         resp.raise_for_status()
         d = feedparser.parse(resp.content)
@@ -112,13 +121,17 @@ for i, src in enumerate(sources, start=1):
         link = (e.get('link') or '').strip()
         if not title or not link:
             continue
+        # hard relevance gate
+        summary = (getattr(e, 'summary', '') or '')
+        if not is_crypto_relevant(title, summary, link):
+            continue
 
         h = hashlib.sha1(link.encode('utf-8')).hexdigest()
         if h in seen_links:
             continue
         seen_links.add(h)
 
-        # date extraction
+        # date
         published_dt = None
         for k in ('published_parsed','updated_parsed','created_parsed'):
             val = getattr(e, k, None)
@@ -131,7 +144,6 @@ for i, src in enumerate(sources, start=1):
         if not published_dt:
             published_dt = datetime.now(timezone.utc)
 
-        summary = (getattr(e, 'summary', '') or '')
         sc = score_text(title, summary)
         src_domain = canonical_source(link, name)
         raw.append({
@@ -143,9 +155,9 @@ for i, src in enumerate(sources, start=1):
             'ntitle': normalize_title(title)
         })
 
-print(f"Ingest complete. Items: {len(raw)}")
+print(f"Ingest complete. Items (pre-dedupe): {len(raw)}")
 
-# ---- dedupe ----
+# ---------------- dedupe ----------------
 seen = set()
 deduped = []
 for it in sorted(raw, key=lambda x:(x['score'], x['published_at']), reverse=True):
@@ -155,7 +167,7 @@ for it in sorted(raw, key=lambda x:(x['score'], x['published_at']), reverse=True
     seen.add(key)
     deduped.append(it)
 
-# ---- bucket by age ----
+# ---------------- age buckets ----------------
 now = datetime.now(timezone.utc)
 
 def age_minutes(iso):
@@ -193,13 +205,13 @@ for k in list(buckets.keys()):
 
 buckets['generated_at'] = now.isoformat()
 
-# ---- write headlines ----
+# ---------------- write headlines ----------------
 with open(os.path.join(DATA_DIR, 'headlines.json'), 'w', encoding='utf-8') as f:
     json.dump(buckets, f, ensure_ascii=False, indent=2)
 
 print("WROTE headlines.json with counts:", {k: len(v) for k,v in buckets.items() if isinstance(v, list)})
 
-# ---- prices with timeout ----
+# ---------------- prices (top 50) ----------------
 prices = []
 try:
     r = requests.get(
