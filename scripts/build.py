@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-# The Blair Report - Aggregator build script (wide-net edition)
-# - Buckets by freshness with non-overlapping categories
-# - Crypto-only gating using dynamic token lists (top ~200-250 by mcap from CoinGecko)
-# - Quality scoring + per-source diversity
-# - Outputs:
-#     data/headlines.json
-#     data/prices.json
+# The Blair Report - Aggregator build script (wide-net, hardened)
+# Outputs:
+#   data/headlines.json
+#   data/prices.json
 
 import os, json, time, hashlib, sys, re
 from datetime import datetime, timezone
@@ -17,33 +14,58 @@ import feedparser
 import requests
 
 # ---------------- Paths & setup ----------------
-ROOT = os.path.dirname(os.path.dirname(__file__))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_DIR = os.path.join(ROOT, 'data')
 CONF = os.path.join(ROOT, 'config', 'sources.yaml')
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # ---------------- Config read ----------------
-try:
-    with open(CONF, 'r', encoding='utf-8') as f:
-        cfg = yaml.safe_load(f) or {}
-except Exception as e:
-    print("ERROR: cannot read config/sources.yaml:", e, file=sys.stderr)
-    cfg = {}
+def load_cfg():
+    try:
+        with open(CONF, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f) or {}
+    except Exception as e:
+        print("WARN: cannot read config/sources.yaml -> using minimal defaults:", e, file=sys.stderr)
+        # Minimal default sources so a first run won’t crash
+        return {
+            "limits": {"per_category": 15},
+            "sources": [
+                {"name":"CoinDesk", "url":"https://www.coindesk.com/arc/outboundfeeds/rss/"},
+                {"name":"CoinTelegraph", "url":"https://cointelegraph.com/rss"},
+                {"name":"Decrypt", "url":"https://decrypt.co/feed"},
+                {"name":"XRPL Blog", "url":"https://xrpl.org/blog/index.xml"},
+                {"name":"Ripple", "url":"https://www.ripple.com/insights/feed/"}
+            ]
+        }
 
+cfg = load_cfg()
 limits = cfg.get('limits', {})
-PER_BUCKET = int(limits.get('per_category', 15))  # tighter curation
+PER_BUCKET = int(limits.get('per_category', 15))
 
 # ---------------- HTTP defaults ----------------
-UA = "BlairReportBot/1.1 (+https://theblairreport.com)"
+UA = "BlairReportBot/1.2 (+https://theblairreport.com)"
 headers = {"User-Agent": UA}
 
+def get_json(url, params=None, timeout=20, retries=2):
+    last = None
+    for i in range(retries+1):
+        try:
+            r = requests.get(url, params=params, timeout=timeout, headers=headers)
+            r.raise_for_status()
+            return r.json()
+        except Exception as ex:
+            last = ex
+            if i < retries:
+                time.sleep(1.2*(i+1))
+    raise last
+
 # ============================================================================
-# Dynamic token universe (top ~200–250 by market cap from CoinGecko)
-# Falls back to a strong static set if API fails.
+# Dynamic token universe (top ~200-250 by market cap from CoinGecko)
+# Fallback to a static set; also guard against empty results.
 # ============================================================================
 def fetch_top_tokens(max_coins=250, vs="usd"):
     try:
-        r = requests.get(
+        coins = get_json(
             "https://api.coingecko.com/api/v3/coins/markets",
             params={
                 "vs_currency": vs,
@@ -51,34 +73,30 @@ def fetch_top_tokens(max_coins=250, vs="usd"):
                 "per_page": max_coins,
                 "page": 1,
                 "price_change_percentage": "24h",
-                # no sparkline to keep payload lean
             },
             timeout=20,
-            headers=headers,
-        )
-        r.raise_for_status()
-        coins = r.json() or []
+            retries=2,
+        ) or []
         tickers = set()
         names = set()
         for c in coins:
             sym = (c.get("symbol") or "").strip().lower()
             nm = (c.get("name") or "").strip().lower()
-            if sym:
-                tickers.add(sym)  # e.g., "xrp"
+            if sym: tickers.add(sym)
             if nm:
-                # accept full name and split words (e.g., "bitcoin cash" -> "bitcoin", "cash")
                 names.add(nm)
                 for w in re.split(r"[\s\-/]+", nm):
                     if len(w) >= 3:
                         names.add(w)
-        # keep common majors explicitly even if pagination changes
         majors = {"btc","bitcoin","eth","ethereum","xrp","ripple","sol","solana","ada","cardano"}
         tickers |= majors
         names |= majors
+        # Guard: never return empty sets
+        if not tickers or not names:
+            raise RuntimeError("empty token sets")
         return tickers, names
     except Exception as ex:
         print("[WARN] CoinGecko token list fetch failed; using static fallback:", ex, file=sys.stderr)
-        # Fallback includes focus stack + majors + a few more L1s
         fallback_tickers = {
             "xrp","xdc","xlm","zbcn","hbar","link","flr","sgb",
             "btc","eth","sol","ada","avax","dot","matic","atom","near","algo","apt","sui","inj","stx",
@@ -94,44 +112,33 @@ def fetch_top_tokens(max_coins=250, vs="usd"):
 
 DYN_TICKERS, DYN_NAMES = fetch_top_tokens(250)
 
-# Your focus set gets special handling (boosts, whitelist tolerance)
 FOCUS_TICKERS = {"xrp","xdc","xlm","zbcn","hbar","link","flr","sgb"}
 FOCUS_TERMS = {
-    # ledgers / projects
     "xrp","xrpl","ripple","xdc","xinfin","xlm","stellar","zbcn","zebec","hbar","hedera",
     "link","chainlink","flr","flare","sgb","songbird","xdc network","r3","corda","cordapp",
-    # rails / infra / standards
     "swift","iso 20022","dtcc","euroclear","clearstream","t+1","nostro","vostro",
     "securities depository","instant payments","rtgs","sepa","fednow","cbdc",
-    # tokenization / rwa
     "tokenization","tokenised","tokenized","rwa","real world asset","real-world asset",
-    # general crypto so we don’t miss broad breaking stories
     "crypto","cryptocurrency","blockchain","onchain","web3","defi","l2","layer 2",
     "stablecoin","usdc","usdt","etf","spot etf","smart contract","wallet","custody",
     "staking","dex","cex","tokenomics","airdrop","interoperability"
 }
 
-# Build regex: dynamic tokens (tickers + names), focus terms, majors
 def _make_relevant_regex():
     parts = []
-
-    # $TICKERS at the beginning of title or in text ($XRP, $ETH, etc.)
-    parts.append(r"\$\b?(?:%s)\b" % "|".join(sorted(re.escape(t) for t in DYN_TICKERS | FOCUS_TICKERS)))
-
-    # Bare tickers (word-bounded)
-    parts.append(r"\b(?:%s)\b" % "|".join(sorted(re.escape(t) for t in DYN_TICKERS | FOCUS_TICKERS)))
-
-    # Coin names (full or word tokens), include dynamic + focus names
-    parts.append(r"\b(?:%s)\b" % "|".join(sorted(re.escape(n) for n in DYN_NAMES | FOCUS_TERMS)))
-
-    # Keep explicit majors for safety
+    # $TICKERS
+    if DYN_TICKERS or FOCUS_TICKERS:
+        parts.append(r"\$\b?(?:%s)\b" % "|".join(sorted(re.escape(t) for t in (DYN_TICKERS | FOCUS_TICKERS))))
+        parts.append(r"\b(?:%s)\b" % "|".join(sorted(re.escape(t) for t in (DYN_TICKERS | FOCUS_TICKERS))))
+    # names / focus terms
+    name_pool = (DYN_NAMES | FOCUS_TERMS) if (DYN_NAMES or FOCUS_TERMS) else {"crypto"}
+    parts.append(r"\b(?:%s)\b" % "|".join(sorted(re.escape(n) for n in name_pool)))
+    # keep explicit majors for safety
     parts.append(r"\b(?:btc|bitcoin|eth|ethereum|sol|solana|ada|cardano)\b")
-
     return re.compile("(" + "|".join(parts) + ")", re.IGNORECASE)
 
 RELEVANT_PATTERNS = _make_relevant_regex()
 
-# Trusted sources (auto-pass domain check)
 WHITELIST_DOMAINS = {
     "xrpl.org","ripple.com","xinfin.org","xdc.org","zebec.io","hedera.com",
     "chain.link","rwa.xyz","swift.com","dtcc.com","euroclear.com","clearstream.com",
@@ -149,55 +156,41 @@ def is_crypto_relevant(title, summary, link):
     text = f"{title or ''} {summary or ''} {link or ''}"
     if RELEVANT_PATTERNS.search(text):
         return True
-    # Domain whitelist (crypto/finance infra sources can be sparse in keywords)
     if _host(link) in WHITELIST_DOMAINS:
         return True
-    # $TICKER at title start
     t = (title or "").strip()
-    if re.match(r"^\s*\$(%s)\b" % "|".join(re.escape(x) for x in FOCUS_TICKERS | DYN_TICKERS), t, re.IGNORECASE):
+    if re.match(r"^\s*\$(%s)\b" % "|".join(re.escape(x) for x in (FOCUS_TICKERS | DYN_TICKERS)), t, re.IGNORECASE):
         return True
     return False
 
-# ---------------- Quality scoring (soft ranking) ----------------
+# ---------------- Quality scoring ----------------
 GOOD_WORDS = [
-    # focus stack gets explicit boosts
     'xrp','xrpl','ripple','xdc','xinfin','xlm','stellar','zbcn','zebec','hbar','hedera',
     'link','chainlink','flr','flare','sgb','songbird',
-    # rails / institutions / standards
     'swift','iso 20022','dtcc','euroclear','clearstream','nostro','vostro','rtgs','securities depository',
-    # tokenization / enterprise adoption
     'tokenization','tokenized','tokenised','rwa','real-world asset','pilot','production','integration',
     'partnership','institution','bank','approval','listing','launch','upgrade','roadmap','framework',
     'compliance','settlement','custody','treasury','testnet','mainnet',
-    # general
     'etf','spot etf','onchain','defi','interoperability','regulation','ruling'
 ]
-
 BAD_WORDS = [
-    # low-signal hype / spam
     'to the moon','lambo','giveaway','airdrop scam','rug','pump and dump',
-    # clickbait-y predictions
     '100x','1000x','thousandx','rocket','buy now','guaranteed profits'
 ]
-
-SCORE_DROP_THRESHOLD = -1  # drop anything worse than this
+SCORE_DROP_THRESHOLD = -1
 
 def score_text(title, summary):
     t = (title or '').lower()
     s = (summary or '').lower()
     score = 0
     for w in GOOD_WORDS:
-        if w in t or w in s:
-            score += 2
+        if w in t or w in s: score += 2
     for w in BAD_WORDS:
-        if w in t or w in s:
-            score -= 3
-    # bonus for focus tickers/terms
+        if w in t or w in s: score -= 3
     if re.search(r"\b(?:%s)\b" % "|".join(FOCUS_TICKERS), t) or re.search(r"\b(?:%s)\b" % "|".join(FOCUS_TICKERS), s):
         score += 3
     if any(k in t for k in ("tokenization","tokenized","rwa","iso 20022","swift","dtcc","euroclear","clearstream")):
         score += 2
-    # slight boost for more specific titles
     score += min(len(t)//40, 3)
     return score
 
@@ -217,7 +210,6 @@ def normalize_title(t):
     return ' '.join(toks)
 
 def diverse_pick(items, total_limit, per_source_cap=2):
-    """Round-robin by source with strict per-source cap for variety."""
     buckets = defaultdict(deque)
     count_by_src = defaultdict(int)
     for it in items:
@@ -234,7 +226,7 @@ def diverse_pick(items, total_limit, per_source_cap=2):
             else:
                 sources.popleft()
         else:
-            sources.pop()
+            sources.popleft()
     return chosen
 
 # ============================================================================
@@ -267,18 +259,17 @@ for i, src in enumerate(sources, start=1):
 
         summary = (getattr(e, 'summary', '') or '')
         if not is_crypto_relevant(title, summary, link):
-            continue  # hard gate: crypto-only
+            continue
 
         sc = score_text(title, summary)
         if sc < SCORE_DROP_THRESHOLD:
-            continue  # drop low-quality items early
+            continue
 
         h = hashlib.sha1(link.encode('utf-8')).hexdigest()
         if h in seen_links:
             continue
         seen_links.add(h)
 
-        # date extraction
         published_dt = None
         for k in ('published_parsed','updated_parsed','created_parsed'):
             val = getattr(e, k, None)
@@ -303,23 +294,16 @@ for i, src in enumerate(sources, start=1):
 
 print(f"Ingest complete. Items (pre-dedupe): {len(raw)}")
 
-# ---------------- Dedupe (by normalized title + source) ----------------
+# ---------------- Dedupe ----------------
 seen = set()
 deduped = []
 for it in sorted(raw, key=lambda x:(x['score'], x['published_at']), reverse=True):
     key = (it['ntitle'], it['source'])
-    if key in seen:
-        continue
+    if key in seen: continue
     seen.add(key)
     deduped.append(it)
 
-# ============================================================================
-# Buckets (non-overlapping)
-#   breaking: <= 12h
-#   day:      > 12h and <= 24h
-#   week:     > 24h and <= 7d
-#   month:    > 7d and <= 21d
-# ============================================================================
+# ---------------- Buckets (non-overlap) ----------------
 now = datetime.now(timezone.utc)
 
 def age_minutes(iso):
@@ -330,57 +314,37 @@ def age_minutes(iso):
         return 1e9
 
 buckets = { 'breaking': [], 'day': [], 'week': [], 'month': [] }
-
 for it in deduped:
     mins = age_minutes(it['published_at'])
-    if mins <= 12*60:
-        buckets['breaking'].append(it)
-    elif mins <= 24*60:
-        buckets['day'].append(it)
-    elif mins <= 7*24*60:
-        buckets['week'].append(it)
-    elif mins <= 21*24*60:
-        buckets['month'].append(it)
-    # older than 21 days -> drop
+    if mins <= 12*60: buckets['breaking'].append(it)
+    elif mins <= 24*60: buckets['day'].append(it)
+    elif mins <= 7*24*60: buckets['week'].append(it)
+    elif mins <= 21*24*60: buckets['month'].append(it)
 
-# ---------------- Rank + diversify per bucket ----------------
-# Breaking: recency-first (then score)
-arr = buckets['breaking']
-arr.sort(key=lambda x: (x['published_at'], x['score']), reverse=True)
-arr = diverse_pick(arr, PER_BUCKET, per_source_cap=2)
-for it in arr:
-    it.pop('score', None); it.pop('ntitle', None)
-buckets['breaking'] = arr
+# rank + diversify
+arr = buckets['breaking']; arr.sort(key=lambda x: (x['published_at'], x['score']), reverse=True)
+buckets['breaking'] = [dict((k,v) for k,v in it.items() if k not in ('score','ntitle')) for it in diverse_pick(arr, PER_BUCKET, 2)]
 
-# Others: score-first (then recency)
 for k in ['day','week','month']:
-    arr = buckets[k]
-    arr.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
-    arr = diverse_pick(arr, PER_BUCKET, per_source_cap=2)
-    for it in arr:
-        it.pop('score', None); it.pop('ntitle', None)
-    buckets[k] = arr
+    arr = buckets[k]; arr.sort(key=lambda x: (x['score'], x['published_at']), reverse=True)
+    buckets[k] = [dict((kk,vv) for kk,vv in it.items() if kk not in ('score','ntitle')) for it in diverse_pick(arr, PER_BUCKET, 2)]
 
 buckets['generated_at'] = now.isoformat()
 
 # ---------------- Write headlines ----------------
 with open(os.path.join(DATA_DIR, 'headlines.json'), 'w', encoding='utf-8') as f:
     json.dump(buckets, f, ensure_ascii=False, indent=2)
+print("WROTE headlines.json with counts:", {k: len(v) for k, v in buckets.items() if isinstance(v, list)})
 
-print("WROTE headlines.json with counts:",
-      {k: len(v) for k, v in buckets.items() if isinstance(v, list)})
-
-# ---------------- Prices snapshot (top 50) ----------------
+# ---------------- Prices (top 50) ----------------
 prices = []
 try:
-    r = requests.get(
+    coins = get_json(
         'https://api.coingecko.com/api/v3/coins/markets',
         params={'vs_currency':'usd','order':'market_cap_desc','per_page':50,'page':1,'price_change_percentage':'24h'},
-        timeout=20,
-        headers=headers
+        timeout=20, retries=2
     )
-    r.raise_for_status()
-    for coin in r.json():
+    for coin in coins:
         prices.append({
             'rank': coin.get('market_cap_rank'),
             'symbol': (coin.get('symbol') or '').upper(),
@@ -392,5 +356,4 @@ except Exception as ex:
 
 with open(os.path.join(DATA_DIR, 'prices.json'), 'w', encoding='utf-8') as f:
     json.dump(prices, f, ensure_ascii=False, indent=2)
-
 print("WROTE prices.json (count):", len(prices))
