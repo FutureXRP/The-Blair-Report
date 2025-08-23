@@ -2,7 +2,6 @@
   --bg: #111;
   --fg: #fafafa;
   --muted: #c8c8c8;
-  --accent: #ffd400;
   --link: #eaeaea;
 }
 * { box-sizing: border-box; }
@@ -24,33 +23,20 @@ h1 { letter-spacing: 6px; font-weight: 900; margin: 0; }
 #ticker:hover { animation-play-state: paused; }
 @keyframes ticker-scroll { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
 
-.frontpage { max-width: 1200px; margin: 0 auto; padding: 16px; display: flex; gap: 16px; }
-.col { background: #1a1a1a; border: 1px solid #222; border-radius: 10px; padding: 16px; flex: 1; }
-.col.left { flex: 1; }
-.col.center { flex: 1.3; }
-.col.right { flex: 1; }
-.col:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.35); transform: translateY(-2px); transition: 160ms ease; }
+.frontpage { max-width: 1100px; margin: 0 auto; padding: 16px; display: grid;
+  grid-template-columns: 1fr; gap: 18px; }
+.bucket { background: #1a1a1a; border: 1px solid #222; border-radius: 10px; padding: 16px; }
+.bucket h2 { font-size: 16px; letter-spacing: 1px; border-bottom: 1px solid var(--fg); padding-bottom: 6px; margin: 6px 0 12px; }
 
-h2 { font-size: 16px; letter-spacing: 1px; border-bottom: 1px solid var(--fg); padding-bottom: 6px; margin: 12px 0; }
 ul { list-style: none; margin: 0; padding: 0; }
 li { margin: 8px 0; }
 li a { color: var(--link); text-decoration: none; font-weight: 700; }
 li a:hover { text-decoration: underline; }
 li .meta { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
-.breaking-item a { color: #ff8a80; }
-
-.market-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
-.market-table th, .market-table td { border: 1px solid #333; padding: 8px; text-align: left; }
-.market-table th { background-color: #222; font-weight: 700; }
-.market-table tr:nth-child(even) { background-color: #191919; }
-.market-table tr:hover { background-color: #222; }
-.positive { color: #03dac6; }
-.negative { color: #cf6679; }
 
 .site-footer { border-top: 1px solid #222; color: var(--muted); text-align: center; padding: 24px; font-size: 12px; }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .frontpage { flex-direction: column; }
-  .col { transform: none !important; }
+@media (min-width: 900px) {
+  .frontpage { grid-template-columns: 1fr 1fr; }
 }
