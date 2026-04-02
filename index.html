@@ -4,51 +4,576 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Blair Report</title>
-  <meta name="description" content="The Blair Report – a crypto front page organized by freshness: breaking, last 24 hours, past week, past month." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Auto-refresh every 2 minutes -->
-  <meta http-equiv="refresh" content="120" />
+  <meta name="description" content="The Blair Report — breaking crypto intelligence, organized by freshness." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #0a0a0a;
+      --surface:  #111111;
+      --surface2: #181818;
+      --surface3: #202020;
+      --border:   #252525;
+      --border2:  #303030;
+      --text:     #e8e6e0;
+      --muted:    #666;
+      --dim:      #3d3d3d;
+      --accent:   #f5c842;
+      --accent2:  #e8432d;
+      --green:    #22c55e;
+      --red:      #ef4444;
+      --blue:     #60a5fa;
+      --ticker-h: 36px;
+      --header-h: 68px;
+      --nav-h:    37px;
+    }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── TICKER ── */
+    .ticker-bar {
+      height: var(--ticker-h);
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .ticker-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: .1em;
+      color: #0a0a0a;
+      padding: 0 14px;
+      border-right: 1.5px solid rgba(0,0,0,.2);
+      white-space: nowrap;
+      flex-shrink: 0;
+      z-index: 2;
+      background: var(--accent);
+    }
+    .ticker-overflow {
+      overflow: hidden;
+      flex: 1;
+    }
+    #ticker {
+      display: flex;
+      will-change: transform;
+      animation: ticker-scroll var(--ticker-duration, 60s) linear infinite;
+    }
+    #ticker:hover { animation-play-state: paused; }
+    .ticker-track {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 16px;
+      border-right: 1px solid rgba(0,0,0,.15);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #0a0a0a;
+      white-space: nowrap;
+    }
+    .ticker-item .t-sym  { font-weight: 600; letter-spacing: .03em; }
+    .ticker-item .t-rank { font-size: 10px; opacity: .55; }
+    .ticker-item .t-chg  { font-size: 10px; }
+    .t-up { color: #1a5c30; }
+    .t-dn { color: #8b1e1e; }
+    @keyframes ticker-scroll {
+      0%   { transform: translate3d(0,0,0); }
+      100% { transform: translate3d(-50%,0,0); }
+    }
+
+    /* ── HEADER ── */
+    header {
+      height: var(--header-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border2);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      padding: 0 24px;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand img.logo {
+      width: 32px;
+      height: 32px;
+      filter: invert(1) sepia(1) saturate(4) hue-rotate(5deg) brightness(1.1);
+    }
+    .brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 30px;
+      letter-spacing: .07em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .brand-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      padding: 2px 7px;
+      border-radius: 2px;
+    }
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-radius: 3px;
+      overflow: hidden;
+      max-width: 380px;
+      width: 100%;
+      justify-self: center;
+    }
+    .search-wrap input {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      padding: 8px 12px;
+      width: 100%;
+      outline: none;
+    }
+    .search-wrap input::placeholder { color: var(--muted); }
+    .search-wrap button {
+      background: none;
+      border: none;
+      border-left: 1px solid var(--border2);
+      color: var(--muted);
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+    }
+    .search-wrap button:hover { color: var(--accent); }
+    .header-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.8;
+    }
+    #lastUpdated { color: var(--dim); font-size: 10px; }
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: flex-end;
+      color: var(--green);
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    /* ── NAV ── */
+    .nav-bar {
+      height: var(--nav-h);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .tab {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 14px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+      user-select: none;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .nav-right {
+      margin-left: auto;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--dim);
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      min-height: calc(100vh - var(--ticker-h) - var(--header-h) - var(--nav-h) - 48px);
+    }
+
+    /* ── MAIN FEED ── */
+    .feed {
+      border-right: 1px solid var(--border);
+      padding: 20px 24px;
+    }
+    .bucket { margin-bottom: 28px; }
+    .bucket.hidden { display: none; }
+    .bucket-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border2);
+    }
+    .bucket-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: .05em;
+      color: var(--text);
+    }
+    .bucket-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 2px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .badge-breaking { background: var(--accent2); color: #fff; }
+    .badge-day      { background: var(--surface3); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-week     { background: var(--surface3); color: var(--muted); border: 1px solid var(--border2); }
+    .badge-month    { background: var(--surface3); color: var(--dim); border: 1px solid var(--border); }
+    .bucket-count   { margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--dim); }
+
+    /* ── ARTICLES ── */
+    .article-list { list-style: none; }
+    .article {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background .1s;
+      text-decoration: none;
+    }
+    .article:hover { background: var(--surface); }
+    .article-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--dim);
+      padding-top: 14px;
+      text-align: right;
+      padding-right: 10px;
+    }
+    .article-body { padding: 12px 12px 12px 0; }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+    .src-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .src-name {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .src-time {
+      margin-left: auto;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--dim);
+    }
+    .article-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.45;
+      text-decoration: none;
+    }
+    .article:hover .article-title { color: var(--accent); }
+    .breaking .article-title { font-size: 14.5px; font-weight: 600; }
+
+    /* ── SEARCH RESULTS ── */
+    #search-results-section {
+      display: none;
+      margin-bottom: 28px;
+    }
+    #search-results-section.visible { display: block; }
+    #no-results {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 16px 0;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { padding: 20px 18px; }
+    .side-section { margin-bottom: 24px; }
+    .side-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: .06em;
+      color: var(--text);
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--border2);
+      margin-bottom: 10px;
+    }
+
+    /* ── MARKET TABLE ── */
+    .mkt-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .mkt-table th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      text-align: right;
+      padding: 3px 0;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+    .mkt-table th:first-child { text-align: left; }
+    .mkt-table td {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+      color: var(--text);
+    }
+    .mkt-table td:first-child { text-align: left; color: var(--accent); font-weight: 500; }
+    .mkt-table tr:last-child td { border-bottom: none; }
+    .pos { color: var(--green) !important; }
+    .neg { color: var(--red) !important; }
+
+    /* ── GAINERS / LOSERS ── */
+    .gl-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+    }
+    .gl-row:last-child { border-bottom: none; }
+    .gl-sym { color: var(--accent); font-weight: 500; }
+    .gl-price { color: var(--text); }
+    .gl-chg { font-size: 11px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--dim);
+      grid-column: 1 / -1;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    /* ── LOADING STATE ── */
+    .loading-msg {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 20px 0;
+      animation: blink 1.2s step-start infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      .page { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      header { grid-template-columns: 1fr auto; padding: 0 14px; }
+      .brand-tag { display: none; }
+      .feed { padding: 14px 16px; }
+      .nav-bar { padding: 0 16px; }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
+
+  <!-- TICKER -->
+  <div class="ticker-bar" aria-label="Live crypto prices">
+    <div class="ticker-label">MARKETS</div>
+    <div class="ticker-overflow">
+      <div id="ticker">
+        <div class="ticker-track" id="ticker-track-1"></div>
+        <div class="ticker-track" id="ticker-track-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
     <div class="brand">
       <img src="assets/logo.svg" alt="The Blair Report" class="logo" />
-      <h1>THE BLAIR REPORT</h1>
+      <span class="brand-name">The Blair Report</span>
+      <span class="brand-tag">Crypto Intelligence</span>
     </div>
-
-    <!-- Top-50 scrolling ticker -->
-    <div class="ticker-wrap" aria-label="Top crypto prices, scrolling">
-      <div id="ticker" class="ticker"></div>
+    <div class="search-wrap">
+      <input type="text" id="search-input" placeholder="Search headlines, coins, sources…" autocomplete="off" />
+      <button id="search-clear" title="Clear search">✕</button>
+    </div>
+    <div class="header-meta">
+      <div class="live-indicator"><span class="live-dot"></span>Live</div>
+      <div id="lastUpdated">—</div>
     </div>
   </header>
 
-  <main class="frontpage">
-    <section class="bucket">
-      <h2>Breaking</h2>
-      <ul id="breaking"></ul>
-    </section>
+  <!-- NAV TABS -->
+  <nav class="nav-bar" role="tablist">
+    <span class="tab active" data-bucket="all"      role="tab">All</span>
+    <span class="tab"        data-bucket="breaking" role="tab">Breaking</span>
+    <span class="tab"        data-bucket="day"      role="tab">24H</span>
+    <span class="tab"        data-bucket="week"     role="tab">Week</span>
+    <span class="tab"        data-bucket="month"    role="tab">Month</span>
+    <span class="nav-right" id="article-count"></span>
+  </nav>
 
-    <section class="bucket">
-      <h2>Past Day</h2>
-      <ul id="day"></ul>
-    </section>
+  <!-- MAIN PAGE -->
+  <div class="page">
+    <main class="feed" id="feed">
 
-    <section class="bucket">
-      <h2>Past Week</h2>
-      <ul id="week"></ul>
-    </section>
+      <!-- SEARCH RESULTS -->
+      <section id="search-results-section">
+        <div class="bucket-header">
+          <span class="bucket-label">Search Results</span>
+          <span class="bucket-count" id="search-count"></span>
+        </div>
+        <ul class="article-list" id="search-list"></ul>
+        <p id="no-results" style="display:none;">No results found. Try another keyword.</p>
+      </section>
 
-    <section class="bucket">
-      <h2>Past Month</h2>
-      <ul id="month"></ul>
-    </section>
-  </main>
+      <!-- BREAKING -->
+      <section class="bucket breaking" id="bucket-breaking">
+        <div class="bucket-header">
+          <span class="bucket-label">Breaking</span>
+          <span class="bucket-badge badge-breaking">Live</span>
+          <span class="bucket-count" id="count-breaking"></span>
+        </div>
+        <ul class="article-list" id="breaking">
+          <li class="loading-msg">Loading headlines…</li>
+        </ul>
+      </section>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> The Blair Report • Curated crypto headlines.
-       <a href="https://github.com/futurexrp/The-Blair-Report" target="_blank" rel="noopener">GitHub</a>
-    </p>
+      <!-- 24H -->
+      <section class="bucket" id="bucket-day">
+        <div class="bucket-header">
+          <span class="bucket-label">Past 24 Hours</span>
+          <span class="bucket-badge badge-day">24H</span>
+          <span class="bucket-count" id="count-day"></span>
+        </div>
+        <ul class="article-list" id="day">
+          <li class="loading-msg">Loading headlines…</li>
+        </ul>
+      </section>
+
+      <!-- WEEK -->
+      <section class="bucket" id="bucket-week">
+        <div class="bucket-header">
+          <span class="bucket-label">Past Week</span>
+          <span class="bucket-badge badge-week">7D</span>
+          <span class="bucket-count" id="count-week"></span>
+        </div>
+        <ul class="article-list" id="week">
+          <li class="loading-msg">Loading headlines…</li>
+        </ul>
+      </section>
+
+      <!-- MONTH -->
+      <section class="bucket" id="bucket-month">
+        <div class="bucket-header">
+          <span class="bucket-label">Past Month</span>
+          <span class="bucket-badge badge-month">30D</span>
+          <span class="bucket-count" id="count-month"></span>
+        </div>
+        <ul class="article-list" id="month">
+          <li class="loading-msg">Loading headlines…</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="side-section">
+        <div class="side-title">Market Overview</div>
+        <table class="mkt-table">
+          <thead>
+            <tr><th>Asset</th><th>Price</th><th>24H</th></tr>
+          </thead>
+          <tbody id="market-body">
+            <tr><td colspan="3" style="color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px 0;">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Top Gainers (24H)</div>
+        <div id="gainers-list"></div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Top Losers (24H)</div>
+        <div id="losers-list"></div>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer>
+    <span>© <span id="year"></span> The Blair Report &nbsp;·&nbsp; Curated crypto intelligence</span>
+    <span>
+      <a href="https://github.com/futurexrp/The-Blair-Report" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp; Auto-refreshes every 2 min
+    </span>
   </footer>
 
   <script src="app.js"></script>
